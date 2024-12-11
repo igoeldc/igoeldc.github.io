@@ -1,0 +1,256 @@
+body {
+    font-family: 'Arial', sans-serif;
+    margin: 0;
+    padding: 0;
+    background: #f4f4f9;
+    color: #333;
+}
+
+a {
+    color: #0000ee; /* Default link color */
+    text-decoration: none; /* Removes underline */
+}
+
+/* General navigation styling */
+nav ul {
+    display: flex;
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    justify-content: center;
+    background-color: #333;
+}
+
+nav ul li {
+    margin: 0 15px;
+    position: relative; /* Needed for dropdown positioning */
+}
+
+nav ul li a {
+    text-decoration: none;
+    color: white;
+    padding: 10px 15px;
+    font-size: 16px;
+    display: inline-block;
+}
+
+nav ul li a:hover {
+    background-color: #444;
+    border-radius: 5px;
+}
+
+/* Dropdown styling */
+.language-dropdown .dropdown-icon {
+    font-size: 12px;
+    margin-left: 5px;
+}
+
+.language-dropdown .dropdown-content {
+    display: none;
+    position: absolute;
+    background-color: white;
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+    min-width: 240px;
+    border-radius: 5px;
+    z-index: 1;
+    top: 100%;
+    left: 0;
+    grid-template-columns: 1fr 1fr; /* Create 2 columns */
+    gap: 10px; /* Space between rows and columns */
+    padding: 10px; /* Add padding around the grid */
+}
+
+.language-dropdown .dropdown-content a {
+    color: black;
+    padding: 10px 15px;
+    text-decoration: none;
+    display: block;
+    font-size: 14px;
+}
+
+.language-dropdown .dropdown-content a:hover {
+    background-color: #f1f1f1;
+}
+
+/* Show dropdown on hover */
+.language-dropdown:hover .dropdown-content {
+    display: grid;
+}
+
+/* Section Styling */
+.section {
+    padding: 10px;
+    text-align: center;
+}
+#faq {
+    background: #f4f4f9;
+}
+#projects {
+    background: #e9ecef;
+}
+#contact {
+    background: #f4f4f9;
+}
+
+/* Flexbox for Projects Gallery */
+.project-gallery {
+    display: flex;
+    justify-content: center;
+    gap: 45px;
+    flex-wrap: wrap; /* Allows wrapping on smaller screens */
+    margin-top: 30px;
+}
+.project-gallery a {
+    text-decoration: none; /* Removes the underline */
+    color: inherit; /* Ensures the link inherits the parent element's text color */
+}
+
+/* About Me Section */
+.about-section {
+    background: #e9ecef;
+    padding: 10px;
+}
+
+.about-container {
+    display: flex; /* Flexbox for two-column layout */
+    justify-content: space-between;
+    gap: 75px;
+    max-width: 1250px;
+    margin: 0 auto;
+    flex-wrap: wrap; /* Ensures responsiveness */
+}
+
+.about-left {
+    flex: 1; /* Take up equal space */
+    padding: 20px;
+    max-width: 500px; /* Optional: Limit width */
+}
+
+.about-right {
+    flex: 1; /* Take up equal space */
+    display: flex; /* Flexbox for dividing into sections */
+    flex-direction: column;
+    gap: 20px;
+    padding: 20px;
+}
+
+.info-box {
+    background: white;
+    border-radius: 10px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+    text-align: left;
+}
+
+.info-box h3 {
+    margin: 0 0 10px;
+    font-size: 1.25rem;
+    color: #333;
+}
+
+.info-box h4 {
+    margin: 0 0 10px;
+    color: #333;
+}
+
+.info-box p {
+    margin: 0;
+    color: #666;
+}
+
+/* Styling Project Cards */
+.project-card {
+    background: white;
+    border-radius: 10px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    overflow: hidden;
+    text-align: center;
+    transition: transform 0.3s, box-shadow 0.3s;
+    width: 300px;
+}
+.project-card:hover {
+    transform: scale(1.05);
+    box-shadow: 0 8px 15px rgba(0, 0, 0, 0.2);
+}
+.project-card .card-content {
+    padding: 10px;
+}
+.project-card h3 {
+    font-size: 1.5rem;
+    margin-bottom: 10px;
+}
+.project-card a {
+    text-decoration: none; /* Remove underline */
+    color: inherit; /* Inherit text color from parent */
+    display: block; /* Makes the entire card clickable */
+    height: 100%; /* Ensures the link covers the full card */
+    width: 100%;
+}
+.project-card a:hover {
+    color: #0056b3; /* Optional: Change link color on hover */
+    text-decoration: none; /* Ensure underline doesn't reappear */
+}
+.project-card p {
+    font-size: 1rem;
+    color: #666;
+}
+
+/* Form Styling */
+form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+}
+input, textarea {
+    width: 300px;
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+}
+button {
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    background: maroon;
+    color: white;
+    font-size: 16px;
+    cursor: pointer;
+}
+button:hover {
+    background: #ff9933;
+}
+
+/* Footer */
+footer {
+    background: #333;
+    color: white;
+    text-align: center;
+    padding: 10px 0;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .about-container {
+        flex-direction: column; /* Stack vertically on smaller screens */
+        align-items: center;
+    }
+
+    .about-left, .about-right {
+        max-width: 100%;
+    }
+    
+    .project-gallery {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .project-card {
+        width: 90%;
+    }
+
+    header nav ul {
+        flex-direction: column;
+        gap: 10px;
+    }
+}
