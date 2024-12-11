@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Portfolio</title>
+    <link rel="stylesheet" href="assets/styles.css">
+</head>
+<body>
+    <header>
+        <nav>
+            <ul>
+                <li><a href="#home">Home</a></li>
+                <li><a href="#about">About</a></li>
+                <li><a href="#projects">Projects</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <section id="home" class="section">
+        <h1>Welcome to My Portfolio</h1>
+        <p>I am a passionate student with a love for learning and creating!</p>
+        <button onclick="scrollToSection('about')">Learn More</button>
+    </section>
+
+    <section id="about" class="section">
+        <h2>About Me</h2>
+        <p>Here you can add information about yourself, your background, and your interests.</p>
+    </section>
+
+    <section id="projects" class="section">
+        <h2>My Projects</h2>
+        <div class="project-gallery">
+            <a href="https://github.com/igoeldc/agentic_ai_framework" target="_blank" class="project-card">
+                <div class="card-content">
+                    <h3>Agentic AI Framework</h3>
+                    <p>The Agentic AI Framework is a powerful orchestration agent designed to manage and coordinate multiple AI agents. It provides users with a unified chat experience, allowing seamless interaction with various specialized AI agents through a single window.</p>
+                </div>
+            </a>
+            <a href="https://example.com/project2" target="_blank" class="project-card">
+                <div class="card-content">
+                    <h3>AI Language Understanding</h3>
+                    <p>Projects for my AI Language Understanding course.</p>
+                </div>
+            </a>
+            <!-- <a href="https://example.com/project3" target="_blank" class="project-card">
+                <div class="card-content">
+                    <h3>Project 3</h3>
+                    <p>A short description of Project 3.</p>
+                </div>
+            </a> -->
+        </div>
+    </section>
+
+    <section id="contact" class="section">
+        <h2>Contact Me</h2>
+        <form>
+            <input type="text" placeholder="Your Name" required>
+            <input type="email" placeholder="Your Email" required>
+            <textarea placeholder="Your Message"></textarea>
+            <button type="submit">Send</button>
+        </form>
+    </section>
+
+    <footer>
+        <p>© 2024 Ishaan Goel. All Rights Reserved.</p>
+    </footer>
+
+    <script src="assets/script.js"></script>
+</body>
+</html>
