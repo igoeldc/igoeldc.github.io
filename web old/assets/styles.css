@@ -1,0 +1,266 @@
+body {
+    font-family: 'Arial', sans-serif;
+    margin: 0;
+    padding: 0;
+    background: #ffffff; /* Pure white background */
+    color: #333333; /* Dark gray text */
+}
+
+a {
+    color: #00E; /* Green for links */
+    text-decoration: none; /* Removes underline */
+}
+
+a:hover {
+    color: #ff9933; /* Orange hover effect for links */
+}
+
+/* General navigation styling */
+nav ul {
+    display: flex;
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    justify-content: center;
+    background-color: #333333; /* Dark gray navbar background */
+}
+
+nav ul li {
+    margin: 0 15px;
+    position: relative; /* Needed for dropdown positioning */
+}
+
+nav ul li a {
+    text-decoration: none;
+    color: #ffffff; /* White text for navbar links */
+    padding: 10px 15px;
+    font-size: 16px;
+    display: inline-block;
+}
+
+nav ul li a:hover {
+    background-color: #800000; /* Maroon hover for navbar links */
+    border-radius: 5px;
+}
+
+/* Dropdown styling */
+.language-dropdown .dropdown-icon {
+    font-size: 12px;
+    margin-left: 5px;
+}
+
+.language-dropdown .dropdown-content {
+    display: none;
+    position: absolute;
+    background-color: #ffffff; /* White dropdown background */
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+    min-width: 280px;
+    border-radius: 5px;
+    z-index: 1;
+    top: 100%;
+    left: 0;
+    grid-template-columns: repeat(3, 1fr); /* 3 columns for language menu */
+    gap: 10px; /* Space between rows and columns */
+    padding: 10px; /* Add padding around the grid */
+}
+
+.language-dropdown .dropdown-content a {
+    color: #333333; /* Dark gray text */
+    text-decoration: none;
+    padding: 10px 15px;
+    display: block;
+    font-size: 14px;
+}
+
+.language-dropdown .dropdown-content a:hover {
+    background-color: #ff9933; /* Orange hover effect */
+    color: #ffffff; /* White text on hover */
+}
+
+/* Show dropdown on hover */
+.language-dropdown:hover .dropdown-content {
+    display: grid;
+}
+
+/* Section Styling */
+.section {
+    padding: 10px;
+    text-align: center;
+    background-color: #ffffff; /* Default white background */
+}
+
+#projects, #resume {
+    background: #e9ecef; /* Light gray for these sections */
+    color: #333333; /* Dark gray text */
+}
+
+#faq, #contact {
+    background: #ffffff; /* White for projects */
+    color: #333333; /* Dark gray text */
+}
+
+/* Flexbox for Projects Gallery */
+.project-gallery {
+    display: flex;
+    justify-content: center;
+    gap: 45px;
+    flex-wrap: wrap; /* Allows wrapping on smaller screens */
+    margin-top: 30px;
+}
+
+.project-gallery a {
+    text-decoration: none; /* Removes the underline */
+    color: inherit; /* Ensures the link inherits the parent element's text color */
+}
+
+/* About Me Section */
+.about-section {
+    background: #e9ecef; /* Light gray for about section */
+    color: #333333; /* Dark gray text */
+    padding: 20px;
+}
+
+.about-container {
+    display: flex; /* Flexbox for two-column layout */
+    justify-content: space-between;
+    gap: 75px;
+    max-width: 1250px;
+    margin: 0 auto;
+    flex-wrap: wrap; /* Ensures responsiveness */
+}
+
+.about-left, .about-right {
+    flex: 1; /* Take up equal space */
+    padding: 15px;
+    max-width: 600px; /* Optional: Limit width */
+}
+
+/* Info Boxes */
+.info-box {
+    background: #ffffff; /* Pure white background */
+    color: #333333; /* Dark gray text */
+    border-radius: 10px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+    text-align: left;
+    margin-bottom: 20px;
+}
+
+.info-box h3 {
+    margin: 0 0 10px;
+    font-size: 1.25rem;
+}
+
+.info-box h4 {
+    margin: 0 0 10px;
+    color: #800000;
+}
+
+.info-box ul {
+    margin: 0 0 0 -20pt;
+    color: #666666;
+}
+
+.info-box p {
+    margin: 0;
+    color: #666666; /* Lighter gray for text */
+}
+
+/* Styling Project Cards */
+.project-card {
+    background: #ffffff; /* White background */
+    color: #333333; /* Dark gray for text */
+    border-radius: 10px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    overflow: hidden;
+    text-align: center;
+    transition: transform 0.3s, box-shadow 0.3s;
+    width: 300px;
+}
+
+.project-card:hover {
+    transform: scale(1.05);
+    box-shadow: 0 8px 15px rgba(0, 0, 0, 0.2);
+}
+
+.project-card h3 {
+    font-size: 1.5rem;
+    margin-bottom: 10px;
+    color: #800000; /* Maroon for project titles */
+}
+
+.project-card p {
+    font-size: 1rem;
+    color: #666666; /* Light gray for descriptions */
+    margin: 10pt;
+}
+
+/* Contact Links */
+.contact-links {
+    display: flex; /* Use Flexbox to arrange items horizontally */
+    justify-content: center; /* Distribute space between items */
+    gap: 30px; /* Add space between the links */
+    flex-wrap: wrap; /* Allow wrapping on smaller screens */
+}
+
+.contact-links p {
+    margin: 0; /* Remove default margin on <p> */
+    margin-bottom: 10pt;
+    font-size: 16px; /* Adjust text size */
+    text-align: center; /* Optional: center-align text inside each link */
+}
+
+/* Buttons */
+button {
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    background: #800000; /* Maroon background */
+    color: #f8f9fa; /* White text */
+    font-size: 16px;
+    cursor: pointer;
+}
+
+button:hover {
+    background: #ff9933; /* Orange hover */
+}
+
+/* Footer */
+footer {
+    background: #333333; /* Dark gray footer background */
+    color: #ffffff; /* White footer text */
+    text-align: center;
+    padding: 10px 0;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .about-container {
+        flex-direction: column; /* Stack vertically on smaller screens */
+        align-items: center;
+    }
+
+    .about-left, .about-right {
+        max-width: 100%;
+    }
+
+    .project-gallery {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .project-card {
+        width: 90%;
+    }
+
+    header nav ul {
+        flex-direction: column;
+        gap: 10px;
+    }
+
+    .contact-links {
+        flex-direction: column; /* Stack items vertically */
+        align-items: flex-start; /* Align items to the left */
+        gap: 10px; /* Reduce gap for smaller screens */
+    }
+}

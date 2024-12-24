@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>Ishaan Goel</title>
+
+    <script type="module" src="https://unpkg.com/@splinetool/viewer/build/spline-viewer.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@splinetool/viewer@1.0.3"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/typed.js@2.0.12"></script>
+    <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+    <div class="menu-icon">
+            <div class="bar"></div>
+            <div class="bar"></div>
+            <div class="bar"></div>
+        </div>
+        <nav class="menu">
+            <ul>
+                <li><a href="#intro">Home</a></li>
+                <li><a href="#projects">Projects</a></li>
+                <li><a href="#skills">Skills</a></li>
+                <li><a href="#testimonials">Testimonials</a></li>
+                <li><a href="#contact">Contact</a></li>
+                <li><a href="/web old/assets/Ishaan_Goel_Resume.pdf">Resume</a></li>
+                <li><a href="/web old/index.html">Version 1</a></li>
+            </ul>
+        </nav>
+
+    <!-- INTRO SECTION -->
+    <section class="intro">
+        <div class="intro-content">
+            <h1>Welcome to My Portfolio</h1>
+        </div>
+    </section>
+
+    <!-- HERO WITH SPLINE -->
+    <header class="hero">
+        <div class="hero-bg">
+            <spline-viewer url="https://prod.spline.design/LEvjG3OETYd2GsRw/scene.splinecode"></spline-viewer>
+        </div>
+        <div class="hero-content">
+            <h2 class="hero-title">
+              <span id="typewriter"></span>
+            </h2>
+          </div>
+    </header>
+
+    <!-- PROJECTS SECTION -->
+    <section class="projects">
+        <h2>My Work</h2>
+        <div class="project-grid">
+            <div class="project-item">
+                <a href="https://github.com/igoeldc/agentic_ai_framework" target="_blank">
+                    <img src="project1.jpeg" alt="Project 1" class="project-image"/>
+                    <div class="project-hover">
+                        <h3>Agentic AI Framework</h3>
+                        <p>The Agentic AI Framework is a powerful orchestration agent designed to manage and coordinate multiple AI agents. It provides users with a unified chat experience, allowing seamless interaction with various specialized AI agents through a single window.</p>
+                    </div>
+                </a>
+            </div>
+            <div class="project-item">
+                <a href="https://github.com/igoeldc/AI-Language-Understanding-Projects" target="_blank">
+                    <img src="project1.jpeg" alt="Project 2" class="project-image"/>
+                    <div class="project-hover">
+                        <h3>AI Language Understanding</h3>
+                        <p>Projects for my Artificial Intelligence Language Understanding course.</p>
+                    </div>
+                </a>
+            </div>
+            <div class="project-item">
+                <a href="./web old/assets/Extended Essay.pdf" target="_blank">
+                    <img src="project1.jpeg" alt="Project 3" class="project-image"/>
+                    <div class="project-hover">
+                        <h3>IB Extended Essay</h3>
+                        <p>This is my IB Extended Essay which explores how Natural Language Processing (NLP) can help preserve minority, regional, and oppressed languages. It addresses challenges like limited data and reviews industry approaches, such as speech-based models and gamification, while examining the social, cultural, and ethical aspects of language preservation.</p>
+                    </div>
+                </a>
+            </div>
+            <div class="project-item">
+                <a href="https://github.com/jacobhthomas/CollabGraph" target="_blank">
+                    <img src="project1.jpeg" alt="Project 4" class="project-image"/>
+                    <div class="project-hover">
+                        <h3>Erdős Co-authorship Network</h3>
+                        Designed and implemented a co-author network to analyze the influence of research papers on contemporary and future research, leveraging weighted and unweighted adjacency matrices with Erdos1 data.<br>
+                        Explored Network Science principles, focusing on measuring influence, extracting relevant data, and creating influence measurement algorithms.</p>
+                    </div>
+                </a>
+            </div>
+            <!-- Add more projects as needed -->
+        </div>
+    </section>
+
+    <!-- TIMELINE / SKILLS SECTION -->
+    <section class="skills">
+        <h2>Experience & Skills</h2>
+        <div class="timeline">
+            <!-- Timeline events go here -->
+
+            <div class="timeline-event">
+                <h3>Aug 2024 &ndash; Present</h3>
+                <p>Research Assistant</p>
+            </div>
+
+            <div class="timeline-event">
+                <h3>Jan 2024 &ndash; Present</h3>
+                <p>Peer Tutor, Upper Level Math</p>
+            </div>
+
+            <div class="timeline-event">
+                <h3>Jul 2024 &ndash; Jul 2024</h3>
+                <p>Intern at PeopleStrong Technologies Ltd.</p>
+            </div>
+
+            <div class="timeline-event">
+                <h3>Aug 2024 &ndash; Jun 2024</h3>
+                <p>Research Assistant</p>
+            </div>
+
+        </div>
+        <div class="skill-bars">
+            <div class="skill-bar">
+                <span class="skill-label">Python</span>
+                <div class="skill-level" style="width: 80%;"></div>
+            </div>
+            <div class="skill-bar">
+                <span class="skill-label">LaTeX</span>
+                <div class="skill-level" style="width: 90%;"></div>
+            </div>
+        </div>
+    </section>
+
+    <!-- TESTIMONIALS -->
+    <section class="testimonials">
+        <h2>Testimonials</h2>
+        <div class="testimonial-slider">
+            <div class="testimonial-item">
+                <p>"Jane brought our vision to life, exceeding expectations!"</p>
+                <cite>- Happy Client</cite>
+            </div>
+            <div class="testimonial-item">
+                <p>"A pleasure to work with, highly recommended."</p>
+                <cite>- Another Client</cite>
+            </div>
+        </div>
+    </section>
+
+    <!-- CONTACT & FOOTER -->
+    <footer>
+        <h2>Get In Touch</h2>
+        <form class="contact-form" action="#" method="POST">
+            <input type="text" name="name" placeholder="Your Name" required/>
+            <input type="email" name="email" placeholder="Your Email" required/>
+            <textarea name="message" placeholder="Your Message..." required></textarea>
+            <button type="submit">Send Message</button>
+        </form>
+
+        <div class="social-icons">
+            <a href="mailto:igoeldxb@gmail.com" class="icon-link">Email</a>
+            <a href="tel:+17712017576" class="icon-link">Phone</a>
+            <a href="https://linkedin.com/in/igoeldc/" target="_blank" class="icon-link">LinkedIn</a>
+            <a href="https://github.com/igoeldc" target="_blank" class="icon-link">GitHub</a>
+        </div>
+
+        <p>&copy; 2024 Ishaan Goel. All Rights Reserved.</p>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>
