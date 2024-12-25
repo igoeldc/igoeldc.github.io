@@ -95,7 +95,7 @@ body {
 
 /* Intro Section */
 .intro {
-    padding: 5vh 2rem 2rem; /* Make it tall so user sees only this first */
+    padding: 5vh 2rem 2rem;
     background: #222;
     display: flex;
     align-items: center;
@@ -111,7 +111,7 @@ body {
 .hero {
     position: relative;
     width: 100%;
-    height: 100vh; /* Taller section so more scrolling occurs */
+    height: 82vh;
     overflow: hidden;
     z-index: 1;
 }
@@ -165,7 +165,7 @@ body {
 
 /* Projects */
 .projects {
-    padding: 4rem 2rem;
+    padding: 2rem;
     background: #222;
     z-index: 1;
 }
@@ -214,13 +214,13 @@ body {
     opacity: 1;
 }
 
-/* Skills & Timeline */
-.skills {
-    padding: 4rem 2rem;
+/* Experience */
+.experience {
+    padding: 2rem;
     background: #111;
 }
 
-.timeline, .skill-bars {
+.timeline {
     margin-top: 2rem;
 }
 
@@ -228,30 +228,46 @@ body {
     margin-bottom: 1rem;
 }
 
-.skill-bar {
+/* Skills */
+.skills {
+    padding: 2rem;
+    background: #222;
+}
+
+.skills-grid {
+    display: flex;
+    flex-wrap: wrap;
+    /* grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); */
+    gap: 1rem;
+    justify-content: center;
+}
+
+.skill-box {
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
     background: #333;
-    margin-bottom: 1rem;
-    position: relative;
-    height: 30px;
-    border-radius: 5px;
+    color: #fff;
+    text-align: center;
+    padding: 0.75rem;
+    border-radius: 8px;
+    font-size: 1.2rem;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+    transition: transform 0.3s, box-shadow 0.3s, width 0.3s ease;
+    height: 20px;
+    min-width: 40px;
+    width: auto;
+    white-space: nowrap;
 }
 
-.skill-level {
-    background: #57a773;
-    height: 100%;
-    border-radius: 5px;
-}
-
-.skill-label {
-    position: absolute;
-    left: 10px;
-    top: 5px;
-    font-size: 0.9rem;
+.skill-box:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 6px 10px rgba(0, 0, 0, 0.3);
 }
 
 /* Testimonials */
-.testimonials {
-    padding: 4rem 2rem;
+/* .testimonials {
+    padding: 2rem;
     background: #222;
 }
 .testimonial-slider {
@@ -265,11 +281,11 @@ body {
     background: #333;
     padding: 2rem;
     border-radius: 8px;
-}
+} */
 
 /* Contact & Footer */
 footer {
-    padding: 4rem 2rem;
+    padding: 2rem;
     background: #111;
     text-align: center;
 }
@@ -303,7 +319,7 @@ footer {
 }
 
 .social-icons {
-    margin-bottom: 1rem;
+    margin-bottom: 2rem;
 }
 
 .icon-link {
@@ -323,6 +339,14 @@ footer {
     }
     .hero-subtitle {
         font-size: 1rem;
+    }
+    .skills-grid {
+        grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
+        gap: 0.5rem;
+    }
+    .skill-box {
+        font-size: 1rem;
+        padding: 0.5rem;
     }
 }
 
