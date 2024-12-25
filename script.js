@@ -2,13 +2,12 @@ document.addEventListener('DOMContentLoaded', () => {
   // Typed.js Initialization
   if (window.Typed) {
     new Typed('#typewriter', {
-      // strings: ["Hello, I'm Ishaan"], // The text to type
-      // loop: false,    // Set to true for repeating
       strings: ["Hello, I'm Ishaan", "Mathematician", "Problem Solver", "Researcher"],
       loop: true,
-      typeSpeed: 50,  // Typing speed in milliseconds
-      backSpeed: 100,  // Backspacing speed (if needed)
-      showCursor: false,
+      typeSpeed: 100,  // Typing speed in milliseconds
+      backSpeed: 75,  // Backspacing speed (if needed)
+      showCursor: true,
+      cursorChar: '_',
     });
   }
 
