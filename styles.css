@@ -37,17 +37,14 @@ body {
 /* Transform for click */
 .menu-icon.active .bar:nth-child(1) {
     transform: rotate(45deg) translate(10px, 5px);
-    z-index: 999;
 }
 
 .menu-icon.active .bar:nth-child(2) {
     opacity: 0;
-    z-index: 999;
 }
 
 .menu-icon.active .bar:nth-child(3) {
     transform: rotate(-45deg) translate(10px, -5px);
-    z-index: 999;
 }
 
 /* Menu Styles */
@@ -64,12 +61,12 @@ body {
     flex-direction: column;
     align-items: center;
     padding-top: 50px;
-    z-index: 999;
+    z-index: 998;
 }
 
 .menu.active {
     right: 0;
-    z-index: 999;
+    z-index: 998;
 }
 
 .menu ul {
