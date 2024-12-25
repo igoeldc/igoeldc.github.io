@@ -5,10 +5,6 @@ body {
     color: #fff;
 }
 
-section {
-    min-height: 100vh; /* Each section occupies full viewport height */
-}
-
 /* Menu Icon */
 .menu-icon {
     position: fixed;
