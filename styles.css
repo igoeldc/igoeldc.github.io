@@ -5,6 +5,10 @@ body {
     color: #fff;
 }
 
+section {
+    min-height: 100vh; /* Each section occupies full viewport height */
+}
+
 /* Menu Icon */
 .menu-icon {
     position: fixed;
@@ -16,7 +20,7 @@ body {
     width: 30px;
     height: 25px;
     cursor: pointer;
-    z-index: 100;
+    z-index: 999;
 }
 
 .menu-icon .bar {
@@ -25,28 +29,33 @@ body {
     background: #fff;
     border-radius: 4px;
     transition: transform 0.5s ease, opacity 0.5s ease, background 0.5s ease;
+    z-index: 999;
 }
 
 /* Animation on hover */
-    .menu-icon:hover .bar {
+.menu-icon:hover .bar {
     background: #57a773;
+    z-index: 999;
 }
 
 /* Transform for click */
-    .menu-icon.active .bar:nth-child(1) {
+.menu-icon.active .bar:nth-child(1) {
     transform: rotate(45deg) translate(10px, 5px);
+    z-index: 999;
 }
 
 .menu-icon.active .bar:nth-child(2) {
     opacity: 0;
+    z-index: 999;
 }
 
 .menu-icon.active .bar:nth-child(3) {
     transform: rotate(-45deg) translate(10px, -5px);
+    z-index: 999;
 }
 
 /* Menu Styles */
-    .menu {
+.menu {
     position: fixed;
     top: 0;
     right: -100%;
@@ -59,30 +68,36 @@ body {
     flex-direction: column;
     align-items: center;
     padding-top: 50px;
+    z-index: 999;
 }
 
 .menu.active {
     right: 0;
+    z-index: 999;
 }
 
 .menu ul {
     list-style: none;
     padding: 0;
     margin: 0;
+    z-index: 999;
 }
 
 .menu li {
     margin: 20px 0;
+    z-index: 999;
 }
 
 .menu a {
     color: #fff;
     text-decoration: none;
     font-size: 18px;
+    z-index: 999;
 }
 
 .menu a:hover {
     color: #57a773;
+    z-index: 999;
 }
 
 /* Intro Section */
@@ -105,6 +120,7 @@ body {
     width: 100%;
     height: 100vh; /* Taller section so more scrolling occurs */
     overflow: hidden;
+    z-index: 1;
 }
 
 .hero-bg {
@@ -112,6 +128,8 @@ body {
     top: 0; left: 0; 
     width: 100%;
     height: 100%;
+    z-index: 0;
+    pointer-events: none;
     z-index: 1;
 }
 
@@ -119,6 +137,8 @@ body {
     width: 100%;
     height: 100%;
     display: block;
+    pointer-events: none;
+    z-index: 1;
 }
 
 .hero-content {
@@ -154,6 +174,7 @@ body {
 .projects {
     padding: 4rem 2rem;
     background: #222;
+    z-index: 1;
 }
 
 .project-grid {
