@@ -2,7 +2,7 @@ document.addEventListener('DOMContentLoaded', () => {
   // Typed.js Initialization
   if (window.Typed) {
     new Typed('#typewriter', {
-      strings: ["Hello, I'm Ishaan", "Mathematician", "Problem Solver", "Researcher"],
+      strings: ["Hello, I'm Ishaan", "I'm a Mathematician", "I'm a Problem Solver", "I'm a Researcher"],
       loop: true,
       typeSpeed: 100,  // Typing speed in milliseconds
       backSpeed: 75,  // Backspacing speed (if needed)
