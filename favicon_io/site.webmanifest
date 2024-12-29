@@ -33,6 +33,8 @@
             "type": "image/x-icon"
         }
     ],
+    "theme_color": "transparent",
+    "background_color": "#222222",
     "start_url": "/index.html",
     "display": "standalone"
 }
