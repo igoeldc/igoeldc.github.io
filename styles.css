@@ -5,6 +5,10 @@ body {
     color: #fff;
 }
 
+h2{
+    text-align: center;
+}
+
 /* Menu Icon */
 .menu-icon {
     position: fixed;
@@ -163,10 +167,104 @@ body {
     animation: blink 0.7s infinite;
 }
 
+/* About */
+.about {
+    padding: 2rem;
+    background: #222;
+    z-index: 1;
+}
+
+.about-container {
+    display: flex; /* Flexbox for two-column layout */
+    justify-content: space-between;
+    gap: 50px;
+    max-width: 1250px;
+    margin: 0 auto;
+    flex-wrap: wrap; /* Ensures responsiveness */
+}
+
+.about-left, .about-right {
+    flex: 1; /* Take up equal space */
+    padding: 15px;
+    max-width: 600px; /* Optional: Limit width */
+}
+
+/* Info Boxes */
+.info-box {
+    background: #111; /* Pure white background */
+    color: #fff; /* Dark gray text */
+    border-radius: 10px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+    text-align: left;
+    margin-bottom: 20px;
+}
+
+.info-box h3 {
+    margin: 0 0 10px;
+    font-size: 1.25rem;
+    color: crimson;
+}
+
+.info-box h4 {
+    margin: 0 0 10px;
+    color: #57a773;
+}
+
+.info-box ul {
+    margin: 0 0 0 -20pt;
+}
+
+.info-box p {
+    margin: 0;
+}
+
+/* Classes */
+.courses {
+    padding: 2rem;
+    background-color: #111;
+}
+
+/* Grid layout for categories */
+.courses-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr); /* Three equal columns */
+    gap: 25px; /* Spacing between columns */
+    text-align: left; /* Align text within columns */
+    margin: 0 auto;
+    max-width: 1500px; /* Limit the overall width of the section */
+}
+
+/* Individual category styling */
+.course-category {
+    padding: 1rem;
+    background: #222;
+    border-radius: 8px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.course-category h3 {
+    font-size: 1.5rem;
+    margin-bottom: 1rem;
+    color: crimson;
+    margin-top: auto;
+}
+
+.course-category ul {
+    /* list-style: none; */
+    padding-left: 10pt;
+}
+
+.course-category li {
+    margin-bottom: 0.25rem;
+    font-size: 1rem;
+    color: #fff;
+}
+
 /* Projects */
 .projects {
     padding: 2rem;
-    background: #222;
+    background: #111;
     z-index: 1;
 }
 
@@ -217,7 +315,7 @@ body {
 /* Experience */
 .experience {
     padding: 2rem;
-    background: #111;
+    background: #222;
 }
 
 .timeline {
@@ -231,7 +329,7 @@ body {
 /* Skills */
 .skills {
     padding: 2rem;
-    background: #222;
+    background: #111;
 }
 
 .skills-grid {
@@ -286,7 +384,7 @@ body {
 /* Contact & Footer */
 footer {
     padding: 2rem;
-    background: #111;
+    background: #222;
     text-align: center;
 }
 
