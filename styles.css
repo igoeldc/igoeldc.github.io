@@ -446,6 +446,20 @@ footer {
         font-size: 1rem;
         padding: 0.5rem;
     }
+
+    .project-grid {
+        display: flex;
+        overflow-x: auto;
+        scroll-snap-type: x mandatory;
+        -webkit-overflow-scrolling: touch;
+        gap: 1rem;
+        padding: 1rem 0;
+    }
+
+    .project-item {
+        flex: 0 0 80%;
+        scroll-snap-align: start;
+    }
 }
 
 @keyframes blink {
