@@ -16,6 +16,7 @@ body {
 
 h2{
     text-align: center;
+    margin-bottom: 1.5rem;
 }
 
 /* Menu Icon */
@@ -221,7 +222,9 @@ h2{
 }
 
 .info-box ul {
-    margin: 0 0 0 -20pt;
+    padding-left: 1.2rem;
+    margin: 0;
+    list-style-type: disc;
 }
 
 .info-box p {
@@ -440,6 +443,38 @@ footer {
 }
 
 /* Responsive */
+@media (max-width: 992px) {
+    body {
+        font-size: 16px;
+        padding: 0 2rem;
+    }
+
+    .about-container {
+        flex-direction: column;
+        gap: 2rem;
+    }
+
+    .info-box {
+        padding: 1.5rem;
+    }
+
+    .courses-grid {
+        grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+        gap: 2rem;
+        padding: 0 2rem;
+    }
+
+    .project-grid {
+        grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+        padding: 0 2rem;
+    }
+
+    .contact-form {
+        margin-right: 0;
+        padding: 0 2rem;
+    }
+}
+
 @media (max-width: 600px) {
     body {
         font-size: 14px;
