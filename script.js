@@ -40,3 +40,43 @@ document.addEventListener('DOMContentLoaded', () => {
     form.reset();
   });
 });
+
+function layoutTimeline() {
+  const spans = document.querySelectorAll('.timeline-span');
+  const parse = str => new Date(str + '-01');
+  const min = new Date(Math.min(...[...spans].map(s => parse(s.dataset.start))));
+  const max = new Date(Math.max(...[...spans].map(s => parse(s.dataset.end))));
+
+  const range = max - min;
+
+  const rows = [];
+
+  spans.forEach(span => {
+    const start = parse(span.dataset.start);
+    const end = parse(span.dataset.end);
+    const midpoint = new Date(start);
+    midpoint.setDate(midpoint.getDate() - 15);
+    const adjEnd = new Date(end);
+    adjEnd.setMonth(adjEnd.getMonth() + 1);
+
+    const leftPercent = ((midpoint - min) / range) * 100;
+    const widthPercent = ((adjEnd - start) / range) * 100;
+
+    let row = 0;
+    while (rows[row]?.some(e => {
+      const s = parse(e.dataset.start);
+      const f = parse(e.dataset.end);
+      return !(end <= s || start >= f);
+    })) row++;
+
+    if (!rows[row]) rows[row] = [];
+    rows[row].push(span);
+
+    span.style.left = `${leftPercent}%`;
+    span.style.width = `${widthPercent}%`;
+    span.style.top = `${-2.5 - row * 2.5}rem`;
+    span.innerHTML = `${span.dataset.start}–${span.dataset.end}<br>${span.dataset.role}`;
+  });
+}
+
+document.addEventListener('DOMContentLoaded', layoutTimeline);

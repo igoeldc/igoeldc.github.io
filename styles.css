@@ -199,6 +199,10 @@ h2{
     max-width: 600px; /* Optional: Limit width */
 }
 
+.about-left p {
+    margin-bottom: 1rem;
+}
+
 /* Info Boxes */
 .info-box {
     background: #111; /* Pure white background */
@@ -359,7 +363,7 @@ h2{
     background: #333;
     color: #fff;
     text-align: center;
-    padding: 0.75rem;
+    padding: 1rem 0.75rem;
     border-radius: 8px;
     font-size: 1.2rem;
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
@@ -373,6 +377,11 @@ h2{
 .skill-box:hover {
     transform: translateY(-5px);
     box-shadow: 0 6px 10px rgba(0, 0, 0, 0.3);
+}
+
+.skills h3 {
+    margin-top: 2rem;
+    margin-bottom: 1rem;
 }
 
 /* Testimonials */
@@ -536,5 +545,49 @@ footer {
     50% {
         opacity: 0;
     }
-
 }
+
+/* Horizontal Timeline Styles */
+.timeline-horizontal {
+    position: relative;
+    padding: 6rem 2rem;
+    background: #222;
+    display: flex;
+    justify-content: center;
+  }
+  
+  .timeline {
+    position: relative;
+    width: 100%;
+    max-width: 1400px;
+    background-color: #57a773;
+    margin: 0 auto;
+  }
+  
+  .timeline-span {
+    position: absolute;
+    top: calc(-2.5rem + var(--row-offset, 0rem));
+    height: 2rem;
+    background-color: #57a773; /* site accent */
+    color: #fff;
+    font-size: 0.85rem;
+    padding: 0.25rem 0.75rem;
+    border-radius: 4px;
+    white-space: nowrap;
+    text-align: center;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    --row-offset: 0rem;
+  }
+  
+  .timeline-span[data-row="1"] {
+    --row-offset: 0rem;
+  }
+  .timeline-span[data-row="2"] {
+    --row-offset: 2.5rem;
+  }
+  .timeline-span[data-row="3"] {
+    --row-offset: 5rem;
+  }
