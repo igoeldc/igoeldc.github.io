@@ -53,8 +53,8 @@ document.addEventListener('DOMContentLoaded', () => {
   const brownianPaths = [];
 
   // Brownian motion variance parameters (adjust these to control spread)
-  const BM_VARIANCE_BASE = 8;    // Base step size
-  const BM_VARIANCE_RANGE = 6;   // Additional random range
+  const BM_VARIANCE_BASE = 10;    // Base step size
+  const BM_VARIANCE_RANGE = 25;   // Additional random range
 
   // Symbol class
   class FloatingSymbol {
@@ -205,9 +205,9 @@ document.addEventListener('DOMContentLoaded', () => {
   }, 400); // Faster generation to maintain steady count
 
   // Initial cloud of Brownian motion paths
-  for (let i = 0; i < 25; i++) {
-    brownianPaths.push(new BrownianMotion());
-  }
+  // for (let i = 0; i < 25; i++) {
+  //   brownianPaths.push(new BrownianMotion());
+  // }
 
   // Animation loop
   function animate() {
