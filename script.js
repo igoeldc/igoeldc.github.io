@@ -1,81 +1,392 @@
 /**
- * Initializes all the scripts for the portfolio page once the DOM is fully loaded.
+ * Main script for the portfolio website
+ * Handles theme toggle, math animations, menu, and typewriter effect
  */
+
 document.addEventListener('DOMContentLoaded', () => {
 
-  /**
-   * Initializes the typewriter effect in the hero section using Typed.js.
-   * It checks if the Typed.js library and the target element exist before running.
-   */
+  // ===========================
+  // THEME TOGGLE
+  // ===========================
+  const themeToggle = document.getElementById('themeToggle');
+  const htmlElement = document.documentElement;
+
+  // Check for saved theme preference or default to 'dark'
+  const currentTheme = localStorage.getItem('theme') || 'dark';
+  htmlElement.setAttribute('data-theme', currentTheme);
+  updateThemeIcon(currentTheme);
+
+  themeToggle.addEventListener('click', () => {
+    const theme = htmlElement.getAttribute('data-theme');
+    const newTheme = theme === 'dark' ? 'light' : 'dark';
+
+    htmlElement.setAttribute('data-theme', newTheme);
+    localStorage.setItem('theme', newTheme);
+    updateThemeIcon(newTheme);
+  });
+
+  function updateThemeIcon(theme) {
+    themeToggle.textContent = theme === 'dark' ? '☀️' : '🌙';
+  }
+
+  // ===========================
+  // HERO SECTION - MATH ANIMATIONS
+  // ===========================
+  const canvas = document.getElementById('heroCanvas');
+  const ctx = canvas.getContext('2d');
+
+  // Set canvas size
+  function resizeCanvas() {
+    canvas.width = canvas.offsetWidth;
+    canvas.height = canvas.offsetHeight;
+  }
+  resizeCanvas();
+  window.addEventListener('resize', resizeCanvas);
+
+  // Math symbols to float
+  const mathSymbols = ['∫', '∑', 'π', '∞', '∂', 'λ', 'α', 'β', 'γ', 'δ', 'θ', 'μ', 'σ', 'φ', 'ω', '√', '∇', '≈', '≡', '∈', '∪', '∩', '⊂', '∀', '∃', 'ℝ', 'ℂ', 'ℕ', 'ℤ'];
+
+  // Floating symbols array
+  const floatingSymbols = [];
+
+  // Brownian motion paths
+  const brownianPaths = [];
+
+  // Brownian motion variance parameters (adjust these to control spread)
+  const BM_VARIANCE_BASE = 8;    // Base step size
+  const BM_VARIANCE_RANGE = 6;   // Additional random range
+
+  // Symbol class
+  class FloatingSymbol {
+    constructor() {
+      this.x = Math.random() * canvas.width;
+      this.y = canvas.height + 50;
+      this.symbol = mathSymbols[Math.floor(Math.random() * mathSymbols.length)];
+      this.speed = 0.3 + Math.random() * 0.5;
+      this.opacity = 0;
+      this.rotation = 0;
+      this.rotationSpeed = (Math.random() - 0.5) * 0.02;
+      this.size = 20 + Math.random() * 20;
+      this.maxOpacity = 0.3 + Math.random() * 0.3;
+    }
+
+    update() {
+      this.y -= this.speed;
+      this.rotation += this.rotationSpeed;
+
+      // Fade in
+      if (this.y > canvas.height - 200 && this.opacity < this.maxOpacity) {
+        this.opacity += 0.01;
+      }
+      // Fade out
+      if (this.y < 100) {
+        this.opacity -= 0.01;
+      }
+    }
+
+    draw() {
+      ctx.save();
+      ctx.translate(this.x, this.y);
+      ctx.rotate(this.rotation);
+      ctx.font = `${this.size}px "Times New Roman", serif`;
+      ctx.fillStyle = `rgba(255, 153, 51, ${this.opacity})`;
+      ctx.textAlign = 'center';
+      ctx.textBaseline = 'middle';
+      ctx.fillText(this.symbol, 0, 0);
+      ctx.restore();
+    }
+
+    isDead() {
+      return this.y < -50 || this.opacity <= 0;
+    }
+  }
+
+  // 1D Brownian Motion class (LTR only)
+  class BrownianMotion {
+    constructor() {
+      this.points = [];
+
+      // Starting position - center of screen
+      this.startX = 0;
+      this.endX = canvas.width;
+      this.y = canvas.height / 2; // Start at center
+
+      this.currentX = this.startX;
+      this.currentStep = 0;
+      this.totalSteps = 400 + Math.floor(Math.random() * 200); // Variable path length
+      this.opacity = 0;
+      this.maxOpacity = 0.2 + Math.random() * 0.3; // Variable opacity (lower for cloud effect)
+      this.age = 0;
+      this.fadeInDuration = 40;
+      this.fadeOutStart = this.totalSteps + 100;
+      this.maxAge = this.totalSteps + 200;
+
+      // Brownian motion parameters
+      this.stepSize = BM_VARIANCE_BASE + Math.random() * BM_VARIANCE_RANGE; // Random step size for variation
+
+      // Add initial point
+      this.points.push({ x: this.currentX, y: this.y });
+    }
+
+    update() {
+      this.age++;
+
+      // Fade in
+      if (this.age < this.fadeInDuration) {
+        this.opacity = (this.age / this.fadeInDuration) * this.maxOpacity;
+      } else if (this.age > this.fadeOutStart) {
+        // Fade out
+        const fadeProgress = (this.age - this.fadeOutStart) / (this.maxAge - this.fadeOutStart);
+        this.opacity = this.maxOpacity * (1 - fadeProgress);
+      }
+
+      // Generate path if not complete
+      if (this.currentStep < this.totalSteps) {
+        // Calculate progress (0 to 1)
+        const progress = this.currentStep / this.totalSteps;
+
+        // Deterministic x-position (LTR)
+        const targetX = this.startX + (this.endX - this.startX) * progress;
+
+        // Regular Brownian motion: random walk in y-direction
+        const randomStep = (Math.random() - 0.5) * this.stepSize;
+        this.y += randomStep;
+
+        // Keep within reasonable bounds
+        this.y = Math.max(canvas.height * 0.1, Math.min(canvas.height * 0.9, this.y));
+
+        this.currentX = targetX;
+        this.points.push({ x: this.currentX, y: this.y });
+        this.currentStep++;
+      }
+    }
+
+    draw() {
+      if (this.points.length < 2) return;
+
+      ctx.beginPath();
+      ctx.moveTo(this.points[0].x, this.points[0].y);
+
+      for (let i = 1; i < this.points.length; i++) {
+        ctx.lineTo(this.points[i].x, this.points[i].y);
+      }
+
+      // LTR gradient
+      const gradient = ctx.createLinearGradient(
+        this.startX, canvas.height / 2,
+        this.endX, canvas.height / 2
+      );
+
+      gradient.addColorStop(0, `rgba(255, 153, 51, ${this.opacity})`);
+      gradient.addColorStop(1, `rgba(220, 20, 60, ${this.opacity})`);
+
+      ctx.strokeStyle = gradient;
+      ctx.lineWidth = 1.5;
+      ctx.stroke();
+    }
+
+    isDead() {
+      return this.opacity <= 0 && this.age > this.maxAge;
+    }
+  }
+
+  // Add floating symbols periodically
+  setInterval(() => {
+    if (floatingSymbols.length < 15) {
+      floatingSymbols.push(new FloatingSymbol());
+    }
+  }, 800);
+
+  // Add Brownian motion paths periodically to maintain ~25 paths
+  setInterval(() => {
+    if (brownianPaths.length < 25) {
+      brownianPaths.push(new BrownianMotion());
+    }
+  }, 400); // Faster generation to maintain steady count
+
+  // Initial cloud of Brownian motion paths
+  for (let i = 0; i < 25; i++) {
+    brownianPaths.push(new BrownianMotion());
+  }
+
+  // Animation loop
+  function animate() {
+    // Clear canvas
+    ctx.clearRect(0, 0, canvas.width, canvas.height);
+
+    // Update and draw Brownian paths
+    for (let i = brownianPaths.length - 1; i >= 0; i--) {
+      brownianPaths[i].update();
+      brownianPaths[i].draw();
+
+      if (brownianPaths[i].isDead()) {
+        brownianPaths.splice(i, 1);
+      }
+    }
+
+    // Update and draw floating symbols
+    for (let i = floatingSymbols.length - 1; i >= 0; i--) {
+      floatingSymbols[i].update();
+      floatingSymbols[i].draw();
+
+      if (floatingSymbols[i].isDead()) {
+        floatingSymbols.splice(i, 1);
+      }
+    }
+
+    requestAnimationFrame(animate);
+  }
+
+  animate();
+
+  // ===========================
+  // TYPEWRITER EFFECT
+  // ===========================
   const initTyped = () => {
     const typewriterElement = document.querySelector('#typewriter');
     if (window.Typed && typewriterElement) {
       new Typed('#typewriter', {
-        strings: ["Hello, I'm Ishaan", "I'm a Mathematician", "I'm a Problem Solver", "I'm a Researcher"],
+        strings: [
+          "Hello, I'm Ishaan",
+          "I'm a Mathematician",
+          "I'm a Problem Solver",
+          "I'm a Researcher",
+          "I'm a Linguist"
+        ],
         loop: true,
-        typeSpeed: 100,      // Speed of typing in milliseconds.
-        backSpeed: 75,       // Speed of backspacing in milliseconds.
-        showCursor: true,    // Displays the cursor.
-        cursorChar: '_',     // Character for the cursor.
+        typeSpeed: 100,
+        backSpeed: 75,
+        showCursor: true,
+        cursorChar: '_',
       });
     }
   };
 
-  /**
-   * Sets up the mobile menu toggle functionality.
-   * Toggles the 'active' class on the menu and icon when the icon is clicked.
-   */
+  // ===========================
+  // MOBILE MENU & ACTIVE SECTIONS
+  // ===========================
   const initMenu = () => {
     const menuIcon = document.querySelector('.menu-icon');
     const menu = document.querySelector('.menu');
+    const menuLinks = document.querySelectorAll('.menu a');
 
     if (menuIcon && menu) {
       menuIcon.addEventListener('click', () => {
         menuIcon.classList.toggle('active');
         menu.classList.toggle('active');
       });
-    }
-  };
 
-  /**
-   * Initializes scroll-triggered animations for project items using GSAP.
-   * It checks if the GSAP library is available and if there are project items to animate.
-   */
-  const initGsapAnimations = () => {
-    if (window.gsap) {
-      const projectItems = document.querySelectorAll('.project-item');
-      if (projectItems.length > 0) {
-        gsap.from(projectItems, {
-          opacity: 0,
-          y: 50,
-          stagger: 0.2,
-          scrollTrigger: {
-            trigger: '.projects',
-            start: 'top bottom', // Animation starts when the top of the trigger hits the bottom of the viewport
-          },
+      // Close menu when clicking a link
+      menuLinks.forEach(link => {
+        link.addEventListener('click', () => {
+          menuIcon.classList.remove('active');
+          menu.classList.remove('active');
         });
-      }
-    }
-  };
-
-  /**
-   * Sets up basic form submission handling for the contact form.
-   * Prevents the default submission, shows an alert, and resets the form.
-   */
-  const initContactForm = () => {
-    const form = document.querySelector('.contact-form');
-    if (form) {
-      form.addEventListener('submit', (e) => {
-        e.preventDefault(); // Prevents the default form submission behavior.
-        alert('Message sent!');
-        form.reset();
       });
     }
+
+    // Active section highlighting
+    const sections = document.querySelectorAll('section, header');
+    const navLinks = document.querySelectorAll('.menu a[href^="#"]');
+
+    const observerOptions = {
+      threshold: 0.3,
+      rootMargin: '-100px 0px -66%'
+    };
+
+    const sectionObserver = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          const id = entry.target.id;
+          navLinks.forEach(link => {
+            link.classList.remove('active-section');
+            if (link.getAttribute('href') === `#${id}`) {
+              link.classList.add('active-section');
+            }
+          });
+        }
+      });
+    }, observerOptions);
+
+    sections.forEach(section => {
+      if (section.id) {
+        sectionObserver.observe(section);
+      }
+    });
   };
 
-  // Call all initialization functions to set up the page.
+  // ===========================
+  // SCROLL ANIMATIONS (Lightweight)
+  // ===========================
+  const initScrollAnimations = () => {
+    const observerOptions = {
+      threshold: 0.1,
+      rootMargin: '0px 0px -50px 0px'
+    };
+
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('fade-in');
+          observer.unobserve(entry.target);
+        }
+      });
+    }, observerOptions);
+
+    // Observe sections and cards
+    const elementsToAnimate = document.querySelectorAll('.project-item, .course-category, .info-box, .skill-category-card, .timeline-item');
+    elementsToAnimate.forEach(el => {
+      el.style.opacity = '0';
+      el.style.transform = 'translateY(20px)';
+      el.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
+      observer.observe(el);
+    });
+  };
+
+  // Add fade-in class styles dynamically
+  const style = document.createElement('style');
+  style.textContent = `
+    .fade-in {
+      opacity: 1 !important;
+      transform: translateY(0) !important;
+    }
+  `;
+  document.head.appendChild(style);
+
+  // ===========================
+  // BACK TO TOP BUTTON
+  // ===========================
+  const initBackToTop = () => {
+    // Create back to top button
+    const backToTop = document.createElement('button');
+    backToTop.id = 'backToTop';
+    backToTop.innerHTML = '↑';
+    backToTop.setAttribute('aria-label', 'Back to top');
+    document.body.appendChild(backToTop);
+
+    // Show/hide on scroll
+    window.addEventListener('scroll', () => {
+      if (window.scrollY > 500) {
+        backToTop.classList.add('visible');
+      } else {
+        backToTop.classList.remove('visible');
+      }
+    });
+
+    // Scroll to top on click
+    backToTop.addEventListener('click', () => {
+      window.scrollTo({
+        top: 0,
+        behavior: 'smooth'
+      });
+    });
+  };
+
+  // ===========================
+  // INITIALIZE ALL
+  // ===========================
   initTyped();
   initMenu();
-  initGsapAnimations();
-  initContactForm();
+  initScrollAnimations();
+  initBackToTop();
 });
