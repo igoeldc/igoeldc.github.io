@@ -44,7 +44,16 @@ document.addEventListener('DOMContentLoaded', () => {
   window.addEventListener('resize', resizeCanvas);
 
   // Math symbols to float
-  const mathSymbols = ['∫', '∑', 'π', '∞', '∂', 'λ', 'α', 'β', 'γ', 'δ', 'θ', 'μ', 'σ', 'φ', 'ω', '√', '∇', '≈', '≡', '∈', '∪', '∩', '⊂', '∀', '∃', 'ℝ', 'ℂ', 'ℕ', 'ℤ'];
+  const mathSymbols = [
+    // Original symbols
+    '∫', '∑', 'π', '∞', '∂', 'λ', 'α', 'β', 'γ', 'δ', 'θ', 'μ', 'σ', 'φ', 'ω', '√', '∇', '≈', '≡', '∈', '∪', '∩', '⊂', '∀', '∃', 'ℝ', 'ℂ', 'ℕ', 'ℤ',
+    // Tier 1: Greek letters & common operators
+    'ε', 'ρ', 'τ', 'Δ', 'Σ', 'Π', 'Λ', '⊗', '⊕', '≤', '≥', '≠', '∅', '⇒', 'ℚ',
+    // Tier 2: Additional Greek & special symbols
+    'ξ', 'ψ', 'Ω', 'Γ', 'ζ', '∝', '⊆', '∬', '∮', 'ℵ',
+    // Tier 3: Advanced symbols (excluding ℏ)
+    'κ', 'η', '±', '∧', '∨', '¬', '⇔'
+  ];
 
   // Floating symbols array
   const floatingSymbols = [];
@@ -55,6 +64,10 @@ document.addEventListener('DOMContentLoaded', () => {
   // Brownian motion variance parameters (adjust these to control spread)
   const BM_VARIANCE_BASE = 10;    // Base step size
   const BM_VARIANCE_RANGE = 25;   // Additional random range
+
+  // Detect mobile device
+  const isMobile = /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent) || window.innerWidth < 768;
+  const BM_SPEED_MULTIPLIER = isMobile ? 0.5 : 1; // Faster on mobile (fewer steps = faster completion)
 
   // Symbol class
   class FloatingSymbol {
@@ -113,7 +126,8 @@ document.addEventListener('DOMContentLoaded', () => {
 
       this.currentX = this.startX;
       this.currentStep = 0;
-      this.totalSteps = 400 + Math.floor(Math.random() * 200); // Variable path length
+      // Fewer steps = faster completion on mobile
+      this.totalSteps = Math.floor((400 + Math.random() * 200) / BM_SPEED_MULTIPLIER);
       this.opacity = 0;
       this.maxOpacity = 0.2 + Math.random() * 0.3; // Variable opacity (lower for cloud effect)
       this.age = 0;
@@ -283,29 +297,61 @@ document.addEventListener('DOMContentLoaded', () => {
           menu.classList.remove('active');
         });
       });
+
+      // Close menu when clicking backdrop
+      menu.addEventListener('click', (e) => {
+        if (e.target === menu) {
+          menuIcon.classList.remove('active');
+          menu.classList.remove('active');
+        }
+      });
+
+      // Close menu with Escape key
+      document.addEventListener('keydown', (e) => {
+        if (e.key === 'Escape' && menu.classList.contains('active')) {
+          menuIcon.classList.remove('active');
+          menu.classList.remove('active');
+        }
+      });
     }
 
     // Active section highlighting
-    const sections = document.querySelectorAll('section, header');
+    const sections = document.querySelectorAll('section, header, footer');
     const navLinks = document.querySelectorAll('.menu a[href^="#"]');
 
     const observerOptions = {
-      threshold: 0.3,
-      rootMargin: '-100px 0px -66%'
+      threshold: 0.2,
+      rootMargin: '-80px 0px -60%'
     };
 
+    let currentActiveSection = null;
+
     const sectionObserver = new IntersectionObserver((entries) => {
-      entries.forEach(entry => {
-        if (entry.isIntersecting) {
-          const id = entry.target.id;
-          navLinks.forEach(link => {
-            link.classList.remove('active-section');
-            if (link.getAttribute('href') === `#${id}`) {
-              link.classList.add('active-section');
-            }
-          });
+      // Find all currently intersecting sections
+      const intersectingSections = entries.filter(entry => entry.isIntersecting);
+
+      if (intersectingSections.length > 0) {
+        // Get the most visible section (highest intersection ratio)
+        const mostVisible = intersectingSections.reduce((prev, current) => {
+          return (current.intersectionRatio > prev.intersectionRatio) ? current : prev;
+        });
+
+        const id = mostVisible.target.id;
+
+        // Only update if the active section has changed
+        if (currentActiveSection !== id) {
+          currentActiveSection = id;
+
+          // Remove active from all links
+          navLinks.forEach(link => link.classList.remove('active-section'));
+
+          // Add active to the most visible section's link
+          const correspondingLink = document.querySelector(`.menu a[href="#${id}"]`);
+          if (correspondingLink) {
+            correspondingLink.classList.add('active-section');
+          }
         }
-      });
+      }
     }, observerOptions);
 
     sections.forEach(section => {
