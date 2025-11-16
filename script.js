@@ -281,50 +281,58 @@ document.addEventListener('DOMContentLoaded', () => {
   // ===========================
   const initMenu = () => {
     const menuIcon = document.querySelector('.menu-icon');
-    const menu = document.querySelector('.menu');
-    const menuLinks = document.querySelectorAll('.menu a');
+    const navLinks = document.querySelector('.nav-links');
+    const navLinkItems = document.querySelectorAll('.nav-links a');
 
-    if (menuIcon && menu) {
+    // Mobile menu toggle
+    if (menuIcon && navLinks) {
       menuIcon.addEventListener('click', () => {
         menuIcon.classList.toggle('active');
-        menu.classList.toggle('active');
+        navLinks.classList.toggle('active');
       });
 
       // Close menu when clicking a link
-      menuLinks.forEach(link => {
+      navLinkItems.forEach(link => {
         link.addEventListener('click', () => {
           menuIcon.classList.remove('active');
-          menu.classList.remove('active');
+          navLinks.classList.remove('active');
         });
-      });
-
-      // Close menu when clicking backdrop
-      menu.addEventListener('click', (e) => {
-        if (e.target === menu) {
-          menuIcon.classList.remove('active');
-          menu.classList.remove('active');
-        }
       });
 
       // Close menu with Escape key
       document.addEventListener('keydown', (e) => {
-        if (e.key === 'Escape' && menu.classList.contains('active')) {
+        if (e.key === 'Escape' && navLinks.classList.contains('active')) {
           menuIcon.classList.remove('active');
-          menu.classList.remove('active');
+          navLinks.classList.remove('active');
         }
       });
     }
 
     // Active section highlighting
     const sections = document.querySelectorAll('section, header, footer');
-    const navLinks = document.querySelectorAll('.menu a[href^="#"]');
+    const sectionLinks = document.querySelectorAll('.nav-links a[href^="#"]');
 
     const observerOptions = {
-      threshold: 0.2,
-      rootMargin: '-80px 0px -60%'
+      threshold: 0.15,
+      rootMargin: '-120px 0px -50%'
     };
 
     let currentActiveSection = null;
+
+    const updateActiveSection = (id) => {
+      if (currentActiveSection !== id) {
+        currentActiveSection = id;
+
+        // Remove active from all links
+        sectionLinks.forEach(link => link.classList.remove('active-section'));
+
+        // Add active to the most visible section's link
+        const correspondingLink = document.querySelector(`.nav-links a[href="#${id}"]`);
+        if (correspondingLink) {
+          correspondingLink.classList.add('active-section');
+        }
+      }
+    };
 
     const sectionObserver = new IntersectionObserver((entries) => {
       // Find all currently intersecting sections
@@ -337,26 +345,24 @@ document.addEventListener('DOMContentLoaded', () => {
         });
 
         const id = mostVisible.target.id;
-
-        // Only update if the active section has changed
-        if (currentActiveSection !== id) {
-          currentActiveSection = id;
-
-          // Remove active from all links
-          navLinks.forEach(link => link.classList.remove('active-section'));
-
-          // Add active to the most visible section's link
-          const correspondingLink = document.querySelector(`.menu a[href="#${id}"]`);
-          if (correspondingLink) {
-            correspondingLink.classList.add('active-section');
-          }
-        }
+        updateActiveSection(id);
       }
     }, observerOptions);
 
     sections.forEach(section => {
       if (section.id) {
         sectionObserver.observe(section);
+      }
+    });
+
+    // Handle bottom of page for footer/contact section
+    window.addEventListener('scroll', () => {
+      const scrollPosition = window.innerHeight + window.scrollY;
+      const pageHeight = document.documentElement.scrollHeight;
+
+      // If we're within 100px of the bottom, highlight contact
+      if (pageHeight - scrollPosition < 100) {
+        updateActiveSection('contact');
       }
     });
   };
