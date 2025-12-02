@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Blog Post - Ishaan Goel</title>
+
+    <!-- Favicon -->
+    <link rel="apple-touch-icon" sizes="180x180" href="favicon_io/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="favicon_io/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="favicon_io/favicon-16x16.png">
+
+    <!-- Styles -->
+    <link rel="stylesheet" href="styles.css?v=20251115"/>
+    <link rel="stylesheet" href="blog.css"/>
+    <link rel="stylesheet" href="blog-post.css"/>
+
+    <!-- Cloudflare Web Analytics -->
+    <script defer src='https://static.cloudflareinsights.com/beacon.min.js' data-cf-beacon='{"token": "0e5b204eee9145038a1bfc938dadd07e"}'></script>
+
+    <!-- Blog Posts Data -->
+    <script src="blog-posts.js"></script>
+</head>
+
+<body>
+    <!-- Top Navigation Bar -->
+    <nav class="top-nav">
+        <div class="nav-brand">
+            <a href="index.html" style="color: inherit; text-decoration: none;">Ishaan Goel</a>
+        </div>
+
+        <ul class="nav-links">
+            <li><a href="index.html#home">Home</a></li>
+            <li><a href="index.html#about">About</a></li>
+            <li><a href="index.html#projects">Projects</a></li>
+            <li><a href="index.html#experience">Experience</a></li>
+            <li><a href="index.html#courses">Courses</a></li>
+            <li><a href="index.html#skills">Skills</a></li>
+            <li><a href="index.html#contact">Contact</a></li>
+            <li class="nav-divider"></li>
+            <li><a href="blog.html" class="active-section">Blog</a></li>
+            <li class="nav-divider"></li>
+            <li><a href="assets/Ishaan_Goel_Resume.pdf" target="_blank" class="external-link">Resume</a></li>
+            <li><a href="https://pypi.org/project/mathcode/" target="_blank" class="external-link">mathcode</a></li>
+            <li><a href="https://iit-course-graphs.streamlit.app/" target="_blank" class="external-link">IIT Course Planner</a></li>
+        </ul>
+
+        <div class="nav-controls">
+            <button class="theme-toggle" id="themeToggle" aria-label="Toggle theme">🌙</button>
+            <div class="menu-icon">
+                <div class="bar"></div>
+                <div class="bar"></div>
+                <div class="bar"></div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Article -->
+    <article class="blog-post">
+        <div class="post-container">
+            <!-- Back Button -->
+            <a href="blog.html" class="back-button">← Back to Blog</a>
+
+            <!-- Post Header -->
+            <header class="post-header">
+                <div class="post-meta">
+                    <span class="post-date"></span>
+                    <span class="post-category"></span>
+                </div>
+                <h1 class="post-title"></h1>
+                <div class="post-tags"></div>
+            </header>
+
+            <!-- Post Content -->
+            <div class="post-content">
+                <p>Loading...</p>
+            </div>
+
+            <!-- Post Footer -->
+            <footer class="post-footer">
+                <a href="blog.html" class="back-button">← Back to Blog</a>
+            </footer>
+        </div>
+    </article>
+
+    <!-- Footer -->
+    <footer id="contact">
+        <h2>Get In Touch</h2>
+        <div class="social-icons">
+            <a href="mailto:igoeldxb@gmail.com" class="icon-link">Email</a>
+            <a href="tel:+17712017576" class="icon-link">Phone</a>
+            <a href="https://linkedin.com/in/igoeldc/" target="_blank" class="icon-link">LinkedIn</a>
+            <a href="https://github.com/igoeldc" target="_blank" class="icon-link">GitHub</a>
+        </div>
+    </footer>
+
+    <script src="script.js" defer></script>
+    <script src="blog-loader.js"></script>
+</body>
+</html>
