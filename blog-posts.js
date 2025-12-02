@@ -7,15 +7,21 @@ const blogPosts = {
         tags: ["Deep Learning", "Optimization", "PyTorch"],
         excerpt: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.",
         content: `
-            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
+            <p>Gradient descent is the cornerstone optimization algorithm in deep learning. At its core, it iteratively updates model parameters to minimize a loss function. Understanding how stochastic gradient descent (SGD) differs from standard gradient descent is crucial for training modern neural networks efficiently.</p>
 
             <h2>Introduction to Gradient Descent</h2>
-            <p>Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+            <p>Standard gradient descent updates parameters by computing the gradient of the loss function with respect to all training examples. The update rule is:</p>
 
-            <p>Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo.</p>
+            <p>$$\\theta_{t+1} = \\theta_t - \\eta \\nabla_\\theta J(\\theta)$$</p>
+
+            <p>where $\\theta$ represents the model parameters, $\\eta$ is the learning rate, and $J(\\theta)$ is the loss function computed over the entire dataset.</p>
 
             <h2>The Stochastic Approach</h2>
-            <p>Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt. Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit.</p>
+            <p>Stochastic gradient descent introduces randomness by updating parameters using only a mini-batch of examples. For a mini-batch $B$ with size $|B|$, the update becomes:</p>
+
+            <p>$$\\theta_{t+1} = \\theta_t - \\eta \\nabla_\\theta \\frac{1}{|B|} \\sum_{i \\in B} L(f(x_i; \\theta), y_i)$$</p>
+
+            <p>This stochastic sampling makes each update noisy but computationally cheaper, enabling training on massive datasets.</p>
 
             <blockquote>
                 "At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium voluptatum deleniti atque corrupti quos dolores et quas molestias excepturi sint occaecati cupiditate non provident."
