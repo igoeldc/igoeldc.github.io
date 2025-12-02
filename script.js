@@ -406,39 +406,9 @@ document.addEventListener('DOMContentLoaded', () => {
   document.head.appendChild(style);
 
   // ===========================
-  // BACK TO TOP BUTTON
-  // ===========================
-  const initBackToTop = () => {
-    // Create back to top button
-    const backToTop = document.createElement('button');
-    backToTop.id = 'backToTop';
-    backToTop.innerHTML = '↑';
-    backToTop.setAttribute('aria-label', 'Back to top');
-    document.body.appendChild(backToTop);
-
-    // Show/hide on scroll
-    window.addEventListener('scroll', () => {
-      if (window.scrollY > 500) {
-        backToTop.classList.add('visible');
-      } else {
-        backToTop.classList.remove('visible');
-      }
-    });
-
-    // Scroll to top on click
-    backToTop.addEventListener('click', () => {
-      window.scrollTo({
-        top: 0,
-        behavior: 'smooth'
-      });
-    });
-  };
-
-  // ===========================
   // INITIALIZE ALL
   // ===========================
   initTyped();
   initMenu();
   initScrollAnimations();
-  initBackToTop();
 });

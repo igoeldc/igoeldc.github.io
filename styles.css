@@ -431,13 +431,6 @@ a {
   padding: 1.5rem;
   text-align: left;
   margin-bottom: 1.5rem;
-  transition: all 0.3s ease;
-}
-
-.info-box:hover {
-  transform: translateY(-4px);
-  box-shadow: 0 8px 24px rgba(255, 153, 51, 0.15);
-  border-color: var(--accent-primary);
 }
 
 .info-box h3 {
@@ -509,13 +502,6 @@ a {
   break-inside: avoid;
   page-break-inside: avoid;
   margin-bottom: 25px;
-  transition: all 0.3s ease;
-}
-
-.course-category:hover {
-  transform: translateY(-4px);
-  box-shadow: 0 8px 24px rgba(255, 153, 51, 0.15);
-  border-color: var(--accent-primary);
 }
 
 .course-category h3 {
@@ -749,15 +735,7 @@ a {
     position: relative;
     z-index: 2;
     box-shadow: 0 0 0 4px var(--glass-border);
-    transition: all 0.3s ease;
     margin-top: 70px;
-}
-
-.timeline-item:hover .timeline-dot {
-    width: 28px;
-    height: 28px;
-    background: var(--accent-red);
-    box-shadow: 0 0 0 6px var(--glass-border), 0 0 20px rgba(255, 153, 51, 0.4);
 }
 
 /* Timeline Date */
@@ -780,18 +758,11 @@ a {
     border: 1px solid var(--glass-border);
     border-radius: 12px;
     text-align: center;
-    transition: all 0.3s ease;
     box-shadow: 0 4px 6px var(--shadow-color);
     min-height: 120px;
     display: flex;
     flex-direction: column;
     justify-content: center;
-}
-
-.timeline-item:hover .timeline-content {
-    transform: translateY(-5px);
-    box-shadow: 0 8px 16px var(--shadow-color);
-    border-color: var(--accent-primary);
 }
 
 .timeline-content h3 {
@@ -885,7 +856,6 @@ a {
   backdrop-filter: blur(10px);
   -webkit-backdrop-filter: blur(10px);
   box-shadow: 0 8px 32px var(--shadow-color);
-  transition: all 0.3s ease;
   position: relative;
   overflow: hidden;
   break-inside: avoid;
@@ -901,12 +871,6 @@ a {
   height: 3px;
   background: var(--accent-gradient);
   opacity: 0.8;
-}
-
-.skill-category-card:hover {
-  transform: translateY(-8px);
-  box-shadow: 0 12px 40px var(--shadow-color);
-  border-color: var(--accent-primary);
 }
 
 .skill-category-header {
@@ -1003,44 +967,6 @@ a {
 
 .icon-link:hover {
   text-decoration: underline;
-}
-
-/* Back to Top Button */
-#backToTop {
-  position: fixed;
-  bottom: 30px;
-  right: 30px;
-  width: 50px;
-  height: 50px;
-  border-radius: 50%;
-  background: var(--glass-bg);
-  backdrop-filter: blur(10px);
-  border: 1px solid var(--glass-border);
-  color: var(--accent-primary);
-  font-size: 24px;
-  cursor: pointer;
-  z-index: 999;
-  opacity: 0;
-  transform: translateY(100px);
-  transition: opacity 0.3s ease, transform 0.3s ease, background 0.3s ease;
-  box-shadow: 0 4px 6px var(--shadow-color);
-  pointer-events: none;
-}
-
-#backToTop.visible {
-  opacity: 1;
-  transform: translateY(0);
-  pointer-events: all;
-}
-
-#backToTop:hover {
-  background: var(--card-bg);
-  transform: translateY(-5px);
-  box-shadow: 0 8px 12px var(--shadow-color);
-}
-
-#backToTop:active {
-  transform: translateY(-2px);
 }
 
 /*
