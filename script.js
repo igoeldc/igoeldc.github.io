@@ -406,6 +406,58 @@ document.addEventListener('DOMContentLoaded', () => {
   document.head.appendChild(style);
 
   // ===========================
+  // LIQUID GLASS NAV BAR
+  // ===========================
+  const initNavLens = () => {
+    const navLinks = document.querySelector('.nav-links');
+    const navItems = document.querySelectorAll('.nav-links a');
+
+    if (!navLinks || navItems.length === 0) return;
+
+    // Create lens once
+    const lens = document.createElement('div');
+    lens.className = 'nav-lens';
+    navLinks.prepend(lens);
+
+    const moveLensTo = (el) => {
+      const containerRect = navLinks.getBoundingClientRect();
+      const rect = el.getBoundingClientRect();
+
+      const padX = 12; // makes lens slightly wider than text pill
+      const targetW = Math.max(56, rect.width + padX);
+      const x = rect.left - containerRect.left + (rect.width - targetW) / 2;
+
+      lens.style.width = `${targetW}px`;
+      lens.style.opacity = '1';
+      lens.style.transform = `translate(${x}px, -50%)`;
+    };
+
+    const hideLens = () => {
+      lens.style.opacity = '0';
+    };
+
+    navItems.forEach((a) => {
+      a.addEventListener('mouseenter', () => moveLensTo(a));
+      a.addEventListener('focus', () => moveLensTo(a));
+    });
+
+    navLinks.addEventListener('mouseleave', hideLens);
+
+    // Optional: snap lens to active section on load
+    const active = navLinks.querySelector('a.active-section');
+    if (active) moveLensTo(active);
+
+    // Optional: keep it following active section while scrolling
+    const observer = new MutationObserver(() => {
+      const nowActive = navLinks.querySelector('a.active-section');
+      if (nowActive) moveLensTo(nowActive);
+    });
+    observer.observe(navLinks, { subtree: true, attributes: true, attributeFilter: ['class'] });
+  };
+
+  initNavLens();
+
+  // ===========================
   // INITIALIZE ALL
   // ===========================
   initTyped();
