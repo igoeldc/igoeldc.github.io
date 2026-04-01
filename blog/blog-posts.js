@@ -1,6 +1,6 @@
 // Blog posts data
 const blogPosts = {
-    '1': {
+    '6': {
         title: "Understanding Stochastic Gradient Descent in Deep Learning",
         date: "November 15, 2024",
         category: "Machine Learning",
@@ -76,7 +76,7 @@ for epoch in range(num_epochs):
             <p>Quis autem vel eum iure reprehenderit qui in ea voluptate velit esse quam nihil molestiae consequatur, vel illum qui dolorem eum fugiat quo voluptas nulla pariatur. At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium voluptatum deleniti atque corrupti.</p>
         `
     },
-    '2': {
+    '5': {
         title: "Brownian Motion and Its Applications in Finance",
         date: "October 28, 2024",
         category: "Mathematics",
@@ -104,7 +104,7 @@ for epoch in range(num_epochs):
             <p>Nam libero tempore, cum soluta nobis est eligendi optio cumque nihil impedit quo minus id quod maxime placeat facere possimus, omnis voluptas assumenda est, omnis dolor repellendus.</p>
         `
     },
-    '3': {
+    '4': {
         title: "Transformers and Attention Mechanisms Explained",
         date: "September 12, 2024",
         category: "Natural Language Processing",
@@ -137,7 +137,7 @@ for epoch in range(num_epochs):
             <p>Nam libero tempore, cum soluta nobis est eligendi optio cumque nihil impedit quo minus id quod maxime placeat facere possimus, omnis voluptas assumenda est, omnis dolor repellendus.</p>
         `
     },
-    '4': {
+    '3': {
         title: "Exploring Network Centrality Measures",
         date: "August 5, 2024",
         category: "Graph Theory",
@@ -175,7 +175,7 @@ for epoch in range(num_epochs):
             </ul>
         `
     },
-    '5': {
+    '2': {
         title: "Monte Carlo Methods in Reinforcement Learning",
         date: "July 20, 2024",
         category: "Reinforcement Learning",
@@ -208,7 +208,7 @@ for epoch in range(num_epochs):
             </ul>
         `
     },
-    '6': {
+    '1': {
         title: "Building a Python Library: Lessons from mathcode",
         date: "June 8, 2024",
         category: "Software Engineering",
