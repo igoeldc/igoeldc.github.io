@@ -26,7 +26,7 @@ document.addEventListener('DOMContentLoaded', function() {
     tagsContainer.innerHTML = '';
     post.tags.forEach(tag => {
         const tagSpan = document.createElement('span');
-        tagSpan.className = 'post-tag';
+        tagSpan.className = 'lem-tag';
         tagSpan.textContent = tag;
         tagsContainer.appendChild(tagSpan);
     });
@@ -39,7 +39,7 @@ function showPostNotFound() {
     document.querySelector('.post-title').textContent = 'Post Not Found';
     document.querySelector('.post-content').innerHTML = `
         <p>Sorry, the blog post you're looking for doesn't exist.</p>
-        <p><a href="blog.html" style="color: var(--accent-primary);">Return to blog</a></p>
+        <p><a href="blog.html" style="color: var(--accent-saffron);">Return to blog</a></p>
     `;
     document.querySelector('.post-header .post-meta').style.display = 'none';
     document.querySelector('.post-tags').style.display = 'none';

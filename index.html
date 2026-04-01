@@ -1,5 +1,6 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" class="no-js">
+<script>document.documentElement.classList.remove('no-js')</script>
 
 <!--
 Hi Ishaan, This sounds like a good plan. I think what will be tricky for you is ensuring this site gives a cohesive picture of you -- you have a couple different interests right now, so you'll want to ensure your areas of focus are somewhat unified. That is, you might want to avoid giving someone the impression that "Ishaan does finance and math and NLP and..." because you're then unlikely to leave a memorable impression. Instead, consider something like "I am fundamentally interested in using NLP techniques to preserve under-resourced languages. I also see some applicability of these methods to finance."
@@ -18,26 +19,30 @@ Looking forward to seeing the full draft you put together.
     <meta name="author" content="Ishaan Goel">
     <title>Ishaan Goel</title>
 
-    <!-- Apple Touch Icon -->
+    <!-- Favicon -->
     <link rel="apple-touch-icon" sizes="180x180" href="favicon_io/apple-touch-icon.png">
-
-    <!-- ICO Favicon -->
     <link rel="icon" type="image/x-icon" href="favicon_io/favicon.ico">
-
-    <!-- PNG Favicons -->
     <link rel="icon" type="image/png" sizes="32x32" href="favicon_io/favicon-32x32.png">
     <link rel="icon" type="image/png" sizes="16x16" href="favicon_io/favicon-16x16.png">
-
-    <!-- Android Chrome Icons -->
     <link rel="icon" type="image/png" sizes="192x192" href="favicon_io/android-chrome-192x192.png">
     <link rel="icon" type="image/png" sizes="512x512" href="favicon_io/android-chrome-512x512.png">
 
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+
     <!-- Styles -->
-    <link rel="stylesheet" href="styles.css?v=2026120"/>
+    <link rel="stylesheet" href="shared.css?v=20260331"/>
+    <link rel="stylesheet" href="styles.css?v=20260331"/>
+
+    <!-- GSAP + ScrollTrigger -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
 
     <!-- Scripts -->
-    <script src="https://cdn.jsdelivr.net/npm/typed.js@2.0.12"></script>
-    <script src="script.js" defer></script>
+    <script src="shared.js?v=20260331" defer></script>
+    <script src="script.js?v=20260331" defer></script>
 
     <!-- Manifest -->
     <link rel="manifest" href="favicon_io/site.webmanifest">
@@ -47,27 +52,47 @@ Looking forward to seeing the full draft you put together.
 </head>
 
 <body>
+    <!-- Lemma background layers -->
+    <div class="lem-glow" id="lemGlow" aria-hidden="true"></div>
+    <div class="lem-ribbon" aria-hidden="true">
+        <svg viewBox="0 0 1400 900" fill="none" preserveAspectRatio="none">
+            <defs>
+                <linearGradient id="ribbonGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+                    <stop offset="0%" stop-color="#FF9933" />
+                    <stop offset="100%" stop-color="#DC143C" />
+                </linearGradient>
+            </defs>
+            <path d="M-100 450 C200 200, 500 700, 800 350 S1200 600, 1500 300" stroke="url(#ribbonGrad)" stroke-width="1.5" fill="none" opacity="0.6"/>
+            <path d="M-100 500 C300 300, 600 650, 900 400 S1300 550, 1500 250" stroke="url(#ribbonGrad)" stroke-width="0.8" fill="none" opacity="0.3"/>
+            <path d="M-100 550 C250 350, 550 600, 850 380 S1250 500, 1500 350" stroke="url(#ribbonGrad)" stroke-width="0.5" fill="none" opacity="0.2"/>
+        </svg>
+    </div>
+
+    <!-- Margin annotations -->
+    <div class="lem-margin-note" style="top: 25vh;" aria-hidden="true">&#x222B;<sub>0</sub><sup>&#x221E;</sup> e<sup>-x&#xB2;</sup> dx = &#x221A;&#x03C0;/2</div>
+    <div class="lem-margin-note" style="top: 55vh;" aria-hidden="true">&#x2207; &times; F = 0 &#x21D2; F = &#x2207;&#x03C6;</div>
+    <div class="lem-margin-note" style="top: 80vh;" aria-hidden="true">P(A|B) = P(B|A)P(A)/P(B)</div>
+    <div class="lem-margin-note" style="top: 140vh;" aria-hidden="true">&#x2211;<sub>n=1</sub><sup>&#x221E;</sup> 1/n&#xB2; = &#x03C0;&#xB2;/6</div>
+    <div class="lem-margin-note" style="top: 200vh;" aria-hidden="true">E[X] = &#x222B; x dF(x)</div>
+
     <!-- Top Navigation Bar -->
     <nav class="top-nav">
-        <div class="nav-brand">Ishaan Goel</div>
+        <a href="index.html" class="nav-brand">ishaan goel</a>
 
         <ul class="nav-links">
-            <li><a href="#home">Home</a></li>
-            <li><a href="#about">About</a></li>
-            <li><a href="#projects">Projects</a></li>
-            <li><a href="#experience">Experience</a></li>
-            <li><a href="#courses">Courses</a></li>
-            <li><a href="#skills">Skills</a></li>
-            <li><a href="#contact">Contact</a></li>
+            <li><a href="index.html" class="active-section">home</a></li>
+            <li><a href="work.html">work</a></li>
+            <li><a href="academics.html">academics</a></li>
+            <li><a href="blog/blog.html">blog</a></li>
             <li class="nav-divider"></li>
-            <li><a href="assets/Ishaan_Goel_Resume.pdf" target="_blank" class="external-link">Resume</a></li>
+            <li><a href="assets/Ishaan_Goel_Resume.pdf" target="_blank" class="external-link">resume</a></li>
             <li><a href="https://pypi.org/project/mathcode/" target="_blank" class="external-link">mathcode</a></li>
-            <li><a href="https://iit-course-graphs.streamlit.app/" target="_blank" class="external-link"> IIT Course Planner</a></li>
+            <li><a href="https://iit-course-graphs.streamlit.app/" target="_blank" class="external-link">iit course planner</a></li>
         </ul>
 
         <div class="nav-controls">
             <button class="theme-toggle" id="themeToggle" aria-label="Toggle theme">🌙</button>
-            <div class="menu-icon">
+            <div class="menu-icon" role="button" aria-label="Toggle menu" tabindex="0">
                 <div class="bar"></div>
                 <div class="bar"></div>
                 <div class="bar"></div>
@@ -75,595 +100,110 @@ Looking forward to seeing the full draft you put together.
         </div>
     </nav>
 
+    <!-- Mobile Bottom Pill Nav -->
+    <nav class="mobile-pill" aria-label="Page navigation">
+        <a href="index.html" class="mobile-pill-link active-section">home</a>
+        <a href="work.html" class="mobile-pill-link">work</a>
+        <a href="academics.html" class="mobile-pill-link">academics</a>
+        <a href="blog/blog.html" class="mobile-pill-link">blog</a>
+        <button class="theme-toggle mobile-pill-theme" id="mobileThemeToggle" aria-label="Toggle theme">🌙</button>
+    </nav>
+
     <!-- HERO SECTION -->
     <header id="home" class="hero">
-        <canvas class="hero-canvas" id="heroCanvas"></canvas>
+        <canvas class="hero-canvas" id="heroCanvas" aria-hidden="true"></canvas>
         <div class="hero-content">
-            <h2 class="hero-title">
-              <span id="typewriter"></span>
-            </h2>
-            <p class="hero-subtitle">Mathematics Researcher & AI Developer</p>
-          </div>
+            <div class="lem-epigraph" id="lemEpigraph" aria-hidden="true"></div>
+            <h1 class="hero-title">
+                mathematics.<br>
+                <span class="accent"><em>machine learning.</em></span><br>
+                language.
+            </h1>
+            <p class="hero-subtitle">researcher at the intersection of stochastic modeling, graph theory, and <em>natural language processing</em>. building systems that understand structure.</p>
+            <div class="lem-coord hero-coord">
+                <span class="sym">&phi;</span> = 41.8348&deg; N<br>
+                <span class="sym">&lambda;</span> = 87.6270&deg; W<br>
+                <br>
+                illinois institute of technology<br>
+                chicago, il
+            </div>
+        </div>
     </header>
 
     <!-- ABOUT SECTION -->
     <section id="about" class="about">
-        <h2>About Me</h2>
-        <div class="about-container">
-            <!-- Left Side -->
-            <div class="about-left"> <!-- Fix spacing -->
-                <p>I am a fourth-year student at the Illinois Institute of Technology. My passion lies at the intersection of language, data, and computation. I am driven to use my skills in Natural Language Processing (NLP) and mathematical modeling to understand and solve complex problems, from preserving under-resourced languages to navigating the intricacies of financial markets. My global upbringing has given me a unique perspective on the socio-cultural impact of technology, and my fluency in multiple languages fuels my work in NLP. I am currently seeking internship opportunities where I can apply my expertise in generative AI, data science, and stochastic modeling to real-world challenges.</p><br>
-                
-                <div class="info-box glass glass-hover">
-                    <h3>Interests</h3>
-                    <h4>Academic</h4>
-                    <ul>
-                        <li>Mathematics</li>
-                        <li>Natural Language Processing
-                            <ul>
-                                <li>Minority Language (LRL) Preservation</li>
-                            </ul>
-                        </li>
-                        <li>Finance</li>
-                        <li>Reinforcement Learning</li>
-                    </ul>
-                    <br>
-                    <h4>Extracurricular</h4>
-                    <ul>
-                        <li>Linguistics</li>
-                        <li>Language Learning</li>
-                        <li>Electronic Music Production</li>
-                        <li>Impact of AI & Technology</li>
-                        <li>(South) Asian Studies
-                            <ul>
-                                <li>Culture</li>
-                                <li>History</li>
-                                <li>Theology</li>
-                                <li>Philosophy</li>
-                            </ul>
-                        </li>
-                    </ul>
-                </div>
-                <div class="info-box glass glass-hover">
-                    <h3>Languages</h3>
-                    <h4>Fluent</h4>
-                    <p>English, Hindi-Urdu, Mandarin Chinese, Spanish</p>
-                    <br>
-                    <h4>Conversational</h4>
-                    <p>Punjabi, Arabic</p>
-                    <br>
-                    <h4>Learning (intermittently)</h4>
-                    <p>Punjabi, Portuguese (Brazilian), Persian (Dari, Farsi), Sindhi, Mongolian, and many more</p>
-                </div>
-            </div>
+        <div class="lem-section-head about-head">
+            <h2>about</h2>
+            <div class="lem-def">def. 1.1 &mdash; let <em>ishaan</em> &isin; {researcher, developer, linguist}</div>
+        </div>
+        <div class="about-narrative">
+            <p>I'm a fourth-year student at the Illinois Institute of Technology studying applied mathematics, data science, and artificial intelligence. My work lives at the intersection of mathematical structure and language. I use stochastic modeling, graph theory, and NLP to understand complex systems, from pricing groundwater rights to preserving under-resourced languages.</p>
 
-            <!-- NLP for LRLs, Fav classes -->
-            <!-- Blog page: Write smth abt pigeonhole principle -->
-            <!-- Add mathcodes project -->
-            <!-- Academics Page? -->
-    
-            <!-- Right Side -->
-            <div class="about-right">
-                <div class="info-box glass glass-hover">
-                    <h3>Education</h3>
-                    <h4>Illinois Institute of Technology</h4>
-                    Degrees:
-                    <ul>
-                        <li>Bachelor's in Applied Mathematics
-                            <!-- <br>Specializations:
-                            <ul>
-                                <li>Discrete Applied Math</li>
-                                <li>Mathematical Finance</li>
-                                <li>Stochastics</li>
-                            </ul> -->
-                        </li>
-                        <li>Bachelor's in Data Science</li>
-                        <li>Master's in Artificial Intelligence</li>
-                    </ul>
-                    <br>
-                    Minor:
-                    <ul>
-                        <li>Finance</li>
-                        <!-- <li>Computational Structures</li> -->
-                    </ul>
-                    <br>
-                    Specializations: 
-                    <ul>
-                        <li>Discrete Applied Math</li>
-                        <li>Mathematical Finance</li>
-                        <li>Stochastics</li>
-                    </ul>
-                </div>
-                <div class="info-box glass glass-hover">
-                    <h3>Computer Skills</h3>
-                    <h4>Programming Languages</h4>
-                    <p>Python, LaTeX, R, Java, Julia, Haskell, HTML, CSS, SQL</p>
-                    <br>
-                    <!-- <h4>Libraries</h4> -->
-                    <!-- <p>NumPy, Matplotlib, pandas, BeautifulSoup; dplyr, ggplot2, caret</p> -->
-                    <!-- <br> -->
-                    <h4>Music Software / DAWs</h4>
-                    <p>Audacity, Ableton Live, Reaper, Musescore</p>
-                    <br>
-                    <h4>Graphic Design Software</h4>
-                    <p>Photoshop, Illustrator, Affinity</p>
-                    <br>
-                    <h4>Other</h4>
-                    <p>DaVinci Resolve, Spline</p>
-                </div>
-                <div class="info-box glass glass-hover">
-                    <h3>Favorite Classes</h3>
-                    <ul>
-                        <li>Stochastic Processes</li>
-                        <li>Artificial Intelligence Language Understanding</li>
-                        <li>Abstract Algebra</li>
-                        <li>Modern Methods in Discrete Applied Mathematics</li>
-                        <li>ODEs and Dynamical Systems</li>
-                        <li>Stochastic Partial Differential Equations</li>
-                        <li>Data Mining</li>
-                        <li>Real Analysis</li>
-                        <li>Information Retrieval</li>
-                        <li>Data Preparation and Analysis</li>
-                        <li>Mathematical Modeling</li>
-                    </ul>
-                </div>
-            </div>
+            <p>Growing up across cultures gave me fluency in English, Hindi, Urdu, Mandarin, Spanish, and Arabic, and a deep curiosity about how languages encode meaning differently. That curiosity drives my research in NLP and my interest in low-resource language preservation. Outside of academics, I produce electronic music, study South Asian history and philosophy, and am always picking up a new language.</p>
+
+            <p>I'm currently a research assistant working on groundwater rights modeling (Dr. Igor Cialenco), Markov chain samplers for hypergraphs (Dr. Michael Pelsmajer), and graph theory research (Alaittin Kırtışoğlu and Dr. Hemanshu Kaul). I'm seeking opportunities where I can apply generative AI, stochastic modeling, and data science to real-world problems.</p>
         </div>
     </section>
 
-    <!-- PROJECTS SECTION -->
-    <section id="projects" class="projects">
-        <h2>My Projects</h2>
-        <div class="project-grid">
+    <!-- FEATURED PROJECTS -->
+    <section id="featured" class="featured-projects">
+        <div class="lem-section-head featured-head">
+            <h2>featured work</h2>
+            <div class="lem-def">thm 1.1 &mdash; a selection of projects &isin; {research, engineering, open source}</div>
+        </div>
 
-            <div class="project-item">
-                <a href="https://pypi.org/project/mathcode/" target="_blank" class="project-card glass glass-hover">
-                    <div class="project-header">
-                        <h3>mathcode</h3>
-                    </div>
-                    <div class="project-description">
-                        <p>Actively developing a Python library implementing mathematical algorithms from coursework: graph algorithms, stochastic processes (Brownian motion, Markov chains, SDEs/SPDEs), optimization (gradient descent variants, simplex), abstract algebra, and reinforcement learning (value/policy iteration, Monte Carlo methods).</p>
-                    </div>
-                    <div class="project-tech">
-                        <span class="tech-tag">PyPI</span>
-                        <span class="tech-tag">Python</span>
-                        <span class="tech-tag">NumPy</span>
-                        <span class="tech-tag">NetworkX</span>
-                    </div>
-                </a>
-            </div>
+        <div class="lem-cards featured-cards">
+            <a href="https://pypi.org/project/mathcode/" target="_blank" class="lem-card">
+                <div class="lem-card-idx">i.</div>
+                <h3>mathcode</h3>
+                <p>A Python library implementing mathematical algorithms from coursework: graph algorithms, stochastic processes, optimization, abstract algebra, and reinforcement learning.</p>
+                <div class="lem-card-tags">
+                    <span class="lem-tag">pypi</span>
+                    <span class="lem-tag">python</span>
+                    <span class="lem-tag">numpy</span>
+                </div>
+            </a>
 
-            <div class="project-item">
-                <a href="https://github.com/igoeldc/ir_engine" target="_blank" class="project-card glass glass-hover">
-                    <div class="project-header">
-                        <h3>Information Retrieval Engine</h3>
-                    </div>
-                    <div class="project-description">
-                        <p>Full-stack IR engine with Scrapy crawler, TF-IDF inverted index with cosine similarity and semantic k-NN search (word2vec, FAISS), Flask query processor with Top-K ranking, NLTK spell correction, and WordNet expansion.</p>
-                    </div>
-                    <div class="project-tech">
-                        <span class="tech-tag">Information Retrieval</span>
-                        <span class="tech-tag">Machine Learning</span>
-                        <span class="tech-tag">Flask</span>
-                        <span class="tech-tag">scikit-learn</span>
-                        <span class="tech-tag">Scrapy</span>
-                        <span class="tech-tag">FAISS</span>
-                        <span class="tech-tag">Python</span>
-                    </div>
-                </a>
-            </div>
+            <a href="https://github.com/LALITH0110/vArI-oceans-four" target="_blank" class="lem-card">
+                <div class="lem-card-idx">ii.</div>
+                <h3>distributed rl for ocean plastic drift</h3>
+                <p>A distributed Monte Carlo RL framework simulating ocean plastic drift, earning 3rd place in the Grainger Computing Innovation Prize.</p>
+                <div class="lem-card-tags">
+                    <span class="lem-tag">pytorch</span>
+                    <span class="lem-tag">jax</span>
+                    <span class="lem-tag">reinforcement learning</span>
+                </div>
+            </a>
 
-            <div class="project-item">
-                <a href="https://github.com/LALITH0110/vArI-oceans-four" target="_blank" class="project-card glass glass-hover">
-                    <div class="project-header">
-                        <h3>Distributed RL for Ocean Plastic Drift Simulation</h3>
-                    </div>
-                    <div class="project-description">
-                        <p>A distributed Monte Carlo RL framework that simulates ocean plastic drift and aggregates results from volunteer clients for large-scale model optimization, earning 3rd place in the Grainger Computing Innovation Prize.</p>
-                    </div>
-                    <div class="project-tech">
-                        <span class="tech-tag">PyTorch</span>
-                        <span class="tech-tag">JAX</span>
-                        <span class="tech-tag">Monte Carlo</span>
-                        <span class="tech-tag">PPO</span>
-                        <span class="tech-tag">Reinforcement Learning</span>
-                    </div>
-                </a>
-            </div>
+            <a href="https://github.com/igoeldc/ir_engine" target="_blank" class="lem-card">
+                <div class="lem-card-idx">iii.</div>
+                <h3>information retrieval engine</h3>
+                <p>Full-stack IR engine with Scrapy crawler, TF-IDF inverted index, semantic k-NN search (word2vec, FAISS), and Flask query processor.</p>
+                <div class="lem-card-tags">
+                    <span class="lem-tag">information retrieval</span>
+                    <span class="lem-tag">machine learning</span>
+                    <span class="lem-tag">flask</span>
+                </div>
+            </a>
+        </div>
 
-            <div class="project-item">
-                <a href="https://github.com/igoeldc/agentic_ai_framework" target="_blank" class="project-card glass glass-hover">
-                    <div class="project-header">
-                        <h3>Agentic AI Framework</h3>
-                    </div>
-                    <div class="project-description">
-                        <p>A powerful orchestration agent designed to manage and coordinate multiple AI agents. Provides users with a unified chat experience, allowing seamless interaction with various specialized AI agents through a single window.</p>
-                    </div>
-                    <div class="project-tech">
-                        <span class="tech-tag">LangChain</span>
-                        <span class="tech-tag">OpenAI API</span>
-                        <span class="tech-tag">Python</span>
-                    </div>
-                </a>
-            </div>
-
-            <div class="project-item">
-                <a href="https://github.com/igoeldc/AI-Language-Understanding-Projects" target="_blank" class="project-card glass glass-hover">
-                    <div class="project-header">
-                        <h3>AI Language Understanding</h3>
-                    </div>
-                    <div class="project-description">
-                        <p>Collection of projects exploring natural language processing techniques, including semantic parsing, sentiment analysis, and neural language models. Coursework from AI Language Understanding class.</p>
-                    </div>
-                    <div class="project-tech">
-                        <span class="tech-tag">Natural Language Processing</span>
-                        <span class="tech-tag">pandas</span>
-                        <span class="tech-tag">nltk</span>
-                        <span class="tech-tag">numpy</span>
-                        <span class="tech-tag">scipy</span>
-                        <span class="tech-tag">Python</span>
-                    </div>
-                </a>
-            </div>
-
-            <div class="project-item">
-                <a href="https://github.com/jacobhthomas/CollabGraph" target="_blank" class="project-card glass glass-hover">
-                    <div class="project-header">
-                        <h3>Erdős Co-authorship Network</h3>
-                    </div>
-                    <div class="project-description">
-                        <p>Designed and implemented a co-author network to analyze the influence of research papers on contemporary and future research, leveraging weighted and unweighted adjacency matrices with Erdős1 data. Explored Graph Theoretic principles, focusing on measuring influence and creating influence measurement algorithms.</p>
-                    </div>
-                    <div class="project-tech">
-                        <span class="tech-tag">Data Science</span>
-                        <span class="tech-tag">Graph Theory</span>
-                        <span class="tech-tag">NetworkX</span>
-                        <span class="tech-tag">Python</span>
-                    </div>
-                </a>
-            </div>
-
-            <!-- <div class="project-item">
-                <a href="web_old/assets/Extended_Essay.pdf" target="_blank" class="project-card glass glass-hover">
-                    <div class="project-header">
-                        <h3>IB Extended Essay</h3>
-                    </div>
-                    <div class="project-description">
-                        <p>Explores how Natural Language Processing (NLP) can help preserve minority, regional, and oppressed languages. Addresses challenges like limited data and reviews industry approaches, such as speech-based models and gamification, while examining the social, cultural, and ethical aspects of language preservation.</p>
-                    </div>
-                    <div class="project-tech">
-                        <span class="tech-tag">Research</span>
-                        <span class="tech-tag">NLP</span>
-                        <span class="tech-tag">Language Preservation</span>
-                    </div>
-                </a>
-            </div> -->
-
+        <div class="featured-cta">
+            <a href="work.html" class="view-all-link">view all projects & experience &rarr;</a>
         </div>
     </section>
 
-    <!-- EXPERIENCE SECTION -->
-    <section id="experience" class="experience">
-        <h2>Experience</h2>
-        <div class="timeline-container">
-            <div class="timeline-line"></div>
-            <div class="timeline-items">
-
-                <div class="timeline-item">
-                    <div class="timeline-date">Jul 2024 – Jul 2024</div>
-                    <div class="timeline-dot"></div>
-                    <div class="timeline-content">
-                        <h3>AI Engineering Intern</h3>
-                        <p><span class="company">PeopleStrong Technologies</span></p>
-                        <p>Built LLM chatbot with agentic architecture for HR automation</p>
-                    </div>
-                </div>
-
-                <div class="timeline-item">
-                    <div class="timeline-date">Jun 2025 – Jul 2025</div>
-                    <div class="timeline-dot"></div>
-                    <div class="timeline-content">
-                        <h3>AI Engineering Intern</h3>
-                        <p><span class="company">PeopleStrong Technologies</span></p>
-                        <p>RAG-based system for automated ticket resolution</p>
-                    </div>
-                </div>
-
-                <div class="timeline-item">
-                    <div class="timeline-date">Jan 2024 – Present</div>
-                    <div class="timeline-dot"></div>
-                    <div class="timeline-content">
-                        <h3>Peer Tutor - Upper Level Math</h3>
-                        <p><span class="company">Illinois Institute of Technology</span></p>
-                        <p>Tutoring students in advanced mathematics courses</p>
-                    </div>
-                </div>
-
-                <div class="timeline-item">
-                    <div class="timeline-date">Aug 2024 – Present</div>
-                    <div class="timeline-dot"></div>
-                    <div class="timeline-content">
-                        <h3>Research Assistant</h3>
-                        <p><span class="company">IIT - Dr. Igor Cialenco</span></p>
-                        <p>NSF-funded research on groundwater rights modeling and pricing</p>
-                    </div>
-                </div>
-
-                <div class="timeline-item">
-                    <div class="timeline-date">May 2025 – Present</div>
-                    <div class="timeline-dot"></div>
-                    <div class="timeline-content">
-                        <h3>Research Assistant</h3>
-                        <p><span class="company">IIT - Dr. Michael Pelsmajer</span></p>
-                        <p>Markov Chain sampler development for hypergraphs</p>
-                    </div>
-                </div>
-
-                <div class="timeline-item">
-                    <div class="timeline-date">Aug 2025 – Present</div>
-                    <div class="timeline-dot"></div>
-                    <div class="timeline-content">
-                        <h3>Teaching Assistant</h3>
-                        <p><span class="company">Illinois Institute of Technology</span></p>
-                        <p>Teaching assistant for 'Geometry for Architects' and 'Introduction to Calculus'.</p>
-                    </div>
-                </div>
-
-            </div>
-        </div>
-    </section>
-
-    <!-- COURSES SECTION -->
-    <section id="courses" class="courses">
-        <h2>Courses</h2>
-        <div class="courses-grid">
-            <div class="course-category glass glass-hover">
-                <h3>Applied Mathematics</h3>
-                <ul>
-                    <li>Modern Methods in Discrete Applied Mathematics</li>
-                    <li>Stochastic Partial Differential Equations</li>
-                    <li>Graph Theory</li>
-                    <li>Monte Carlo Methods in Finance</li>
-                    <li>Stochastic Processes</li>
-                    <li>Linear Optimization</li>
-                    <li>Computational Math</li>
-                    <li>Abstract Algebra</li>
-                    <li>Real Analysis</li>
-                    <li>Combinatorics</li>
-                    <li>Probability</li>
-                    <li>Discrete Mathematics</li>
-                    <li>ODEs and Dynamical Systems</li>
-                    <li>Mathematical Modeling</li>
-                    <li>Elementary Linear Algebra</li>
-                    <li>Multivariate and Vector Calculus</li>
-                    <li>Intro to Data Science</li>
-                    <li>Functional Analysis (Audit)</li>
-                    <li>Complex Analysis (Audit)</li>
-                    <li>Computational Algebraic Geometry (Audit)</li>
-                </ul>
-            </div>
-
-            <div class="course-category glass glass-hover">
-                <h3>Artificial Intelligence (Comp Sci)</h3>
-                <ul>
-                    <li>Artificial Intelligence Language Understanding</li>
-                    <li>Information Retrieval</li>
-                    <li>Machine Learning</li>
-                    <li>Deep Learning</li>
-                    <li>Data Mining</li>
-                    <li>Data Preparation and Analysis</li>
-                    <li>Artificial Intelligence</li>
-                    <li>Functional Programming (Haskell)</li>
-                    <li>Algorithms</li>
-                    <li>Data Structures</li>
-                    <li>Database Organization</li>
-                    <li>Game Theory (Audit)</li>
-                </ul>
-            </div>
-
-            <div class="course-category glass glass-hover">
-                <h3>Finance</h3>
-                <ul>
-                    <li>Economics of Capital Investments</li>
-                    <li>Principles of Economics</li>
-                    <!-- <li>Accounting</li> -->
-                </ul>
-            </div>
-
-            <div class="course-category glass glass-hover">
-                <h3>Other</h3>
-                <ul>
-                    <li>Deep Technology Commercialization</li>
-                    <li>Artificial Intelligence, Philosophy and Ethics</li>
-                    <li>Language Theory in Natural Language Processing</li>
-                    <li>Science and Technology Studies</li>
-                </ul>
-            </div>
-
-            <div class="course-category glass glass-hover">
-                <h3>Spring 2026</h3>
-                <ul>
-                    <li>Big Data Technologies</li>
-                    <li>Advanced Artificial Intelligence</li>
-                    <li>Financial Derivatives</li>
-                    <li>Quantum Computing</li>
-                    <li>The Human Voice</li>
-                    <li>Politics of Science and Technology</li>
-                </ul>
-            </div>
-
-        </div>
-    </section>
-
-    <!-- SKILLS SECTION -->
-    <section id="skills" class="skills">
-        <h2>Skills</h2>
-        <div class="skills-container">
-
-            <!-- Mathematics Card -->
-            <div class="skill-category-card glass glass-hover">
-                <div class="skill-category-header">
-                    <h3>Mathematics</h3>
-                </div>
-                <div class="skill-tags">
-                    <span class="skill-tag">Stochastic Processes</span>
-                    <span class="skill-tag">Analysis</span>
-                    <span class="skill-tag">Graph Theory</span>
-                    <span class="skill-tag">Abstract Algebra</span>
-                    <span class="skill-tag">Monte Carlo Methods</span>
-                    <span class="skill-tag">Stochastic PDEs</span>
-                    <span class="skill-tag">Linear Optimization</span>
-                    <span class="skill-tag">Combinatorics</span>
-                    <span class="skill-tag">Probability</span>
-                    <span class="skill-tag">Mathematical Modeling</span>
-                    <span class="skill-tag">Dynamical Systems</span>
-                    <span class="skill-tag">Mathematical Finance</span>
-                </div>
-            </div>
-
-            <!-- AI/ML Card -->
-            <div class="skill-category-card glass glass-hover">
-                <div class="skill-category-header">
-                    <h3>AI & Machine Learning</h3>
-                </div>
-                <div class="skill-tags">
-                    <span class="skill-tag">Natural Language Processing</span>
-                    <span class="skill-tag">Deep Learning</span>
-                    <span class="skill-tag">Machine Learning</span>
-                    <span class="skill-tag">Reinforcement Learning</span>
-                    <span class="skill-tag">Data Mining</span>
-                    <span class="skill-tag">Statistical Learning</span>
-                    <span class="skill-tag">Computer Vision</span>
-                </div>
-            </div>
-
-            <!-- Python Stack Card -->
-            <div class="skill-category-card glass glass-hover">
-                <div class="skill-category-header">
-                    <h3>Python Stack</h3>
-                </div>
-                <div class="skill-tags">
-                    <span class="skill-tag">PyTorch</span>
-                    <span class="skill-tag">scikit-learn</span>
-                    <span class="skill-tag">JAX</span>
-                    <span class="skill-tag">NumPy</span>
-                    <span class="skill-tag">pandas</span>
-                    <span class="skill-tag">matplotlib</span>
-                    <span class="skill-tag">SciPy</span>
-                    <span class="skill-tag">NLTK</span>
-                    <span class="skill-tag">NetworkX</span>
-                    <span class="skill-tag">HyperNetX</span>
-                    <span class="skill-tag">BeautifulSoup</span>
-                    <span class="skill-tag">PySpark</span>
-                    <span class="skill-tag">datascience</span>
-                    <span class="skill-tag">Streamlit</span>
-                    <!-- <span class="skill-tag">tqdm</span> -->
-                </div>
-            </div>
-
-            <!-- R Stack Card -->
-            <div class="skill-category-card glass glass-hover">
-                <div class="skill-category-header">
-                    <h3>R Stack</h3>
-                </div>
-                <div class="skill-tags">
-                    <span class="skill-tag">tidyverse</span>
-                    <span class="skill-tag">data.table</span>
-                    <span class="skill-tag">glmnet</span>
-                    <span class="skill-tag">boot</span>
-                    <span class="skill-tag">gam</span>
-                    <span class="skill-tag">keras</span>
-                    <span class="skill-tag">caret</span>
-                    <span class="skill-tag">e1071</span>
-                    <span class="skill-tag">rpart</span>
-                    <span class="skill-tag">foreach</span>
-                    <span class="skill-tag">dbscan</span>
-                    <span class="skill-tag">pROC</span>
-                    <span class="skill-tag">Matrix</span>
-                    <span class="skill-tag">pls</span>
-                    <span class="skill-tag">class</span>
-                </div>
-            </div>
-
-            <!-- Programming Languages Card -->
-            <div class="skill-category-card glass glass-hover">
-                <div class="skill-category-header">
-                    <h3>Programming Languages</h3>
-                </div>
-                <div class="skill-tags">
-                    <span class="skill-tag">Python</span>
-                    <span class="skill-tag">R</span>
-                    <span class="skill-tag">Julia</span>
-                    <span class="skill-tag">C++</span>
-                    <span class="skill-tag">Java</span>
-                    <span class="skill-tag">LaTeX</span>
-                    <span class="skill-tag">MATLAB</span>
-                    <span class="skill-tag">Mathematica</span>
-                    <span class="skill-tag">HTML</span>
-                    <span class="skill-tag">CSS</span>
-                    <span class="skill-tag">JavaScript</span>
-                    <span class="skill-tag">SQL</span>
-                    <span class="skill-tag">Haskell</span>
-                </div>
-            </div>
-
-            <!-- Other Skills Card -->
-            <div class="skill-category-card glass glass-hover">
-                <div class="skill-category-header">
-                    <h3>Other Skills</h3>
-                </div>
-                <div class="skill-tags">
-                    <span class="skill-tag">Generative AI</span>
-                    <span class="skill-tag">Operations Research</span>
-                    <span class="skill-tag">Stochastic Modeling</span>
-                    <span class="skill-tag">Discrete Mathematics</span>
-                </div>
-            </div>
-
-            <!-- Spoken Languages Card -->
-            <!-- <div class="skill-category-card glass glass-hover">
-                <div class="skill-category-header">
-                    <h3>Spoken Languages</h3>
-                </div>
-                <div class="skill-tags">
-                    <span class="skill-tag lang-fluent">English</span>
-                    <span class="skill-tag lang-fluent">Hindi</span>
-                    <span class="skill-tag lang-fluent">Urdu</span>
-                    <span class="skill-tag lang-fluent">Mandarin Chinese</span>
-                    <span class="skill-tag lang-fluent">Spanish</span>
-                    <span class="skill-tag lang-conversational">Punjabi</span>
-                    <span class="skill-tag lang-conversational">Modern Standard Arabic</span>
-                </div>
-            </div> -->
-
-        </div>
-    </section>
-
-    <!-- TESTIMONIALS -->
-    <!-- <section id="testimonials" class="testimonials">
-        <h2>Testimonials</h2>
-        <div class="testimonial-slider">
-            <div class="testimonial-item">
-                <p>"Jane brought our vision to life, exceeding expectations!"</p>
-                <cite>- Happy Client</cite>
-            </div>
-            <div class="testimonial-item">
-                <p>"A pleasure to work with, highly recommended."</p>
-                <cite>- Another Client</cite>
-            </div>
-        </div>
-    </section> -->
+    <!-- QED -->
+    <div class="lem-qed" aria-hidden="true"><span>&#9648; Q.E.D.</span></div>
 
     <!-- CONTACT -->
     <footer id="contact">
-        <h2>Get In Touch</h2>
+        <h2>get in touch</h2>
         <div class="social-icons">
-            <a href="mailto:igoeldxb@gmail.com" class="icon-link">Email</a>
-            <a href="tel:+17712017576" class="icon-link">Phone</a>
-            <a href="https://linkedin.com/in/igoeldc/" target="_blank" class="icon-link">LinkedIn</a>
-            <a href="https://github.com/igoeldc" target="_blank" class="icon-link">GitHub</a>
+            <a href="mailto:igoeldxb@gmail.com" class="icon-link">email</a>
+            <a href="tel:+17712017576" class="icon-link">phone</a>
+            <a href="https://linkedin.com/in/igoeldc/" target="_blank" class="icon-link">linkedin</a>
+            <a href="https://github.com/igoeldc" target="_blank" class="icon-link">github</a>
         </div>
-        
     </footer>
 </body>
 </html>

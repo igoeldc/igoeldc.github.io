@@ -1,0 +1,288 @@
+<!DOCTYPE html>
+<html lang="en" class="no-js">
+<script>document.documentElement.classList.remove('no-js')</script>
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <meta name="description" content="Projects and experience — Ishaan Goel">
+    <meta name="author" content="Ishaan Goel">
+    <title>Work — Ishaan Goel</title>
+
+    <!-- Favicon -->
+    <link rel="apple-touch-icon" sizes="180x180" href="favicon_io/apple-touch-icon.png">
+    <link rel="icon" type="image/x-icon" href="favicon_io/favicon.ico">
+    <link rel="icon" type="image/png" sizes="32x32" href="favicon_io/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="favicon_io/favicon-16x16.png">
+
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+    <!-- Styles -->
+    <link rel="stylesheet" href="shared.css?v=20260331"/>
+    <link rel="stylesheet" href="work.css?v=20260331"/>
+
+    <!-- GSAP + ScrollTrigger -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+
+    <!-- Scripts -->
+    <script src="shared.js?v=20260331" defer></script>
+    <script src="work.js?v=20260331" defer></script>
+
+    <!-- Manifest -->
+    <link rel="manifest" href="favicon_io/site.webmanifest">
+
+    <!-- Cloudflare Web Analytics -->
+    <script defer src='https://static.cloudflareinsights.com/beacon.min.js' data-cf-beacon='{"token": "0e5b204eee9145038a1bfc938dadd07e"}'></script>
+</head>
+
+<body>
+    <!-- Lemma background layers -->
+    <div class="lem-glow" id="lemGlow" aria-hidden="true"></div>
+    <div class="lem-ribbon" aria-hidden="true">
+        <svg viewBox="0 0 1400 900" fill="none" preserveAspectRatio="none">
+            <defs>
+                <linearGradient id="ribbonGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+                    <stop offset="0%" stop-color="#FF9933" />
+                    <stop offset="100%" stop-color="#DC143C" />
+                </linearGradient>
+            </defs>
+            <path d="M-100 450 C200 200, 500 700, 800 350 S1200 600, 1500 300" stroke="url(#ribbonGrad)" stroke-width="1.5" fill="none" opacity="0.6"/>
+            <path d="M-100 500 C300 300, 600 650, 900 400 S1300 550, 1500 250" stroke="url(#ribbonGrad)" stroke-width="0.8" fill="none" opacity="0.3"/>
+        </svg>
+    </div>
+
+    <!-- Margin annotations -->
+    <div class="lem-margin-note" style="top: 30vh;" aria-hidden="true">det(A) = &#x2211; sgn(&#x03C3;) &#x220F; a<sub>i,&#x03C3;(i)</sub></div>
+    <div class="lem-margin-note" style="top: 65vh;" aria-hidden="true">&#x2207;&#xB2;u = f &nbsp;in &Omega;</div>
+    <div class="lem-margin-note" style="top: 120vh;" aria-hidden="true">rank(A) + null(A) = n</div>
+
+    <!-- Top Navigation Bar -->
+    <nav class="top-nav">
+        <a href="index.html" class="nav-brand">ishaan goel</a>
+
+        <ul class="nav-links">
+            <li><a href="index.html">home</a></li>
+            <li><a href="work.html" class="active-section">work</a></li>
+            <li><a href="academics.html">academics</a></li>
+            <li><a href="blog/blog.html">blog</a></li>
+            <li class="nav-divider"></li>
+            <li><a href="assets/Ishaan_Goel_Resume.pdf" target="_blank" class="external-link">resume</a></li>
+            <li><a href="https://pypi.org/project/mathcode/" target="_blank" class="external-link">mathcode</a></li>
+            <li><a href="https://iit-course-graphs.streamlit.app/" target="_blank" class="external-link">iit course planner</a></li>
+        </ul>
+
+        <div class="nav-controls">
+            <button class="theme-toggle" id="themeToggle" aria-label="Toggle theme">🌙</button>
+            <div class="menu-icon" role="button" aria-label="Toggle menu" tabindex="0">
+                <div class="bar"></div>
+                <div class="bar"></div>
+                <div class="bar"></div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Mobile Bottom Pill Nav -->
+    <nav class="mobile-pill" aria-label="Page navigation">
+        <a href="index.html" class="mobile-pill-link">home</a>
+        <a href="work.html" class="mobile-pill-link active-section">work</a>
+        <a href="academics.html" class="mobile-pill-link">academics</a>
+        <a href="blog/blog.html" class="mobile-pill-link">blog</a>
+        <button class="theme-toggle mobile-pill-theme" id="mobileThemeToggle" aria-label="Toggle theme">🌙</button>
+    </nav>
+
+    <!-- Full-page network canvas -->
+    <canvas class="work-canvas" id="workCanvas" aria-hidden="true"></canvas>
+
+    <!-- Page Header -->
+    <header class="page-header">
+        <h1>work</h1>
+        <div class="lem-def">thm 2.0 &mdash; projects &cup; experience</div>
+    </header>
+
+    <!-- PROJECTS SECTION -->
+    <section id="projects" class="projects">
+        <div class="lem-section-head">
+            <h2>projects</h2>
+            <div class="lem-def">thm 2.1 &mdash; let P = {p : p &isin; research &cup; engineering &cup; open source}</div>
+        </div>
+
+        <div class="lem-cards project-cards">
+
+            <a href="https://pypi.org/project/mathcode/" target="_blank" class="lem-card">
+                <div class="lem-card-idx">i.</div>
+                <h3>mathcode</h3>
+                <p>Actively developing a Python library implementing mathematical algorithms from coursework: graph algorithms, stochastic processes (Brownian motion, Markov chains, SDEs/SPDEs), optimization (gradient descent variants, simplex), abstract algebra, and reinforcement learning.</p>
+                <div class="lem-card-tags">
+                    <span class="lem-tag">pypi</span>
+                    <span class="lem-tag">python</span>
+                    <span class="lem-tag">numpy</span>
+                    <span class="lem-tag">networkx</span>
+                </div>
+            </a>
+
+            <a href="https://github.com/igoeldc/ir_engine" target="_blank" class="lem-card">
+                <div class="lem-card-idx">ii.</div>
+                <h3>information retrieval engine</h3>
+                <p>Full-stack IR engine with Scrapy crawler, TF-IDF inverted index with cosine similarity and semantic k-NN search (word2vec, FAISS), Flask query processor with Top-K ranking, NLTK spell correction, and WordNet expansion.</p>
+                <div class="lem-card-tags">
+                    <span class="lem-tag">information retrieval</span>
+                    <span class="lem-tag">machine learning</span>
+                    <span class="lem-tag">flask</span>
+                    <span class="lem-tag">scikit-learn</span>
+                    <span class="lem-tag">faiss</span>
+                </div>
+            </a>
+
+            <a href="https://github.com/LALITH0110/vArI-oceans-four" target="_blank" class="lem-card">
+                <div class="lem-card-idx">iii.</div>
+                <h3>distributed rl for ocean plastic drift</h3>
+                <p>A distributed Monte Carlo RL framework that simulates ocean plastic drift and aggregates results from volunteer clients for large-scale model optimization, earning 3rd place in the Grainger Computing Innovation Prize.</p>
+                <div class="lem-card-tags">
+                    <span class="lem-tag">pytorch</span>
+                    <span class="lem-tag">jax</span>
+                    <span class="lem-tag">monte carlo</span>
+                    <span class="lem-tag">reinforcement learning</span>
+                </div>
+            </a>
+
+            <a href="https://github.com/igoeldc/agentic_ai_framework" target="_blank" class="lem-card">
+                <div class="lem-card-idx">iv.</div>
+                <h3>agentic ai framework</h3>
+                <p>A powerful orchestration agent designed to manage and coordinate multiple AI agents. Provides users with a unified chat experience, allowing seamless interaction with various specialized AI agents through a single window.</p>
+                <div class="lem-card-tags">
+                    <span class="lem-tag">langchain</span>
+                    <span class="lem-tag">openai api</span>
+                    <span class="lem-tag">python</span>
+                </div>
+            </a>
+
+            <a href="https://github.com/igoeldc/AI-Language-Understanding-Projects" target="_blank" class="lem-card">
+                <div class="lem-card-idx">v.</div>
+                <h3>ai language understanding</h3>
+                <p>Collection of projects exploring natural language processing techniques, including semantic parsing, sentiment analysis, and neural language models. Coursework from AI Language Understanding class.</p>
+                <div class="lem-card-tags">
+                    <span class="lem-tag">nlp</span>
+                    <span class="lem-tag">pandas</span>
+                    <span class="lem-tag">nltk</span>
+                    <span class="lem-tag">python</span>
+                </div>
+            </a>
+
+            <a href="https://github.com/jacobhthomas/CollabGraph" target="_blank" class="lem-card">
+                <div class="lem-card-idx">vi.</div>
+                <h3>erd&#337;s co-authorship network</h3>
+                <p>Designed and implemented a co-author network to analyze the influence of research papers on contemporary and future research, leveraging weighted and unweighted adjacency matrices with Erd&#337;s1 data.</p>
+                <div class="lem-card-tags">
+                    <span class="lem-tag">graph theory</span>
+                    <span class="lem-tag">networkx</span>
+                    <span class="lem-tag">data science</span>
+                </div>
+            </a>
+
+        </div>
+    </section>
+
+    <!-- EXPERIENCE SECTION -->
+    <section id="experience" class="experience">
+        <div class="lem-section-head">
+            <h2>experience</h2>
+            <div class="lem-def">cor. 2.1 &mdash; the trajectory of <em>ishaan</em> through time</div>
+        </div>
+
+        <div class="timeline-container">
+            <div class="timeline-items">
+                <div class="timeline-line"></div>
+
+                <div class="timeline-item">
+                    <div class="timeline-date">Jan 2024 – May 2025</div>
+                    <div class="timeline-dot"></div>
+                    <div class="timeline-content">
+                        <h3>peer tutor — upper level math</h3>
+                        <p><span class="company">Illinois Institute of Technology</span></p>
+                        <p>Tutoring students in advanced mathematics courses</p>
+                    </div>
+                </div>
+
+                <div class="timeline-item">
+                    <div class="timeline-date">Jul 2024 – Jul 2024</div>
+                    <div class="timeline-dot"></div>
+                    <div class="timeline-content">
+                        <h3>ai engineering intern</h3>
+                        <p><span class="company">PeopleStrong Technologies</span></p>
+                        <p>Built LLM chatbot with agentic architecture for HR automation</p>
+                    </div>
+                </div>
+
+                <div class="timeline-item">
+                    <div class="timeline-date">Jun 2025 – Jul 2025</div>
+                    <div class="timeline-dot"></div>
+                    <div class="timeline-content">
+                        <h3>ai engineering intern</h3>
+                        <p><span class="company">PeopleStrong Technologies</span></p>
+                        <p>RAG-based system for automated ticket resolution</p>
+                    </div>
+                </div>
+
+                <div class="timeline-item">
+                    <div class="timeline-date">Aug 2024 – Present</div>
+                    <div class="timeline-dot"></div>
+                    <div class="timeline-content">
+                        <h3>research assistant</h3>
+                        <p><span class="company">IIT — Dr. Igor Cialenco</span></p>
+                        <p>NSF-funded research on groundwater rights modeling and pricing</p>
+                    </div>
+                </div>
+
+                <div class="timeline-item">
+                    <div class="timeline-date">May 2025 – Present</div>
+                    <div class="timeline-dot"></div>
+                    <div class="timeline-content">
+                        <h3>research assistant</h3>
+                        <p><span class="company">IIT — Dr. Michael Pelsmajer</span></p>
+                        <p>Markov Chain sampler development for hypergraphs</p>
+                    </div>
+                </div>
+
+                <div class="timeline-item">
+                    <div class="timeline-date">Aug 2025 – Present</div>
+                    <div class="timeline-dot"></div>
+                    <div class="timeline-content">
+                        <h3>teaching assistant</h3>
+                        <p><span class="company">Illinois Institute of Technology</span></p>
+                        <p>Teaching assistant for 'Geometry for Architects' and 'Introduction to Calculus'</p>
+                    </div>
+                </div>
+
+                <div class="timeline-item">
+                    <div class="timeline-date">Feb 2026 – Present</div>
+                    <div class="timeline-dot"></div>
+                    <div class="timeline-content">
+                        <h3>research assistant</h3>
+                        <p><span class="company">IIT — Alaittin Kırtışoğlu & Dr. Hemanshu Kaul</span></p>
+                        <p><em>Insert text here</em></p>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- QED -->
+    <div class="lem-qed" aria-hidden="true"><span>&#9648; Q.E.D.</span></div>
+
+    <!-- CONTACT -->
+    <footer id="contact">
+        <h2>get in touch</h2>
+        <div class="social-icons">
+            <a href="mailto:igoeldxb@gmail.com" class="icon-link">email</a>
+            <a href="tel:+17712017576" class="icon-link">phone</a>
+            <a href="https://linkedin.com/in/igoeldc/" target="_blank" class="icon-link">linkedin</a>
+            <a href="https://github.com/igoeldc" target="_blank" class="icon-link">github</a>
+        </div>
+    </footer>
+</body>
+</html>

@@ -1,0 +1,239 @@
+/*
+  ========================================
+  Academics Page — Lemma
+  ========================================
+*/
+
+/* Full-page floating symbols canvas */
+.academics-canvas {
+  position: fixed;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 0;
+}
+
+/* Page header — shared with work.css */
+.page-header {
+  padding: 7rem 4rem 3rem;
+  text-align: center;
+  position: relative;
+  z-index: 1;
+}
+
+.page-header h1 {
+  font-family: var(--font-heading);
+  font-size: 3rem;
+  font-weight: 700;
+  background: var(--accent-gradient);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  margin-bottom: 0.5rem;
+}
+
+.page-header .lem-def {
+  text-align: center;
+}
+
+/* --- Education Section --- */
+.education {
+  padding: 2rem 4rem;
+  position: relative;
+  z-index: 1;
+}
+
+.education .lem-section-head {
+  padding: 0;
+  margin-bottom: 2rem;
+}
+
+.education-container {
+  grid-template-columns: repeat(3, 1fr);
+}
+
+/* Education card content */
+.lem-card h4 {
+  font-family: var(--font-heading);
+  font-size: 1rem;
+  font-weight: 600;
+  color: var(--accent-saffron);
+  margin-bottom: 0.5rem;
+  text-transform: lowercase;
+}
+
+.lem-card .info-label {
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  color: var(--text-faint);
+  letter-spacing: 0.5px;
+  margin-top: 1rem;
+  margin-bottom: 0.25rem;
+}
+
+.lem-card ul {
+  padding-left: 1rem;
+  list-style-type: none;
+  margin: 0;
+}
+
+.lem-card li {
+  margin-bottom: 0.4rem;
+  color: var(--text-secondary);
+  position: relative;
+  padding-left: 0.5rem;
+  line-height: 1.6;
+  font-size: 0.9rem;
+}
+
+.lem-card li::before {
+  content: '\2202';
+  position: absolute;
+  left: -0.8rem;
+  color: var(--accent-saffron);
+  font-size: 0.7rem;
+  opacity: 0.5;
+}
+
+/* --- Courses Section --- */
+.courses {
+  padding: 2rem 4rem;
+  position: relative;
+  z-index: 1;
+}
+
+.courses .lem-section-head {
+  padding: 0;
+  margin-bottom: 2rem;
+}
+
+.courses-grid {
+  column-count: 3;
+  column-gap: 1px;
+  max-width: 1400px;
+  margin: 0 auto;
+}
+
+.course-card {
+  break-inside: avoid;
+  page-break-inside: avoid;
+  margin-bottom: 1px;
+}
+
+.course-card h3 {
+  padding-bottom: 0.5rem;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+  margin-bottom: 1rem;
+}
+
+[data-theme="light"] .course-card h3 {
+  border-bottom-color: rgba(0, 0, 0, 0.08);
+}
+
+/* --- Skills Section --- */
+.skills {
+  padding: 2rem 4rem;
+  position: relative;
+  z-index: 1;
+}
+
+.skills .lem-section-head {
+  padding: 0;
+  margin-bottom: 2rem;
+}
+
+.skills-container {
+  column-count: 3;
+  column-gap: 1px;
+  max-width: 1400px;
+  margin: 0 auto;
+}
+
+.skill-card {
+  break-inside: avoid;
+  margin-bottom: 1px;
+}
+
+.skill-card h3 {
+  margin-bottom: 1.2rem;
+  padding-bottom: 0.75rem;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+}
+
+[data-theme="light"] .skill-card h3 {
+  border-bottom-color: rgba(0, 0, 0, 0.08);
+}
+
+.skill-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+}
+
+.skill-tag {
+  display: inline-block;
+  padding: 0.35rem 0.75rem;
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  color: var(--text-secondary);
+  border: 1px solid rgba(255, 255, 255, 0.06);
+  border-radius: 4px;
+  transition: color 0.2s var(--ease-out), border-color 0.2s var(--ease-out), background 0.2s var(--ease-out);
+  white-space: nowrap;
+}
+
+[data-theme="light"] .skill-tag {
+  border-color: rgba(0, 0, 0, 0.08);
+}
+
+@media (hover: hover) and (pointer: fine) {
+  .skill-tag:hover {
+    color: var(--accent-saffron);
+    border-color: rgba(255, 153, 51, 0.3);
+    background: rgba(255, 153, 51, 0.05);
+  }
+}
+
+/* --- Responsive --- */
+@media (max-width: 1200px) {
+  .courses-grid {
+    column-count: 2;
+  }
+}
+
+@media (max-width: 1024px) {
+  .skills-container {
+    column-count: 2;
+  }
+}
+
+@media (max-width: 992px) {
+  .education-container {
+    grid-template-columns: 1fr;
+  }
+
+  .courses-grid {
+    column-count: 1;
+  }
+}
+
+@media (max-width: 768px) {
+  .page-header {
+    padding: 6rem 2rem 2rem;
+  }
+
+  .education,
+  .courses,
+  .skills {
+    padding: 2rem;
+  }
+
+  .skills-container {
+    column-count: 1;
+  }
+
+  .skill-tag {
+    font-size: 0.7rem;
+    padding: 0.3rem 0.6rem;
+  }
+}

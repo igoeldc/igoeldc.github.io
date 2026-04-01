@@ -1,0 +1,231 @@
+/*
+  ========================================
+  Work Page — Lemma
+  ========================================
+*/
+
+/* Full-page network canvas */
+.work-canvas {
+  position: fixed;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 0;
+}
+
+/* Page header */
+.page-header {
+  padding: 7rem 4rem 3rem;
+  text-align: center;
+  position: relative;
+  z-index: 1;
+}
+
+.page-header h1 {
+  font-family: var(--font-heading);
+  font-size: 3rem;
+  font-weight: 700;
+  background: var(--accent-gradient);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  margin-bottom: 0.5rem;
+}
+
+.page-header .lem-def {
+  text-align: center;
+}
+
+/* --- Projects Section --- */
+.projects {
+  padding: 2rem 4rem;
+  position: relative;
+  z-index: 1;
+}
+
+.projects .lem-section-head {
+  padding: 0;
+  margin-bottom: 2rem;
+}
+
+.project-cards {
+  grid-template-columns: repeat(3, 1fr);
+}
+
+.project-cards .lem-card {
+  display: flex;
+  flex-direction: column;
+  text-decoration: none;
+  color: var(--text-primary);
+  cursor: pointer;
+}
+
+/* --- Experience Section --- */
+.experience {
+  padding: 4rem 4rem 2rem;
+  overflow-x: hidden;
+  overflow-y: visible;
+  position: relative;
+  z-index: 1;
+}
+
+.experience .lem-section-head {
+  padding: 0;
+  margin-bottom: 2rem;
+}
+
+.timeline-container {
+  max-width: 1400px;
+  margin: 0 auto;
+  position: relative;
+  padding: 2rem 0;
+  overflow-x: auto;
+  overflow-y: visible;
+}
+
+.timeline-items {
+  display: flex;
+  justify-content: space-between;
+  position: relative;
+  padding: 0 5%;
+  gap: 2rem;
+}
+
+.timeline-line {
+  position: absolute;
+  top: 61px;
+  height: 3px;
+  background: var(--accent-gradient);
+  border-radius: 2px;
+  pointer-events: none;
+}
+
+.timeline-item {
+  flex: 1;
+  min-width: 200px;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.timeline-date {
+  height: 52px;
+  display: flex;
+  align-items: center;
+  font-family: var(--font-mono);
+  font-size: 0.8rem;
+  font-weight: 500;
+  color: var(--accent-saffron);
+  text-align: center;
+  white-space: nowrap;
+}
+
+.timeline-dot {
+  width: 16px;
+  height: 16px;
+  background: var(--accent-saffron);
+  border: 3px solid var(--bg-primary);
+  border-radius: 50%;
+  position: relative;
+  z-index: 2;
+  flex-shrink: 0;
+}
+
+.timeline-content {
+  margin-top: 1.5rem;
+  padding: 1.5rem;
+  text-align: center;
+  min-height: 120px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.timeline-content h3 {
+  font-family: var(--font-heading);
+  font-size: 1rem;
+  font-weight: 600;
+  margin-bottom: 0.5rem;
+  color: var(--text-primary);
+  text-transform: lowercase;
+}
+
+.timeline-content p {
+  font-size: 0.85rem;
+  color: var(--text-muted);
+  line-height: 1.5;
+}
+
+.timeline-content .company {
+  color: var(--accent-saffron);
+  font-weight: 600;
+  font-family: var(--font-mono);
+  font-size: 0.8rem;
+}
+
+/* --- Responsive --- */
+@media (max-width: 1200px) {
+  .timeline-items {
+    overflow-x: auto;
+    justify-content: flex-start;
+    padding-bottom: 1rem;
+    scrollbar-width: thin;
+    scrollbar-color: var(--accent-saffron) var(--bg-tertiary);
+  }
+
+  .timeline-items::-webkit-scrollbar {
+    height: 6px;
+  }
+
+  .timeline-items::-webkit-scrollbar-track {
+    background: var(--bg-tertiary);
+    border-radius: 3px;
+  }
+
+  .timeline-items::-webkit-scrollbar-thumb {
+    background: var(--accent-gradient);
+    border-radius: 3px;
+  }
+}
+
+@media (max-width: 992px) {
+  .project-cards {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 768px) {
+  .page-header {
+    padding: 6rem 2rem 2rem;
+  }
+
+  .projects {
+    padding: 2rem;
+  }
+
+  .experience {
+    padding: 3rem 2rem 2rem;
+  }
+
+  .project-cards {
+    grid-template-columns: 1fr;
+  }
+
+  .timeline-item {
+    min-width: 220px;
+  }
+
+  .timeline-date {
+    font-size: 0.75rem;
+  }
+
+  .timeline-content {
+    padding: 1rem;
+    min-height: 100px;
+  }
+
+  .timeline-content h3 {
+    font-size: 0.95rem;
+  }
+}

@@ -1,41 +1,16 @@
 /**
- * Main script for the portfolio website
- * Handles theme toggle, math animations, menu, and typewriter effect
+ * Landing page script — Lemma
+ * Hero canvas (Brownian motion) + GSAP hero animations
  */
 
 document.addEventListener('DOMContentLoaded', () => {
 
-  // ===========================
-  // THEME TOGGLE
-  // ===========================
-  const themeToggle = document.getElementById('themeToggle');
-  const htmlElement = document.documentElement;
-
-  // Check for saved theme preference or default to 'dark'
-  const currentTheme = localStorage.getItem('theme') || 'dark';
-  htmlElement.setAttribute('data-theme', currentTheme);
-  updateThemeIcon(currentTheme);
-
-  themeToggle.addEventListener('click', () => {
-    const theme = htmlElement.getAttribute('data-theme');
-    const newTheme = theme === 'dark' ? 'light' : 'dark';
-
-    htmlElement.setAttribute('data-theme', newTheme);
-    localStorage.setItem('theme', newTheme);
-    updateThemeIcon(newTheme);
-  });
-
-  function updateThemeIcon(theme) {
-    themeToggle.textContent = theme === 'dark' ? '☀️' : '🌙';
-  }
-
-  // ===========================
-  // HERO SECTION - MATH ANIMATIONS
-  // ===========================
   const canvas = document.getElementById('heroCanvas');
+  if (!canvas) return;
+
+  const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
   const ctx = canvas.getContext('2d');
 
-  // Set canvas size
   function resizeCanvas() {
     canvas.width = canvas.offsetWidth;
     canvas.height = canvas.offsetHeight;
@@ -43,132 +18,61 @@ document.addEventListener('DOMContentLoaded', () => {
   resizeCanvas();
   window.addEventListener('resize', resizeCanvas);
 
-  // Math symbols to float
-  const mathSymbols = [
-    // Original symbols
-    '∫', '∑', 'π', '∞', '∂', 'λ', 'α', 'β', 'γ', 'δ', 'θ', 'μ', 'σ', 'φ', 'ω', '√', '∇', '≈', '≡', '∈', '∪', '∩', '⊂', '∀', '∃', 'ℝ', 'ℂ', 'ℕ', 'ℤ',
-    // Tier 1: Greek letters & common operators
-    'ε', 'ρ', 'τ', 'Δ', 'Σ', 'Π', 'Λ', '⊗', '⊕', '≤', '≥', '≠', '∅', '⇒', 'ℚ',
-    // Tier 2: Additional Greek & special symbols
-    'ξ', 'ψ', 'Ω', 'Γ', 'ζ', '∝', '⊆', '∬', '∮', 'ℵ',
-    // Tier 3: Advanced symbols (excluding ℏ)
-    'κ', 'η', '±', '∧', '∨', '¬', '⇔'
-  ];
-
-  // Floating symbols array
-  const floatingSymbols = [];
-
   // Brownian motion paths
   const brownianPaths = [];
+  const BM_VARIANCE_BASE = 10;
+  const BM_VARIANCE_RANGE = 25;
 
-  // Brownian motion variance parameters (adjust these to control spread)
-  const BM_VARIANCE_BASE = 10;    // Base step size
-  const BM_VARIANCE_RANGE = 25;   // Additional random range
-
-  // Detect mobile device
   const isMobile = /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent) || window.innerWidth < 768;
-  const BM_SPEED_MULTIPLIER = isMobile ? 0.5 : 1; // Faster on mobile (fewer steps = faster completion)
+  const BM_SPEED_MULTIPLIER = isMobile ? 0.5 : 1;
 
-  // Symbol class
-  class FloatingSymbol {
-    constructor() {
-      this.x = Math.random() * canvas.width;
-      this.y = canvas.height + 50;
-      this.symbol = mathSymbols[Math.floor(Math.random() * mathSymbols.length)];
-      this.speed = 0.3 + Math.random() * 0.5;
-      this.opacity = 0;
-      this.rotation = 0;
-      this.rotationSpeed = (Math.random() - 0.5) * 0.02;
-      this.size = 20 + Math.random() * 20;
-      this.maxOpacity = 0.3 + Math.random() * 0.3;
-    }
-
-    update() {
-      this.y -= this.speed;
-      this.rotation += this.rotationSpeed;
-
-      // Fade in
-      if (this.y > canvas.height - 200 && this.opacity < this.maxOpacity) {
-        this.opacity += 0.01;
-      }
-      // Fade out
-      if (this.y < 100) {
-        this.opacity -= 0.01;
-      }
-    }
-
-    draw() {
-      ctx.save();
-      ctx.translate(this.x, this.y);
-      ctx.rotate(this.rotation);
-      ctx.font = `${this.size}px "Times New Roman", serif`;
-      ctx.fillStyle = `rgba(255, 153, 51, ${this.opacity})`;
-      ctx.textAlign = 'center';
-      ctx.textBaseline = 'middle';
-      ctx.fillText(this.symbol, 0, 0);
-      ctx.restore();
-    }
-
-    isDead() {
-      return this.y < -50 || this.opacity <= 0;
-    }
+  // Box-Muller transform
+  function boxMuller() {
+    let u1 = Math.random();
+    let u2 = Math.random();
+    while (u1 === 0) u1 = Math.random();
+    return Math.sqrt(-2 * Math.log(u1)) * Math.cos(2 * Math.PI * u2);
   }
 
-  // 1D Brownian Motion class (LTR only)
   class BrownianMotion {
     constructor() {
       this.points = [];
-
-      // Starting position - center of screen
       this.startX = 0;
       this.endX = canvas.width;
-      this.y = canvas.height / 2; // Start at center
+      const mean = canvas.height / 2;
+      const stdDev = canvas.height * 0.15;
+      this.y = mean + boxMuller() * stdDev;
+      this.y = Math.max(canvas.height * 0.05, Math.min(canvas.height * 0.95, this.y));
 
       this.currentX = this.startX;
       this.currentStep = 0;
-      // Fewer steps = faster completion on mobile
       this.totalSteps = Math.floor((400 + Math.random() * 200) / BM_SPEED_MULTIPLIER);
       this.opacity = 0;
-      this.maxOpacity = 0.2 + Math.random() * 0.3; // Variable opacity (lower for cloud effect)
+      this.maxOpacity = 0.2 + Math.random() * 0.3;
       this.age = 0;
       this.fadeInDuration = 40;
       this.fadeOutStart = this.totalSteps + 100;
       this.maxAge = this.totalSteps + 200;
-
-      // Brownian motion parameters
-      this.stepSize = BM_VARIANCE_BASE + Math.random() * BM_VARIANCE_RANGE; // Random step size for variation
-
-      // Add initial point
+      this.stepSize = BM_VARIANCE_BASE + Math.random() * BM_VARIANCE_RANGE;
       this.points.push({ x: this.currentX, y: this.y });
     }
 
     update() {
       this.age++;
 
-      // Fade in
       if (this.age < this.fadeInDuration) {
         this.opacity = (this.age / this.fadeInDuration) * this.maxOpacity;
       } else if (this.age > this.fadeOutStart) {
-        // Fade out
         const fadeProgress = (this.age - this.fadeOutStart) / (this.maxAge - this.fadeOutStart);
         this.opacity = this.maxOpacity * (1 - fadeProgress);
       }
 
-      // Generate path if not complete
       if (this.currentStep < this.totalSteps) {
-        // Calculate progress (0 to 1)
         const progress = this.currentStep / this.totalSteps;
-
-        // Deterministic x-position (LTR)
         const targetX = this.startX + (this.endX - this.startX) * progress;
-
-        // Regular Brownian motion: random walk in y-direction
         const randomStep = (Math.random() - 0.5) * this.stepSize;
         this.y += randomStep;
-
-        // Keep within reasonable bounds
         this.y = Math.max(canvas.height * 0.1, Math.min(canvas.height * 0.9, this.y));
-
         this.currentX = targetX;
         this.points.push({ x: this.currentX, y: this.y });
         this.currentStep++;
@@ -180,17 +84,14 @@ document.addEventListener('DOMContentLoaded', () => {
 
       ctx.beginPath();
       ctx.moveTo(this.points[0].x, this.points[0].y);
-
       for (let i = 1; i < this.points.length; i++) {
         ctx.lineTo(this.points[i].x, this.points[i].y);
       }
 
-      // LTR gradient
       const gradient = ctx.createLinearGradient(
         this.startX, canvas.height / 2,
         this.endX, canvas.height / 2
       );
-
       gradient.addColorStop(0, `rgba(255, 153, 51, ${this.opacity})`);
       gradient.addColorStop(1, `rgba(220, 20, 60, ${this.opacity})`);
 
@@ -204,263 +105,111 @@ document.addEventListener('DOMContentLoaded', () => {
     }
   }
 
-  // Add floating symbols periodically
-  setInterval(() => {
-    if (floatingSymbols.length < 15) {
-      floatingSymbols.push(new FloatingSymbol());
-    }
-  }, 800);
-
-  // Add Brownian motion paths periodically to maintain ~25 paths
   setInterval(() => {
     if (brownianPaths.length < 25) {
       brownianPaths.push(new BrownianMotion());
     }
-  }, 400); // Faster generation to maintain steady count
+  }, 400);
 
-  // Initial cloud of Brownian motion paths
-  // for (let i = 0; i < 25; i++) {
-  //   brownianPaths.push(new BrownianMotion());
-  // }
-
-  // Animation loop
   function animate() {
-    // Clear canvas
     ctx.clearRect(0, 0, canvas.width, canvas.height);
 
-    // Update and draw Brownian paths
     for (let i = brownianPaths.length - 1; i >= 0; i--) {
       brownianPaths[i].update();
       brownianPaths[i].draw();
-
       if (brownianPaths[i].isDead()) {
         brownianPaths.splice(i, 1);
-      }
-    }
-
-    // Update and draw floating symbols
-    for (let i = floatingSymbols.length - 1; i >= 0; i--) {
-      floatingSymbols[i].update();
-      floatingSymbols[i].draw();
-
-      if (floatingSymbols[i].isDead()) {
-        floatingSymbols.splice(i, 1);
       }
     }
 
     requestAnimationFrame(animate);
   }
 
-  animate();
+  if (!prefersReducedMotion) animate();
 
   // ===========================
-  // TYPEWRITER EFFECT
+  // GSAP HERO ANIMATION
   // ===========================
-  const initTyped = () => {
-    const typewriterElement = document.querySelector('#typewriter');
-    if (window.Typed && typewriterElement) {
-      new Typed('#typewriter', {
-        strings: [
-          "Hello, I'm Ishaan",
-          "I'm a Mathematician",
-          "I'm a Problem Solver",
-          "I'm a Researcher",
-          "I'm a Linguist"
-        ],
-        loop: true,
-        typeSpeed: 100,
-        backSpeed: 75,
-        showCursor: true,
-        cursorChar: '_',
-      });
+  if (typeof gsap !== 'undefined') {
+    gsap.registerPlugin(ScrollTrigger);
+    const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+    const heroTitle = document.querySelector('.hero-title');
+    const heroSubtitle = document.querySelector('.hero-subtitle');
+    const heroEpigraph = document.querySelector('.lem-epigraph');
+    const heroCoord = document.querySelector('.hero-coord');
+
+    if (reducedMotion) {
+      if (heroTitle) { heroTitle.style.opacity = '1'; heroTitle.style.transform = 'none'; }
+      if (heroSubtitle) { heroSubtitle.style.opacity = '1'; heroSubtitle.style.transform = 'none'; }
+      if (heroEpigraph) { heroEpigraph.style.opacity = '1'; }
+      if (heroCoord) { heroCoord.style.opacity = '1'; }
+      return;
     }
-  };
 
-  // ===========================
-  // MOBILE MENU & ACTIVE SECTIONS
-  // ===========================
-  const initMenu = () => {
-    const menuIcon = document.querySelector('.menu-icon');
-    const navLinks = document.querySelector('.nav-links');
-    const navLinkItems = document.querySelectorAll('.nav-links a');
+    const introTl = gsap.timeline({ defaults: { ease: 'power3.out' } });
 
-    // Mobile menu toggle
-    if (menuIcon && navLinks) {
-      menuIcon.addEventListener('click', () => {
-        menuIcon.classList.toggle('active');
-        navLinks.classList.toggle('active');
-      });
+    // Epigraph fade in
+    if (heroEpigraph) {
+      introTl.fromTo(heroEpigraph,
+        { opacity: 0 },
+        { opacity: 1, duration: 0.6, delay: 0.2 }
+      );
+    }
 
-      // Close menu when clicking a link
-      navLinkItems.forEach(link => {
-        link.addEventListener('click', () => {
-          menuIcon.classList.remove('active');
-          navLinks.classList.remove('active');
-        });
-      });
+    // Title reveal
+    if (heroTitle) {
+      introTl.fromTo(heroTitle,
+        { opacity: 0, y: 40 },
+        { opacity: 1, y: 0, duration: 0.8 },
+        '-=0.2'
+      );
+    }
 
-      // Close menu with Escape key
-      document.addEventListener('keydown', (e) => {
-        if (e.key === 'Escape' && navLinks.classList.contains('active')) {
-          menuIcon.classList.remove('active');
-          navLinks.classList.remove('active');
+    // Subtitle reveal
+    if (heroSubtitle) {
+      introTl.fromTo(heroSubtitle,
+        { opacity: 0, y: 30 },
+        { opacity: 1, y: 0, duration: 0.8 },
+        '-=0.4'
+      );
+    }
+
+    // Coordinate block fade in
+    if (heroCoord) {
+      introTl.fromTo(heroCoord,
+        { opacity: 0, x: 20 },
+        { opacity: 1, x: 0, duration: 0.6 },
+        '-=0.3'
+      );
+    }
+
+    // ===========================
+    // HERO SCROLL PIN + PARALLAX FADE
+    // ===========================
+    const heroEl = document.querySelector('.hero');
+    const heroContent = document.querySelector('.hero-content');
+
+    if (heroEl && heroContent) {
+      let scrollEnabled = false;
+      introTl.then(() => { scrollEnabled = true; });
+
+      ScrollTrigger.create({
+        trigger: heroEl,
+        start: 'top top',
+        end: '+=50%',
+        pin: true,
+        anticipatePin: 1,
+        onUpdate: (self) => {
+          if (!scrollEnabled) return;
+          const progress = self.progress;
+          gsap.set(heroContent, {
+            opacity: 1 - progress * 1.5,
+            y: -progress * 120
+          });
         }
       });
     }
+  }
 
-    // Active section highlighting
-    const sections = document.querySelectorAll('section, header, footer');
-    const sectionLinks = document.querySelectorAll('.nav-links a[href^="#"]');
-
-    const observerOptions = {
-      threshold: 0.15,
-      rootMargin: '-120px 0px -50%'
-    };
-
-    let currentActiveSection = null;
-
-    const updateActiveSection = (id) => {
-      if (currentActiveSection !== id) {
-        currentActiveSection = id;
-
-        // Remove active from all links
-        sectionLinks.forEach(link => link.classList.remove('active-section'));
-
-        // Add active to the most visible section's link
-        const correspondingLink = document.querySelector(`.nav-links a[href="#${id}"]`);
-        if (correspondingLink) {
-          correspondingLink.classList.add('active-section');
-        }
-      }
-    };
-
-    const sectionObserver = new IntersectionObserver((entries) => {
-      // Find all currently intersecting sections
-      const intersectingSections = entries.filter(entry => entry.isIntersecting);
-
-      if (intersectingSections.length > 0) {
-        // Get the most visible section (highest intersection ratio)
-        const mostVisible = intersectingSections.reduce((prev, current) => {
-          return (current.intersectionRatio > prev.intersectionRatio) ? current : prev;
-        });
-
-        const id = mostVisible.target.id;
-        updateActiveSection(id);
-      }
-    }, observerOptions);
-
-    sections.forEach(section => {
-      if (section.id) {
-        sectionObserver.observe(section);
-      }
-    });
-
-    // Handle bottom of page for footer/contact section
-    window.addEventListener('scroll', () => {
-      const scrollPosition = window.innerHeight + window.scrollY;
-      const pageHeight = document.documentElement.scrollHeight;
-
-      // If we're within 100px of the bottom, highlight contact
-      if (pageHeight - scrollPosition < 100) {
-        updateActiveSection('contact');
-      }
-    });
-  };
-
-  // ===========================
-  // SCROLL ANIMATIONS (Lightweight)
-  // ===========================
-  const initScrollAnimations = () => {
-    const observerOptions = {
-      threshold: 0.1,
-      rootMargin: '0px 0px -50px 0px'
-    };
-
-    const observer = new IntersectionObserver((entries) => {
-      entries.forEach(entry => {
-        if (entry.isIntersecting) {
-          entry.target.classList.add('fade-in');
-          observer.unobserve(entry.target);
-        }
-      });
-    }, observerOptions);
-
-    // Observe sections and cards
-    const elementsToAnimate = document.querySelectorAll('.project-item, .course-category, .info-box, .skill-category-card, .timeline-item');
-    elementsToAnimate.forEach(el => {
-      el.style.opacity = '0';
-      el.style.transform = 'translateY(20px)';
-      el.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
-      observer.observe(el);
-    });
-  };
-
-  // Add fade-in class styles dynamically
-  const style = document.createElement('style');
-  style.textContent = `
-    .fade-in {
-      opacity: 1 !important;
-      transform: translateY(0) !important;
-    }
-  `;
-  document.head.appendChild(style);
-
-  // ===========================
-  // LIQUID GLASS NAV BAR
-  // ===========================
-  const initNavLens = () => {
-    const navLinks = document.querySelector('.nav-links');
-    const navItems = document.querySelectorAll('.nav-links a');
-
-    if (!navLinks || navItems.length === 0) return;
-
-    // Create lens once
-    const lens = document.createElement('div');
-    lens.className = 'nav-lens';
-    navLinks.prepend(lens);
-
-    const moveLensTo = (el) => {
-      const containerRect = navLinks.getBoundingClientRect();
-      const rect = el.getBoundingClientRect();
-
-      const padX = 12; // makes lens slightly wider than text pill
-      const targetW = Math.max(56, rect.width + padX);
-      const x = rect.left - containerRect.left + (rect.width - targetW) / 2;
-
-      lens.style.width = `${targetW}px`;
-      lens.style.opacity = '1';
-      lens.style.transform = `translate(${x}px, -50%)`;
-    };
-
-    const hideLens = () => {
-      lens.style.opacity = '0';
-    };
-
-    navItems.forEach((a) => {
-      a.addEventListener('mouseenter', () => moveLensTo(a));
-      a.addEventListener('focus', () => moveLensTo(a));
-    });
-
-    navLinks.addEventListener('mouseleave', hideLens);
-
-    // Optional: snap lens to active section on load
-    const active = navLinks.querySelector('a.active-section');
-    if (active) moveLensTo(active);
-
-    // Optional: keep it following active section while scrolling
-    const observer = new MutationObserver(() => {
-      const nowActive = navLinks.querySelector('a.active-section');
-      if (nowActive) moveLensTo(nowActive);
-    });
-    observer.observe(navLinks, { subtree: true, attributes: true, attributeFilter: ['class'] });
-  };
-
-  initNavLens();
-
-  // ===========================
-  // INITIALIZE ALL
-  // ===========================
-  initTyped();
-  initMenu();
-  initScrollAnimations();
 });
