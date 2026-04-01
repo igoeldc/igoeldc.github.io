@@ -1,0 +1,290 @@
+<!DOCTYPE html>
+<html lang="en" class="no-js">
+<script>document.documentElement.classList.remove('no-js')</script>
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <meta name="description" content="Projects and experience — Ishaan Goel">
+    <meta name="author" content="Ishaan Goel">
+    <title>Work — Ishaan Goel</title>
+
+    <!-- Favicons -->
+    <link rel="apple-touch-icon" sizes="180x180" href="favicon_io/apple-touch-icon.png">
+    <link rel="icon" type="image/x-icon" href="favicon_io/favicon.ico">
+    <link rel="icon" type="image/png" sizes="32x32" href="favicon_io/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="favicon_io/favicon-16x16.png">
+    <link rel="icon" type="image/png" sizes="192x192" href="favicon_io/android-chrome-192x192.png">
+    <link rel="icon" type="image/png" sizes="512x512" href="favicon_io/android-chrome-512x512.png">
+
+    <!-- Styles -->
+    <link rel="stylesheet" href="shared.css?v=20260330"/>
+    <link rel="stylesheet" href="work.css?v=20260330"/>
+
+    <!-- GSAP + ScrollTrigger -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+
+    <!-- Scripts -->
+    <script src="shared.js?v=20260330" defer></script>
+    <script src="work.js?v=20260330" defer></script>
+
+    <!-- Manifest -->
+    <link rel="manifest" href="favicon_io/site.webmanifest">
+
+    <!-- Cloudflare Web Analytics -->
+    <script defer src='https://static.cloudflareinsights.com/beacon.min.js' data-cf-beacon='{"token": "0e5b204eee9145038a1bfc938dadd07e"}'></script>
+</head>
+
+<body>
+    <!-- Top Navigation Bar -->
+    <nav class="top-nav">
+        <a href="index.html" class="nav-brand">Ishaan Goel</a>
+
+        <ul class="nav-links">
+            <li><a href="index.html">Home</a></li>
+            <li><a href="work.html" class="active-section">Work</a></li>
+            <li><a href="academics.html">Academics</a></li>
+            <li><a href="blog/blog.html">Blog</a></li>
+            <li class="nav-divider"></li>
+            <li><a href="assets/Ishaan_Goel_Resume.pdf" target="_blank" class="external-link">Resume</a></li>
+            <li><a href="https://pypi.org/project/mathcode/" target="_blank" class="external-link">mathcode</a></li>
+            <li><a href="https://iit-course-graphs.streamlit.app/" target="_blank" class="external-link">IIT Course Planner</a></li>
+        </ul>
+
+        <div class="nav-controls">
+            <button class="theme-toggle" id="themeToggle" aria-label="Toggle theme">🌙</button>
+            <div class="menu-icon" role="button" aria-label="Toggle menu" tabindex="0">
+                <div class="bar"></div>
+                <div class="bar"></div>
+                <div class="bar"></div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Mobile Bottom Pill Nav -->
+    <nav class="mobile-pill" aria-label="Page navigation">
+        <a href="index.html" class="mobile-pill-link">Home</a>
+        <a href="work.html" class="mobile-pill-link active-section">Work</a>
+        <a href="academics.html" class="mobile-pill-link">Academics</a>
+        <a href="blog/blog.html" class="mobile-pill-link">Blog</a>
+        <button class="theme-toggle mobile-pill-theme" id="mobileThemeToggle" aria-label="Toggle theme">🌙</button>
+    </nav>
+
+    <!-- Full-page network canvas -->
+    <canvas class="work-canvas" id="workCanvas" aria-hidden="true"></canvas>
+
+    <!-- Page Header -->
+    <header class="page-header">
+        <h1>Work</h1>
+        <p class="page-subtitle">Projects & Experience</p>
+    </header>
+
+    <!-- PROJECTS SECTION -->
+    <section id="projects" class="projects">
+        <h2>My Projects</h2>
+        <div class="project-grid">
+
+            <div class="project-item">
+                <a href="https://pypi.org/project/mathcode/" target="_blank" class="project-card glass glass-hover">
+                    <div class="project-header">
+                        <h3>mathcode</h3>
+                    </div>
+                    <div class="project-description">
+                        <p>Actively developing a Python library implementing mathematical algorithms from coursework: graph algorithms, stochastic processes (Brownian motion, Markov chains, SDEs/SPDEs), optimization (gradient descent variants, simplex), abstract algebra, and reinforcement learning (value/policy iteration, Monte Carlo methods).</p>
+                    </div>
+                    <div class="project-tech">
+                        <span class="tech-tag">PyPI</span>
+                        <span class="tech-tag">Python</span>
+                        <span class="tech-tag">NumPy</span>
+                        <span class="tech-tag">NetworkX</span>
+                    </div>
+                </a>
+            </div>
+
+            <div class="project-item">
+                <a href="https://github.com/igoeldc/ir_engine" target="_blank" class="project-card glass glass-hover">
+                    <div class="project-header">
+                        <h3>Information Retrieval Engine</h3>
+                    </div>
+                    <div class="project-description">
+                        <p>Full-stack IR engine with Scrapy crawler, TF-IDF inverted index with cosine similarity and semantic k-NN search (word2vec, FAISS), Flask query processor with Top-K ranking, NLTK spell correction, and WordNet expansion.</p>
+                    </div>
+                    <div class="project-tech">
+                        <span class="tech-tag">Information Retrieval</span>
+                        <span class="tech-tag">Machine Learning</span>
+                        <span class="tech-tag">Flask</span>
+                        <span class="tech-tag">scikit-learn</span>
+                        <span class="tech-tag">Scrapy</span>
+                        <span class="tech-tag">FAISS</span>
+                        <span class="tech-tag">Python</span>
+                    </div>
+                </a>
+            </div>
+
+            <div class="project-item">
+                <a href="https://github.com/LALITH0110/vArI-oceans-four" target="_blank" class="project-card glass glass-hover">
+                    <div class="project-header">
+                        <h3>Distributed RL for Ocean Plastic Drift Simulation</h3>
+                    </div>
+                    <div class="project-description">
+                        <p>A distributed Monte Carlo RL framework that simulates ocean plastic drift and aggregates results from volunteer clients for large-scale model optimization, earning 3rd place in the Grainger Computing Innovation Prize.</p>
+                    </div>
+                    <div class="project-tech">
+                        <span class="tech-tag">PyTorch</span>
+                        <span class="tech-tag">JAX</span>
+                        <span class="tech-tag">Monte Carlo</span>
+                        <span class="tech-tag">PPO</span>
+                        <span class="tech-tag">Reinforcement Learning</span>
+                    </div>
+                </a>
+            </div>
+
+            <div class="project-item">
+                <a href="https://github.com/igoeldc/agentic_ai_framework" target="_blank" class="project-card glass glass-hover">
+                    <div class="project-header">
+                        <h3>Agentic AI Framework</h3>
+                    </div>
+                    <div class="project-description">
+                        <p>A powerful orchestration agent designed to manage and coordinate multiple AI agents. Provides users with a unified chat experience, allowing seamless interaction with various specialized AI agents through a single window.</p>
+                    </div>
+                    <div class="project-tech">
+                        <span class="tech-tag">LangChain</span>
+                        <span class="tech-tag">OpenAI API</span>
+                        <span class="tech-tag">Python</span>
+                    </div>
+                </a>
+            </div>
+
+            <div class="project-item">
+                <a href="https://github.com/igoeldc/AI-Language-Understanding-Projects" target="_blank" class="project-card glass glass-hover">
+                    <div class="project-header">
+                        <h3>AI Language Understanding</h3>
+                    </div>
+                    <div class="project-description">
+                        <p>Collection of projects exploring natural language processing techniques, including semantic parsing, sentiment analysis, and neural language models. Coursework from AI Language Understanding class.</p>
+                    </div>
+                    <div class="project-tech">
+                        <span class="tech-tag">Natural Language Processing</span>
+                        <span class="tech-tag">pandas</span>
+                        <span class="tech-tag">nltk</span>
+                        <span class="tech-tag">numpy</span>
+                        <span class="tech-tag">scipy</span>
+                        <span class="tech-tag">Python</span>
+                    </div>
+                </a>
+            </div>
+
+            <div class="project-item">
+                <a href="https://github.com/jacobhthomas/CollabGraph" target="_blank" class="project-card glass glass-hover">
+                    <div class="project-header">
+                        <h3>Erdős Co-authorship Network</h3>
+                    </div>
+                    <div class="project-description">
+                        <p>Designed and implemented a co-author network to analyze the influence of research papers on contemporary and future research, leveraging weighted and unweighted adjacency matrices with Erdős1 data. Explored Graph Theoretic principles, focusing on measuring influence and creating influence measurement algorithms.</p>
+                    </div>
+                    <div class="project-tech">
+                        <span class="tech-tag">Data Science</span>
+                        <span class="tech-tag">Graph Theory</span>
+                        <span class="tech-tag">NetworkX</span>
+                        <span class="tech-tag">Python</span>
+                    </div>
+                </a>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- EXPERIENCE SECTION -->
+    <section id="experience" class="experience">
+        <h2>Experience</h2>
+        <div class="timeline-container">
+            <div class="timeline-items">
+                <div class="timeline-line"></div>
+
+                <div class="timeline-item">
+                    <div class="timeline-date">Jan 2024 – May 2025</div>
+                    <div class="timeline-dot"></div>
+                    <div class="timeline-content">
+                        <h3>Peer Tutor - Upper Level Math</h3>
+                        <p><span class="company">Illinois Institute of Technology</span></p>
+                        <p>Tutoring students in advanced mathematics courses</p>
+                    </div>
+                </div>
+
+                <div class="timeline-item">
+                    <div class="timeline-date">Jul 2024 – Jul 2024</div>
+                    <div class="timeline-dot"></div>
+                    <div class="timeline-content">
+                        <h3>AI Engineering Intern</h3>
+                        <p><span class="company">PeopleStrong Technologies</span></p>
+                        <p>Built LLM chatbot with agentic architecture for HR automation</p>
+                    </div>
+                </div>
+
+                <div class="timeline-item">
+                    <div class="timeline-date">Jun 2025 – Jul 2025</div>
+                    <div class="timeline-dot"></div>
+                    <div class="timeline-content">
+                        <h3>AI Engineering Intern</h3>
+                        <p><span class="company">PeopleStrong Technologies</span></p>
+                        <p>RAG-based system for automated ticket resolution</p>
+                    </div>
+                </div>
+
+                <div class="timeline-item">
+                    <div class="timeline-date">Aug 2024 – Present</div>
+                    <div class="timeline-dot"></div>
+                    <div class="timeline-content">
+                        <h3>Research Assistant</h3>
+                        <p><span class="company">IIT - Dr. Igor Cialenco</span></p>
+                        <p>NSF-funded research on groundwater rights modeling and pricing</p>
+                    </div>
+                </div>
+
+                <div class="timeline-item">
+                    <div class="timeline-date">May 2025 – Present</div>
+                    <div class="timeline-dot"></div>
+                    <div class="timeline-content">
+                        <h3>Research Assistant</h3>
+                        <p><span class="company">IIT - Dr. Michael Pelsmajer</span></p>
+                        <p>Markov Chain sampler development for hypergraphs</p>
+                    </div>
+                </div>
+
+                <div class="timeline-item">
+                    <div class="timeline-date">Aug 2025 – Present</div>
+                    <div class="timeline-dot"></div>
+                    <div class="timeline-content">
+                        <h3>Teaching Assistant</h3>
+                        <p><span class="company">Illinois Institute of Technology</span></p>
+                        <p>Teaching assistant for 'Geometry for Architects' and 'Introduction to Calculus'</p>
+                    </div>
+                </div>
+
+                <div class="timeline-item">
+                    <div class="timeline-date">Feb 2026 – Present</div>
+                    <div class="timeline-dot"></div>
+                    <div class="timeline-content">
+                        <h3>Research Assistant</h3>
+                        <p><span class="company">IIT - Alaittin Kırtışoğlu and Dr. Hemanshu Kaul</span></p>
+                        <p><em>Insert text here</em></p>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- CONTACT -->
+    <footer id="contact">
+        <h2>Get In Touch</h2>
+        <div class="social-icons">
+            <a href="mailto:igoeldxb@gmail.com" class="icon-link">Email</a>
+            <a href="tel:+17712017576" class="icon-link">Phone</a>
+            <a href="https://linkedin.com/in/igoeldc/" target="_blank" class="icon-link">LinkedIn</a>
+            <a href="https://github.com/igoeldc" target="_blank" class="icon-link">GitHub</a>
+        </div>
+    </footer>
+</body>
+</html>

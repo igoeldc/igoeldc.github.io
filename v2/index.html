@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="en" class="no-js">
+<script>document.documentElement.classList.remove('no-js')</script>
+
+<!--
+Hi Ishaan, This sounds like a good plan. I think what will be tricky for you is ensuring this site gives a cohesive picture of you -- you have a couple different interests right now, so you'll want to ensure your areas of focus are somewhat unified. That is, you might want to avoid giving someone the impression that "Ishaan does finance and math and NLP and..." because you're then unlikely to leave a memorable impression. Instead, consider something like "I am fundamentally interested in using NLP techniques to preserve under-resourced languages. I also see some applicability of these methods to finance."
+
+Also, a common model for sites like this is to have a home page where you briefly describe who you are, and then 1 main projects page where you highlight several key projects you've worked on (there may be a sub-page for each project under this page). Generally it's a good idea to avoid a complicated or big sitemap for a personal page, since people often don't spend a lot of time on personal pages.
+
+Looking forward to seeing the full draft you put together.
+
+- Hannah Muller
+-->
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <meta name="description" content="Personal portfolio website for Ishaan Goel.">
+    <meta name="author" content="Ishaan Goel">
+    <title>Ishaan Goel</title>
+
+    <!-- Apple Touch Icon -->
+    <link rel="apple-touch-icon" sizes="180x180" href="favicon_io/apple-touch-icon.png">
+
+    <!-- ICO Favicon -->
+    <link rel="icon" type="image/x-icon" href="favicon_io/favicon.ico">
+
+    <!-- PNG Favicons -->
+    <link rel="icon" type="image/png" sizes="32x32" href="favicon_io/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="favicon_io/favicon-16x16.png">
+
+    <!-- Android Chrome Icons -->
+    <link rel="icon" type="image/png" sizes="192x192" href="favicon_io/android-chrome-192x192.png">
+    <link rel="icon" type="image/png" sizes="512x512" href="favicon_io/android-chrome-512x512.png">
+
+    <!-- Styles -->
+    <link rel="stylesheet" href="shared.css?v=20260330"/>
+    <link rel="stylesheet" href="styles.css?v=20260330"/>
+
+    <!-- GSAP + ScrollTrigger -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+
+    <!-- Scripts -->
+    <script src="shared.js?v=20260330" defer></script>
+    <script src="script.js?v=20260330" defer></script>
+
+    <!-- Manifest -->
+    <link rel="manifest" href="favicon_io/site.webmanifest">
+
+    <!-- Cloudflare Web Analytics -->
+    <script defer src='https://static.cloudflareinsights.com/beacon.min.js' data-cf-beacon='{"token": "0e5b204eee9145038a1bfc938dadd07e"}'></script>
+</head>
+
+<body>
+    <!-- Top Navigation Bar -->
+    <nav class="top-nav">
+        <a href="index.html" class="nav-brand">Ishaan Goel</a>
+
+        <ul class="nav-links">
+            <li><a href="index.html" class="active-section">Home</a></li>
+            <li><a href="work.html">Work</a></li>
+            <li><a href="academics.html">Academics</a></li>
+            <li><a href="blog/blog.html">Blog</a></li>
+            <li class="nav-divider"></li>
+            <li><a href="assets/Ishaan_Goel_Resume.pdf" target="_blank" class="external-link">Resume</a></li>
+            <li><a href="https://pypi.org/project/mathcode/" target="_blank" class="external-link">mathcode</a></li>
+            <li><a href="https://iit-course-graphs.streamlit.app/" target="_blank" class="external-link">IIT Course Planner</a></li>
+        </ul>
+
+        <div class="nav-controls">
+            <button class="theme-toggle" id="themeToggle" aria-label="Toggle theme">🌙</button>
+            <div class="menu-icon" role="button" aria-label="Toggle menu" tabindex="0">
+                <div class="bar"></div>
+                <div class="bar"></div>
+                <div class="bar"></div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Mobile Bottom Pill Nav -->
+    <nav class="mobile-pill" aria-label="Page navigation">
+        <a href="index.html" class="mobile-pill-link active-section">Home</a>
+        <a href="work.html" class="mobile-pill-link">Work</a>
+        <a href="academics.html" class="mobile-pill-link">Academics</a>
+        <a href="blog/blog.html" class="mobile-pill-link">Blog</a>
+        <button class="theme-toggle mobile-pill-theme" id="mobileThemeToggle" aria-label="Toggle theme">🌙</button>
+    </nav>
+
+    <!-- HERO SECTION -->
+    <header id="home" class="hero">
+        <canvas class="hero-canvas" id="heroCanvas" aria-hidden="true"></canvas>
+        <div class="hero-content">
+            <h2 class="hero-title">
+              <span class="hero-word">Hello,</span> <span class="hero-word">I'm</span> <span class="hero-word">Ishaan</span>
+            </h2>
+            <p class="hero-role" aria-live="polite"></p>
+            <p class="hero-subtitle">Mathematics Researcher & AI Developer</p>
+          </div>
+    </header>
+
+    <!-- ABOUT SECTION -->
+    <section id="about" class="about">
+        <h2>About Me</h2>
+        <div class="about-narrative">
+            <p>I'm a fourth-year student at the Illinois Institute of Technology studying applied mathematics, data science, and artificial intelligence. My work lives at the intersection of mathematical structure and language. I use stochastic modeling, graph theory, and NLP to understand complex systems, from pricing groundwater rights to preserving under-resourced languages.</p>
+
+            <p>Growing up across cultures gave me fluency in English, Hindi, Urdu, Mandarin, Spanish, and Arabic, and a deep curiosity about how languages encode meaning differently. That curiosity drives my research in NLP and my interest in low-resource language preservation. Outside of academics, I produce electronic music, study South Asian history and philosophy, and am always picking up a new language.</p>
+
+            <p>I'm currently a research assistant working on groundwater rights modeling (Dr. Igor Cialenco), Markov chain samplers for hypergraphs (Dr. Michael Pelsmajer), and graph theory research (Alaittin Kırtışoğlu and Dr. Hemanshu Kaul). I'm seeking opportunities where I can apply generative AI, stochastic modeling, and data science to real-world problems.</p>
+        </div>
+    </section>
+
+    <!-- FEATURED PROJECTS -->
+    <section id="featured" class="featured-projects">
+        <h2>Featured Projects</h2>
+        <div class="featured-grid">
+
+            <div class="project-item">
+                <a href="https://pypi.org/project/mathcode/" target="_blank" class="project-card glass glass-hover">
+                    <div class="project-header">
+                        <h3>mathcode</h3>
+                    </div>
+                    <div class="project-description">
+                        <p>A Python library implementing mathematical algorithms from coursework: graph algorithms, stochastic processes, optimization, abstract algebra, and reinforcement learning.</p>
+                    </div>
+                    <div class="project-tech">
+                        <span class="tech-tag">PyPI</span>
+                        <span class="tech-tag">Python</span>
+                        <span class="tech-tag">NumPy</span>
+                    </div>
+                </a>
+            </div>
+
+            <div class="project-item">
+                <a href="https://github.com/LALITH0110/vArI-oceans-four" target="_blank" class="project-card glass glass-hover">
+                    <div class="project-header">
+                        <h3>Distributed RL for Ocean Plastic Drift</h3>
+                    </div>
+                    <div class="project-description">
+                        <p>A distributed Monte Carlo RL framework simulating ocean plastic drift, earning 3rd place in the Grainger Computing Innovation Prize.</p>
+                    </div>
+                    <div class="project-tech">
+                        <span class="tech-tag">PyTorch</span>
+                        <span class="tech-tag">JAX</span>
+                        <span class="tech-tag">Reinforcement Learning</span>
+                    </div>
+                </a>
+            </div>
+
+            <div class="project-item">
+                <a href="https://github.com/igoeldc/ir_engine" target="_blank" class="project-card glass glass-hover">
+                    <div class="project-header">
+                        <h3>Information Retrieval Engine</h3>
+                    </div>
+                    <div class="project-description">
+                        <p>Full-stack IR engine with Scrapy crawler, TF-IDF inverted index, semantic k-NN search (word2vec, FAISS), and Flask query processor.</p>
+                    </div>
+                    <div class="project-tech">
+                        <span class="tech-tag">Information Retrieval</span>
+                        <span class="tech-tag">Machine Learning</span>
+                        <span class="tech-tag">Flask</span>
+                    </div>
+                </a>
+            </div>
+
+        </div>
+        <div class="featured-cta">
+            <a href="work.html" class="view-all-link glass glass-hover">View all projects & experience</a>
+        </div>
+    </section>
+
+    <!-- CONTACT -->
+    <footer id="contact">
+        <h2>Get In Touch</h2>
+        <div class="social-icons">
+            <a href="mailto:igoeldxb@gmail.com" class="icon-link">Email</a>
+            <a href="tel:+17712017576" class="icon-link">Phone</a>
+            <a href="https://linkedin.com/in/igoeldc/" target="_blank" class="icon-link">LinkedIn</a>
+            <a href="https://github.com/igoeldc" target="_blank" class="icon-link">GitHub</a>
+        </div>
+        
+    </footer>
+</body>
+</html>

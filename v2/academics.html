@@ -1,0 +1,357 @@
+<!DOCTYPE html>
+<html lang="en" class="no-js">
+<script>document.documentElement.classList.remove('no-js')</script>
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <meta name="description" content="Courses, skills, and education — Ishaan Goel">
+    <meta name="author" content="Ishaan Goel">
+    <title>Academics — Ishaan Goel</title>
+
+    <!-- Favicons -->
+    <link rel="apple-touch-icon" sizes="180x180" href="favicon_io/apple-touch-icon.png">
+    <link rel="icon" type="image/x-icon" href="favicon_io/favicon.ico">
+    <link rel="icon" type="image/png" sizes="32x32" href="favicon_io/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="favicon_io/favicon-16x16.png">
+    <link rel="icon" type="image/png" sizes="192x192" href="favicon_io/android-chrome-192x192.png">
+    <link rel="icon" type="image/png" sizes="512x512" href="favicon_io/android-chrome-512x512.png">
+
+    <!-- Styles -->
+    <link rel="stylesheet" href="shared.css?v=20260330"/>
+    <link rel="stylesheet" href="academics.css?v=20260330"/>
+
+    <!-- GSAP + ScrollTrigger -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+
+    <!-- Scripts -->
+    <script src="shared.js?v=20260330" defer></script>
+    <script src="academics.js?v=20260330" defer></script>
+
+    <!-- Manifest -->
+    <link rel="manifest" href="favicon_io/site.webmanifest">
+
+    <!-- Cloudflare Web Analytics -->
+    <script defer src='https://static.cloudflareinsights.com/beacon.min.js' data-cf-beacon='{"token": "0e5b204eee9145038a1bfc938dadd07e"}'></script>
+</head>
+
+<body>
+    <!-- Top Navigation Bar -->
+    <nav class="top-nav">
+        <a href="index.html" class="nav-brand">Ishaan Goel</a>
+
+        <ul class="nav-links">
+            <li><a href="index.html">Home</a></li>
+            <li><a href="work.html">Work</a></li>
+            <li><a href="academics.html" class="active-section">Academics</a></li>
+            <li><a href="blog/blog.html">Blog</a></li>
+            <li class="nav-divider"></li>
+            <li><a href="assets/Ishaan_Goel_Resume.pdf" target="_blank" class="external-link">Resume</a></li>
+            <li><a href="https://pypi.org/project/mathcode/" target="_blank" class="external-link">mathcode</a></li>
+            <li><a href="https://iit-course-graphs.streamlit.app/" target="_blank" class="external-link">IIT Course Planner</a></li>
+        </ul>
+
+        <div class="nav-controls">
+            <button class="theme-toggle" id="themeToggle" aria-label="Toggle theme">🌙</button>
+            <div class="menu-icon" role="button" aria-label="Toggle menu" tabindex="0">
+                <div class="bar"></div>
+                <div class="bar"></div>
+                <div class="bar"></div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Mobile Bottom Pill Nav -->
+    <nav class="mobile-pill" aria-label="Page navigation">
+        <a href="index.html" class="mobile-pill-link">Home</a>
+        <a href="work.html" class="mobile-pill-link">Work</a>
+        <a href="academics.html" class="mobile-pill-link active-section">Academics</a>
+        <a href="blog/blog.html" class="mobile-pill-link">Blog</a>
+        <button class="theme-toggle mobile-pill-theme" id="mobileThemeToggle" aria-label="Toggle theme">🌙</button>
+    </nav>
+
+    <!-- Full-page floating symbols canvas -->
+    <canvas class="academics-canvas" id="academicsCanvas" aria-hidden="true"></canvas>
+
+    <!-- Page Header -->
+    <header class="page-header">
+        <h1>Academics</h1>
+        <p class="page-subtitle">Courses, Skills & Education</p>
+    </header>
+
+    <!-- EDUCATION INFO BOXES -->
+    <section id="education" class="education">
+        <h2>Education</h2>
+        <div class="education-container">
+            <div class="info-box glass glass-hover">
+                <h3>Education</h3>
+                <h4>Illinois Institute of Technology</h4>
+                Degrees:
+                <ul>
+                    <li>Bachelor's in Applied Mathematics</li>
+                    <li>Bachelor's in Data Science</li>
+                    <li>Master's in Artificial Intelligence</li>
+                </ul>
+                <br>
+                Minor:
+                <ul>
+                    <li>Finance</li>
+                </ul>
+                <br>
+                Specializations:
+                <ul>
+                    <li>Discrete Applied Math</li>
+                    <li>Mathematical Finance</li>
+                    <li>Stochastics</li>
+                </ul>
+            </div>
+
+            <div class="info-box glass glass-hover">
+                <h3>Computer Skills</h3>
+                <h4>Programming Languages</h4>
+                <p>Python, LaTeX, R, Java, Julia, Haskell, HTML, CSS, SQL</p>
+                <br>
+                <h4>Music Software / DAWs</h4>
+                <p>Audacity, Ableton Live, Reaper, Musescore</p>
+                <br>
+                <h4>Graphic Design Software</h4>
+                <p>Photoshop, Illustrator, Affinity</p>
+                <br>
+                <h4>Other</h4>
+                <p>DaVinci Resolve, Spline</p>
+            </div>
+
+            <div class="info-box glass glass-hover">
+                <h3>Favorite Classes</h3>
+                <ul>
+                    <li>Stochastic Processes</li>
+                    <li>Artificial Intelligence Language Understanding</li>
+                    <li>Abstract Algebra</li>
+                    <li>Modern Methods in Discrete Applied Mathematics</li>
+                    <li>ODEs and Dynamical Systems</li>
+                    <li>Stochastic Partial Differential Equations</li>
+                    <li>Data Mining</li>
+                    <li>Real Analysis</li>
+                    <li>Information Retrieval</li>
+                    <li>Data Preparation and Analysis</li>
+                    <li>Mathematical Modeling</li>
+                </ul>
+            </div>
+        </div>
+    </section>
+
+    <!-- COURSES SECTION -->
+    <section id="courses" class="courses">
+        <h2>Courses</h2>
+        <div class="courses-grid">
+            <div class="course-category glass glass-hover">
+                <h3>Applied Mathematics</h3>
+                <ul>
+                    <li>Modern Methods in Discrete Applied Mathematics</li>
+                    <li>Stochastic Partial Differential Equations</li>
+                    <li>Graph Theory</li>
+                    <li>Monte Carlo Methods in Finance</li>
+                    <li>Stochastic Processes</li>
+                    <li>Linear Optimization</li>
+                    <li>Computational Math</li>
+                    <li>Abstract Algebra</li>
+                    <li>Real Analysis</li>
+                    <li>Combinatorics</li>
+                    <li>Probability</li>
+                    <li>Discrete Mathematics</li>
+                    <li>ODEs and Dynamical Systems</li>
+                    <li>Mathematical Modeling</li>
+                    <li>Elementary Linear Algebra</li>
+                    <li>Multivariate and Vector Calculus</li>
+                    <li>Intro to Data Science</li>
+                    <li>Functional Analysis (Audit)</li>
+                    <li>Complex Analysis (Audit)</li>
+                    <li>Computational Algebraic Geometry (Audit)</li>
+                </ul>
+            </div>
+
+            <div class="course-category glass glass-hover">
+                <h3>Artificial Intelligence (Comp Sci)</h3>
+                <ul>
+                    <li>Artificial Intelligence Language Understanding</li>
+                    <li>Information Retrieval</li>
+                    <li>Machine Learning</li>
+                    <li>Deep Learning</li>
+                    <li>Data Mining</li>
+                    <li>Data Preparation and Analysis</li>
+                    <li>Artificial Intelligence</li>
+                    <li>Functional Programming (Haskell)</li>
+                    <li>Algorithms</li>
+                    <li>Data Structures</li>
+                    <li>Database Organization</li>
+                    <li>Game Theory (Audit)</li>
+                </ul>
+            </div>
+
+            <div class="course-category glass glass-hover">
+                <h3>Finance</h3>
+                <ul>
+                    <li>Economics of Capital Investments</li>
+                    <li>Principles of Economics</li>
+                </ul>
+            </div>
+
+            <div class="course-category glass glass-hover">
+                <h3>Other</h3>
+                <ul>
+                    <li>Deep Technology Commercialization</li>
+                    <li>Artificial Intelligence, Philosophy and Ethics</li>
+                    <li>Language Theory in Natural Language Processing</li>
+                    <li>Science and Technology Studies</li>
+                </ul>
+            </div>
+
+            <div class="course-category glass glass-hover">
+                <h3>Spring 2026</h3>
+                <ul>
+                    <li>Big Data Technologies</li>
+                    <li>Advanced Artificial Intelligence</li>
+                    <li>Financial Derivatives</li>
+                    <li>Quantum Computing</li>
+                    <li>The Human Voice</li>
+                    <li>Politics of Science and Technology</li>
+                    <li>Stochastic Analysis (Audit)</li>
+                </ul>
+            </div>
+        </div>
+    </section>
+
+    <!-- SKILLS SECTION -->
+    <section id="skills" class="skills">
+        <h2>Skills</h2>
+        <div class="skills-container">
+
+            <div class="skill-category-card glass glass-hover">
+                <div class="skill-category-header">
+                    <h3>Mathematics</h3>
+                </div>
+                <div class="skill-tags">
+                    <span class="skill-tag">Stochastic Processes</span>
+                    <span class="skill-tag">Analysis</span>
+                    <span class="skill-tag">Graph Theory</span>
+                    <span class="skill-tag">Abstract Algebra</span>
+                    <span class="skill-tag">Monte Carlo Methods</span>
+                    <span class="skill-tag">Stochastic PDEs</span>
+                    <span class="skill-tag">Linear Optimization</span>
+                    <span class="skill-tag">Combinatorics</span>
+                    <span class="skill-tag">Probability</span>
+                    <span class="skill-tag">Mathematical Modeling</span>
+                    <span class="skill-tag">Dynamical Systems</span>
+                    <span class="skill-tag">Mathematical Finance</span>
+                </div>
+            </div>
+
+            <div class="skill-category-card glass glass-hover">
+                <div class="skill-category-header">
+                    <h3>AI & Machine Learning</h3>
+                </div>
+                <div class="skill-tags">
+                    <span class="skill-tag">Natural Language Processing</span>
+                    <span class="skill-tag">Deep Learning</span>
+                    <span class="skill-tag">Machine Learning</span>
+                    <span class="skill-tag">Reinforcement Learning</span>
+                    <span class="skill-tag">Data Mining</span>
+                    <span class="skill-tag">Statistical Learning</span>
+                    <span class="skill-tag">Computer Vision</span>
+                </div>
+            </div>
+
+            <div class="skill-category-card glass glass-hover">
+                <div class="skill-category-header">
+                    <h3>Python Stack</h3>
+                </div>
+                <div class="skill-tags">
+                    <span class="skill-tag">PyTorch</span>
+                    <span class="skill-tag">scikit-learn</span>
+                    <span class="skill-tag">JAX</span>
+                    <span class="skill-tag">NumPy</span>
+                    <span class="skill-tag">pandas</span>
+                    <span class="skill-tag">matplotlib</span>
+                    <span class="skill-tag">SciPy</span>
+                    <span class="skill-tag">NLTK</span>
+                    <span class="skill-tag">NetworkX</span>
+                    <span class="skill-tag">HyperNetX</span>
+                    <span class="skill-tag">BeautifulSoup</span>
+                    <span class="skill-tag">PySpark</span>
+                    <span class="skill-tag">datascience</span>
+                    <span class="skill-tag">Streamlit</span>
+                </div>
+            </div>
+
+            <div class="skill-category-card glass glass-hover">
+                <div class="skill-category-header">
+                    <h3>R Stack</h3>
+                </div>
+                <div class="skill-tags">
+                    <span class="skill-tag">tidyverse</span>
+                    <span class="skill-tag">data.table</span>
+                    <span class="skill-tag">glmnet</span>
+                    <span class="skill-tag">boot</span>
+                    <span class="skill-tag">gam</span>
+                    <span class="skill-tag">keras</span>
+                    <span class="skill-tag">caret</span>
+                    <span class="skill-tag">e1071</span>
+                    <span class="skill-tag">rpart</span>
+                    <span class="skill-tag">foreach</span>
+                    <span class="skill-tag">dbscan</span>
+                    <span class="skill-tag">pROC</span>
+                    <span class="skill-tag">Matrix</span>
+                    <span class="skill-tag">pls</span>
+                    <span class="skill-tag">class</span>
+                </div>
+            </div>
+
+            <div class="skill-category-card glass glass-hover">
+                <div class="skill-category-header">
+                    <h3>Programming Languages</h3>
+                </div>
+                <div class="skill-tags">
+                    <span class="skill-tag">Python</span>
+                    <span class="skill-tag">R</span>
+                    <span class="skill-tag">Julia</span>
+                    <span class="skill-tag">C++</span>
+                    <span class="skill-tag">Java</span>
+                    <span class="skill-tag">LaTeX</span>
+                    <span class="skill-tag">MATLAB</span>
+                    <span class="skill-tag">Mathematica</span>
+                    <span class="skill-tag">HTML</span>
+                    <span class="skill-tag">CSS</span>
+                    <span class="skill-tag">JavaScript</span>
+                    <span class="skill-tag">SQL</span>
+                    <span class="skill-tag">Haskell</span>
+                </div>
+            </div>
+
+            <div class="skill-category-card glass glass-hover">
+                <div class="skill-category-header">
+                    <h3>Other Skills</h3>
+                </div>
+                <div class="skill-tags">
+                    <span class="skill-tag">Generative AI</span>
+                    <span class="skill-tag">Operations Research</span>
+                    <span class="skill-tag">Stochastic Modeling</span>
+                    <span class="skill-tag">Discrete Mathematics</span>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- CONTACT -->
+    <footer id="contact">
+        <h2>Get In Touch</h2>
+        <div class="social-icons">
+            <a href="mailto:igoeldxb@gmail.com" class="icon-link">Email</a>
+            <a href="tel:+17712017576" class="icon-link">Phone</a>
+            <a href="https://linkedin.com/in/igoeldc/" target="_blank" class="icon-link">LinkedIn</a>
+            <a href="https://github.com/igoeldc" target="_blank" class="icon-link">GitHub</a>
+        </div>
+    </footer>
+</body>
+</html>
