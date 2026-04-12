@@ -164,6 +164,18 @@
   font-size: 0.8rem;
 }
 
+/* --- Appearances Section --- */
+.appearances {
+  padding: 2rem 4rem 3rem;
+  position: relative;
+  z-index: 1;
+}
+
+.appearances .lem-section-head {
+  padding: 0;
+  margin-bottom: 2rem;
+}
+
 /* --- Responsive --- */
 @media (max-width: 1200px) {
   .timeline-items {

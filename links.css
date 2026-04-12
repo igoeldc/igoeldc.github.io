@@ -1,0 +1,155 @@
+/*
+  ========================================
+  Links Page — Lemma
+  ========================================
+*/
+
+/* Page header — reuse work.css pattern */
+.page-header {
+  padding: 7rem 4rem 3rem;
+  text-align: center;
+  position: relative;
+  z-index: 1;
+}
+
+.page-header h1 {
+  font-family: var(--font-heading);
+  font-size: 3rem;
+  font-weight: 700;
+  background: var(--accent-gradient);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  margin-bottom: 0.5rem;
+}
+
+.page-header .lem-def {
+  text-align: center;
+}
+
+/* Links sections */
+.links-section {
+  padding: 2rem 4rem 3rem;
+  max-width: 760px;
+  margin: 0 auto;
+  position: relative;
+  z-index: 1;
+}
+
+.links-section .lem-section-head {
+  margin-bottom: 1.5rem;
+}
+
+/* Link list */
+.links-list {
+  display: flex;
+  flex-direction: column;
+}
+
+.link-item {
+  display: flex;
+  flex-direction: column;
+  gap: 0.2rem;
+  padding: 1rem 0;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+  text-decoration: none;
+  color: inherit;
+  transition: background 0.2s var(--ease-out);
+}
+
+[data-theme="light"] .link-item {
+  border-bottom-color: rgba(0, 0, 0, 0.06);
+}
+
+.link-item:first-child {
+  border-top: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+[data-theme="light"] .link-item:first-child {
+  border-top-color: rgba(0, 0, 0, 0.06);
+}
+
+.link-item-main {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 1rem;
+}
+
+.link-name {
+  font-family: var(--font-heading);
+  font-size: 1.05rem;
+  font-weight: 600;
+  text-transform: lowercase;
+  color: var(--text-primary);
+  transition: color 0.2s var(--ease-out);
+}
+
+.link-arrow {
+  font-size: 1rem;
+  color: var(--text-faint);
+  transition: color 0.2s var(--ease-out), transform 0.2s var(--ease-out);
+  flex-shrink: 0;
+}
+
+.link-url {
+  font-family: var(--font-mono);
+  font-size: 0.7rem;
+  color: var(--text-faint);
+  letter-spacing: 0.3px;
+  transition: color 0.2s var(--ease-out);
+}
+
+@media (hover: hover) and (pointer: fine) {
+  .link-item:hover .link-name {
+    color: var(--accent-saffron);
+  }
+
+  .link-item:hover .link-arrow {
+    color: var(--accent-saffron);
+    transform: translate(2px, -2px);
+  }
+
+  .link-item:hover .link-url {
+    color: var(--text-muted);
+  }
+}
+
+.link-item:active {
+  transform: scale(0.98);
+  transition: transform 160ms var(--ease-out);
+}
+
+/* Appearances section in work.html */
+.appearances {
+  padding: 2rem 4rem 3rem;
+  position: relative;
+  z-index: 1;
+}
+
+.appearances .lem-section-head {
+  padding: 0;
+  margin-bottom: 2rem;
+}
+
+.appearances-cards {
+  grid-template-columns: repeat(2, 1fr);
+}
+
+@media (max-width: 768px) {
+  .page-header {
+    padding: 6rem 1.5rem 2rem;
+  }
+
+  .links-section {
+    padding: 1.5rem 1.5rem 2rem;
+  }
+
+  .appearances {
+    padding: 1.5rem 1.5rem 2rem;
+  }
+
+  .appearances-cards {
+    grid-template-columns: 1fr;
+  }
+}
