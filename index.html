@@ -30,19 +30,19 @@ Looking forward to seeing the full draft you put together.
     <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500&amp;family=Plus+Jakarta+Sans:ital,wght@0,400;0,600;0,700;1,400;1,600&amp;family=Syne:wght@700&amp;family=Instrument+Serif:ital@0;1&amp;family=Source+Serif+4:wght@600&amp;display=swap" rel="stylesheet">
 
     <!-- Styles -->
-    <link rel="stylesheet" href="shared.css?v=20260412"/>
-    <link rel="stylesheet" href="styles.css?v=20260412"/>
+    <link rel="stylesheet" href="shared.css?v=20260913"/>
+    <link rel="stylesheet" href="styles.css?v=20260913"/>
 
     <!-- GSAP + ScrollTrigger -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
 
     <!-- Scripts -->
-    <script src="shared.js?v=20260412" defer></script>
-    <script src="script.js?v=20260412" defer></script>
+    <script src="shared.js?v=20260913" defer></script>
+    <script src="script.js?v=20260913" defer></script>
 
     <!-- Manifest -->
     <link rel="manifest" href="favicon_io/site.webmanifest">
@@ -68,12 +68,6 @@ Looking forward to seeing the full draft you put together.
         </svg>
     </div>
 
-    <!-- Margin annotations -->
-    <div class="lem-margin-note" style="top: 25vh;" aria-hidden="true">&#x222B;<sub>0</sub><sup>&#x221E;</sup> e<sup>-x&#xB2;</sup> dx = &#x221A;&#x03C0;/2</div>
-    <div class="lem-margin-note" style="top: 55vh;" aria-hidden="true">&#x2207; &times; F = 0 &#x21D2; F = &#x2207;&#x03C6;</div>
-    <div class="lem-margin-note" style="top: 95vh;" aria-hidden="true">P(A|B) = P(B|A)P(A)/P(B)</div>
-    <div class="lem-margin-note" style="top: 140vh;" aria-hidden="true">&#x2211;<sub>n=1</sub><sup>&#x221E;</sup> 1/n&#xB2; = &#x03C0;&#xB2;/6</div>
-    <div class="lem-margin-note" style="top: 200vh;" aria-hidden="true">E[X] = &#x222B; x dF(x)</div>
 
     <!-- Top Navigation Bar -->
     <nav class="top-nav">
@@ -83,11 +77,11 @@ Looking forward to seeing the full draft you put together.
             <li><a href="index.html" class="active-section">home</a></li>
             <li><a href="work.html">work</a></li>
             <li><a href="academics.html">academics</a></li>
-            <li><a href="blog/blog.html">blog</a></li>
+            <!-- <li><a href="blog/blog.html">blog</a></li> -->
             <li class="nav-divider"></li>
             <li><a href="assets/Ishaan_Goel_Resume.pdf" target="_blank" class="external-link">resume</a></li>
-            <li><a href="https://pypi.org/project/mathcode/" target="_blank" class="external-link">mathcode</a></li>
-            <li><a href="https://iit-course-graphs.streamlit.app/" target="_blank" class="external-link">iit course planner</a></li>
+            <!-- <li><a href="https://pypi.org/project/mathcode/" target="_blank" class="external-link">mathcode</a></li> -->
+            <!-- <li><a href="https://iit-course-graphs.streamlit.app/" target="_blank" class="external-link">iit course planner</a></li> -->
             <li><a href="links.html" class="external-link">external links</a></li>
         </ul>
 
@@ -116,11 +110,11 @@ Looking forward to seeing the full draft you put together.
         <div class="hero-content">
             <div class="lem-epigraph" id="lemEpigraph" aria-hidden="true"></div>
             <h1 class="hero-title">
-                mathematics.<br>
-                <span class="accent"><em>machine learning.</em></span><br>
-                language.
+                <span class="triad-1 accent-primary">mathematics.</span><br>
+                <span class="triad-2 hero-neutral">machine learning.</span><br>
+                <span class="triad-3 accent-secondary">language.</span>
             </h1>
-            <p class="hero-subtitle">researcher at the intersection of stochastic modeling, graph theory, and <em>natural language processing</em>. building systems that understand structure.</p>
+            <p class="hero-subtitle">researcher at the intersection of <span class="triad-1 accent-primary">stochastic modeling</span>, <br> <span class="triad-2 hero-neutral">discrete mathematics</span>, and <span class="triad-3 accent-secondary">natural language processing</span>. <br> building systems that understand structure.</p>
             <div class="lem-coord hero-coord">
                 <span class="sym">&phi;</span> = 41.8348&deg; N<br>
                 <span class="sym">&lambda;</span> = 87.6270&deg; W<br>
@@ -135,14 +129,16 @@ Looking forward to seeing the full draft you put together.
     <section id="about" class="about">
         <div class="lem-section-head about-head">
             <h2>about</h2>
-            <div class="lem-def">def. 1.1 &mdash; let <em>ishaan</em> &isin; {researcher, developer, linguist}</div>
+            <div class="lem-def">def. 1.1: let <strong>ishaan</strong> &isin; {<span class="triad-1">researcher</span>, <span class="triad-2">mathematician</span>, <span class="triad-3">linguist</span>}</div>
         </div>
         <div class="about-narrative">
-            <p>I'm a fourth-year student at the Illinois Institute of Technology studying applied mathematics, data science, and artificial intelligence. My work lives at the intersection of mathematical structure and language. I use stochastic modeling, graph theory, and NLP to understand complex systems, from pricing groundwater rights to preserving under-resourced languages.</p>
+            <p>I'm a fifth-year student at the Illinois Institute of Technology studying applied mathematics, data science, and artificial intelligence. My work lives at the intersection of mathematical structure and language. I use stochastic modeling, graph theory, and NLP to understand complex systems, from modeling groundwater markets to preserving under-resourced languages.</p>
 
-            <p>Growing up across cultures gave me fluency in English, Hindi, Urdu, Mandarin, Spanish, and Arabic, and a deep curiosity about how languages encode meaning differently. That curiosity drives my research in NLP and my interest in low-resource language preservation. Outside of academics, I produce electronic music, study South Asian history and philosophy, and am always picking up a new language.</p>
+            <p>Growing up across cultures gave me fluency in English, Hindi, Urdu, Mandarin, Spanish, and Arabic, and a deep curiosity about how languages encode meaning differently. That curiosity drives my passion for NLP and my interest in low-resource language preservation. Outside of academics, I produce electronic music, study South Asian history and philosophy, and am always picking up a new language.</p>
 
-            <p>I'm currently a research assistant working on groundwater rights modeling (Dr. Igor Cialenco), Markov chain samplers for hypergraphs (Dr. Michael Pelsmajer), and graph theory research (Alaittin Kırtışoğlu and Dr. Hemanshu Kaul). I'm seeking opportunities where I can apply generative AI, stochastic modeling, and data science to real-world problems.</p>
+            <p>I'm currently a research assistant working on groundwater rights modeling with Dr. Igor Cialenco.
+            <!-- and Markov chain samplers for hypergraphs with Dr. Michael Pelsmajer. -->
+            I'm seeking opportunities where I can apply generative AI, stochastic modeling, and data science to real-world problems.</p>
         </div>
     </section>
 
@@ -150,12 +146,11 @@ Looking forward to seeing the full draft you put together.
     <section id="featured" class="featured-projects">
         <div class="lem-section-head featured-head">
             <h2>featured work</h2>
-            <div class="lem-def">thm 1.1 &mdash; a selection of projects &isin; {research, engineering, open source}</div>
+            <div class="lem-def">thm 1.1: a selection of projects &isin; {<span class="triad-1">research</span>, <span class="triad-2">modeling</span>, <span class="triad-3">open source</span>}</div>
         </div>
 
         <div class="lem-cards featured-cards">
             <a href="https://pypi.org/project/mathcode/" target="_blank" class="lem-card">
-                <div class="lem-card-idx">i.</div>
                 <h3>mathcode</h3>
                 <p>A Python library implementing mathematical algorithms from coursework: graph algorithms, stochastic processes, optimization, abstract algebra, and reinforcement learning.</p>
                 <div class="lem-card-tags">
@@ -166,7 +161,6 @@ Looking forward to seeing the full draft you put together.
             </a>
 
             <a href="https://github.com/LALITH0110/vArI-oceans-four" target="_blank" class="lem-card">
-                <div class="lem-card-idx">ii.</div>
                 <h3>distributed rl for ocean plastic drift</h3>
                 <p>A distributed Monte Carlo RL framework simulating ocean plastic drift, earning 3rd place in the Grainger Computing Innovation Prize.</p>
                 <div class="lem-card-tags">
@@ -177,7 +171,6 @@ Looking forward to seeing the full draft you put together.
             </a>
 
             <a href="https://github.com/igoeldc/ir_engine" target="_blank" class="lem-card">
-                <div class="lem-card-idx">iii.</div>
                 <h3>information retrieval engine</h3>
                 <p>Full-stack IR engine with Scrapy crawler, TF-IDF inverted index, semantic k-NN search (word2vec, FAISS), and Flask query processor.</p>
                 <div class="lem-card-tags">

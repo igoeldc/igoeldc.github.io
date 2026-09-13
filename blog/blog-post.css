@@ -146,11 +146,25 @@
     color: var(--text-primary);
 }
 
-.post-content p code {
-    background: var(--bg-tertiary);
+.post-content :not(pre) > code {
+    position: relative;
+    isolation: isolate;
+    background: var(--accent-secondary);
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
     padding: 0.2rem 0.4rem;
     border-radius: 3px;
     font-size: 0.9em;
+}
+
+.post-content :not(pre) > code::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    z-index: -1;
+    background: var(--bg-tertiary);
+    border-radius: 3px;
 }
 
 /* Post Footer */

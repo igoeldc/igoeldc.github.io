@@ -24,7 +24,7 @@
 .page-header h1 {
   font-family: var(--font-heading);
   font-size: 3rem;
-  font-weight: 700;
+  font-weight: 500;
   background: var(--accent-gradient);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
@@ -87,7 +87,7 @@
   display: flex;
   justify-content: space-between;
   position: relative;
-  padding: 0 5%;
+  padding: 0;
   gap: 2rem;
 }
 
@@ -143,9 +143,14 @@
 }
 
 .timeline-content h3 {
-  font-family: var(--font-heading);
+  font-family: var(--font-serif);
+  font-style: italic;
+  background: var(--accent-gradient);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
   font-size: 1rem;
-  font-weight: 600;
+  font-weight: 400;
   margin-bottom: 0.5rem;
   color: var(--text-primary);
   text-transform: lowercase;
@@ -158,8 +163,12 @@
 }
 
 .timeline-content .company {
+  background: var(--accent-secondary);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
   color: var(--accent-saffron);
-  font-weight: 600;
+  font-weight: 500;
   font-family: var(--font-mono);
   font-size: 0.8rem;
 }

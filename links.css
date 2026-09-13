@@ -15,7 +15,7 @@
 .page-header h1 {
   font-family: var(--font-heading);
   font-size: 3rem;
-  font-weight: 700;
+  font-weight: 500;
   background: var(--accent-gradient);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
@@ -30,7 +30,7 @@
 /* Links sections */
 .links-section {
   padding: 2rem 4rem 3rem;
-  max-width: 760px;
+  max-width: 1200px;
   margin: 0 auto;
   position: relative;
   z-index: 1;
@@ -79,10 +79,13 @@
 .link-name {
   font-family: var(--font-heading);
   font-size: 1.05rem;
-  font-weight: 600;
+  font-weight: 500;
   text-transform: lowercase;
-  color: var(--text-primary);
-  transition: color 0.2s var(--ease-out);
+  color: var(--accent-blue);
+  background: var(--accent-secondary);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
 }
 
 .link-arrow {
@@ -101,10 +104,6 @@
 }
 
 @media (hover: hover) and (pointer: fine) {
-  .link-item:hover .link-name {
-    color: var(--accent-saffron);
-  }
-
   .link-item:hover .link-arrow {
     color: var(--accent-saffron);
     transform: translate(2px, -2px);

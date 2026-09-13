@@ -14,19 +14,25 @@
   --bg-secondary: #0a0a0e;
   --bg-tertiary: #131316;
   --text-primary: #ffffff;
-  --text-secondary: #888;
-  --text-muted: #555;
-  --text-faint: #4a4a4a;
-  --text-ghost: #3a3a3a;
+  --text-secondary: #aaa;
+  --text-muted: #888;
+  --text-faint: #777;
+  --text-ghost: #666;
   --accent-saffron: #FF9933;
   --accent-red: #DC143C;
-  --accent-gradient: linear-gradient(135deg, #FF9933 0%, #DC143C 100%);
+  --accent-gradient: linear-gradient(135deg, var(--accent-saffron) 0%, var(--accent-red) 100%);
+  --accent-blue: #3B82F6;
+  --accent-green: #10B981;
+  --accent-secondary: linear-gradient(135deg, var(--accent-blue) 0%, var(--accent-green) 100%);
 
-  /* Typography */
-  --font-heading: 'Space Grotesk', sans-serif;
+  /* Typography: headings 500, body/annotations 400; accents 700 / italic 400 / 600. */
+  font-synthesis: none;
+  --font-heading: 'JetBrains Mono', monospace;
   --font-mono: 'JetBrains Mono', monospace;
-  --font-serif: 'Playfair Display', serif;
-  --font-body: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  --font-serif: 'Instrument Serif', serif;
+  --font-accent-1: 'Syne', sans-serif;
+  --font-accent-3: 'Source Serif 4', serif;
+  --font-body: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
 
   /* Cards */
   --card-bg: #030305;
@@ -52,10 +58,10 @@
   --bg-secondary: #eeeee9;
   --bg-tertiary: #e0e0db;
   --text-primary: #1a1a1a;
-  --text-secondary: #555;
-  --text-muted: #777;
-  --text-faint: #aaa;
-  --text-ghost: #ccc;
+  --text-secondary: #444;
+  --text-muted: #606060;
+  --text-faint: #707070;
+  --text-ghost: #808080;
   --card-bg: #f5f5f3;
   --card-gap-color: rgba(0, 0, 0, 0.06);
   --card-hover: rgba(255, 153, 51, 0.05);
@@ -79,7 +85,6 @@ html, body {
   background: var(--bg-primary);
   color: var(--text-primary);
   scroll-behavior: smooth;
-  cursor: crosshair;
   transition: background-color 0.3s ease, color 0.3s ease;
 }
 
@@ -103,14 +108,36 @@ body::before {
 }
 
 /* Typography */
-h1, h2, h3 {
+h1, h2, h3, h4, h5, h6 {
+  font-family: var(--font-heading);
+  font-weight: 500;
   text-transform: lowercase;
+  overflow-wrap: anywhere;
+}
+
+.triad-1 { font-family: var(--font-accent-1); font-weight: 700; font-style: normal; }
+.triad-2 { font-family: var(--font-serif); font-weight: 400; font-style: italic; }
+.triad-3 { font-family: var(--font-accent-3); font-weight: 600; font-style: normal; }
+
+/* Shared color roles, including the home hero. */
+.accent-primary, .nav-brand, .lem-card h3 {
+  background: var(--accent-gradient);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.accent-secondary, .lem-tag {
+  background: var(--accent-secondary);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
 }
 
 h2 {
   font-family: var(--font-heading);
   font-size: 2rem;
-  font-weight: 700;
+  font-weight: 500;
   letter-spacing: -0.5px;
   background: var(--accent-gradient);
   -webkit-background-clip: text;
@@ -203,7 +230,7 @@ button:focus-visible {
 .nav-brand {
   font-family: var(--font-heading);
   font-size: 1.1rem;
-  font-weight: 700;
+  font-weight: 500;
   letter-spacing: 2px;
   text-transform: lowercase;
   color: var(--accent-saffron);
@@ -513,7 +540,7 @@ button:focus-visible {
 .lem-card h3 {
   font-family: var(--font-heading);
   font-size: 1.3rem;
-  font-weight: 600;
+  font-weight: 500;
   margin-bottom: 0.75rem;
   text-transform: lowercase;
 }
@@ -536,7 +563,7 @@ button:focus-visible {
 .lem-tag {
   font-family: var(--font-mono);
   font-size: 0.7rem;
-  color: rgba(255, 153, 51, 0.7);
+  color: var(--accent-blue);
   letter-spacing: 0.3px;
 }
 
@@ -544,10 +571,6 @@ button:focus-visible {
   content: '\2202';
   opacity: 0.35;
   margin-right: 2px;
-}
-
-[data-theme="light"] .lem-tag {
-  color: rgba(200, 120, 20, 0.85);
 }
 
 /* ========================================
@@ -596,19 +619,7 @@ button:focus-visible {
 }
 
 .lem-coord .sym {
-  color: var(--text-muted);
-}
-
-/* Margin annotations — scattered math along edges */
-.lem-margin-note {
-  position: absolute;
-  right: 2rem;
-  font-family: var(--font-mono);
-  font-size: 0.6rem;
-  color: var(--text-ghost);
-  z-index: 1;
-  pointer-events: none;
-  letter-spacing: 0.5px;
+  color: var(--accent-blue);
 }
 
 /* QED footer flourish */
@@ -713,9 +724,6 @@ button:focus-visible {
     padding: 2rem 1.5rem;
   }
 
-  .lem-margin-note {
-    display: none;
-  }
 }
 
 /* ========================================

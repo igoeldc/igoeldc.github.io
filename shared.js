@@ -1,6 +1,6 @@
 /**
  * Shared JS — Lemma Design System
- * Theme toggle, mobile menu, spotlight, epigraph, GSAP scroll, card tilt
+ * Theme toggle, mobile menu, spotlight, epigraph, GSAP scroll
  */
 
 document.addEventListener('DOMContentLoaded', () => {
@@ -98,15 +98,62 @@ document.addEventListener('DOMContentLoaded', () => {
   // RANDOM MATH EPIGRAPH
   // ===========================
   const epigraphs = [
-    'def. \u2014 let \u03A9 denote the space of all possible paths',
-    'axiom \u2014 every continuous function on [a, b] attains its bounds',
-    'lemma \u2014 the probability of the impossible event is zero',
-    'prop. \u2014 a random walk on \u2124\u00B2 is recurrent',
-    'cor. \u2014 the eigenvalues of a symmetric matrix are real',
-    'thm \u2014 if \u2207f = 0 everywhere, then f is constant',
-    'def. \u2014 a martingale is a fair game in expectation',
-    'remark \u2014 not all that converges is summable',
-    'postulate \u2014 between any two points there exists a geodesic',
+    // probability and stochastics
+    'def. let Ω denote the space of all possible paths',
+    'lemma the probability of the impossible event is zero',
+    'prop. a simple symmetric random walk on ℤ² is recurrent',
+    'def. a martingale is a fair game in expectation',
+    'prop. independent increments need not imply independent paths',
+    'thm. expectation is linear, even when independence is absent',
+    'cor. zero covariance does not imply independence',
+    'prop. recurrence is a property of the path, not a single step',
+    'thm. every finite irreducible Markov chain has a unique stationary distribution',
+    
+    // analysis and topology
+    'thm. every continuous function on [a, b] attains its maximum and minimum',
+    'lemma every convergent sequence is bounded',
+    'prop. differentiability implies continuity',
+    'thm. every bounded monotone sequence converges',
+    'prop. a continuous image of a compact set is compact',
+    'thm. every Cauchy sequence in a complete space converges',
+    'def. a set is compact if every open cover has a finite subcover',
+    
+    // discrete math
+    'def. a graph is bipartite iff it has no odd cycles',
+    'thm. a tree with n vertices has n - 1 edges',
+    'thm. every planar graph can be colored with at most four colors',
+    'cor. every nonempty finite poset has a maximal element',
+    'def. a matching is a set of pairwise nonincident edges',
+    'thm. every connected graph contains a spanning tree',
+    'principle if n + 1 objects occupy n boxes, at least one box holds at least two objects',
+    'prop. there are infinitely many prime numbers',
+    'thm. every prime greater than 3 is congruent to ±1 mod 6',
+    
+    // optimization
+    'def. a convex function lies below its secant lines',
+    'prop. every local minimum of a convex function is global',
+    'prop. the feasible region of a linear program is convex',
+    'def. a feasible point satisfies every constraint',
+    'thm. a differentiable convex function lies above every tangent plane',
+    'cor. strict convexity permits at most one minimizer',
+    'lemma complementary slackness links primal and dual solutions',
+    
+    // remarks
+    'remark: almost surely is not the same as surely',
+    'remark: not all that converges is summable',
+    'remark: pointwise convergence need not preserve continuity',
+    'remark: almost everywhere is not everywhere',
+    'remark: local degree constraints shape global structure',
+    'remark: duality provides bounds on optimal values',
+    'remark: a stationary point need not be a minimum',
+    'remark: measure zero does not mean empty',
+    'remark: connected is not the same as path-connected',
+    'remark: deterministic does not mean predictable',
+    'remark: existence does not imply uniqueness',
+    'remark: truth and provability are different notions',
+    'remark: straightness depends on the space',
+    'remark: dimension counts freedom, not size',
+    'remark: finite-dimensional intuition does not always survive',
   ];
 
   const epigraphEl = document.getElementById('lemEpigraph');
@@ -283,21 +330,7 @@ document.addEventListener('DOMContentLoaded', () => {
       }
     }
 
-    // 7. Margin notes stagger fade-in
-    const marginNotes = document.querySelectorAll('.lem-margin-note');
-    if (marginNotes.length > 0) {
-      gsap.set(marginNotes, { opacity: 0, x: 20 });
-      gsap.to(marginNotes, {
-        opacity: 1,
-        x: 0,
-        duration: 0.6,
-        stagger: 0.3,
-        delay: 1.5,
-        ease: 'power3.out'
-      });
-    }
-
-    // 8. Contact/footer reveal
+    // 7. Contact/footer reveal
     const footer = document.querySelector('#contact');
     if (footer) {
       gsap.set(footer.children, { opacity: 0, y: 40 });
@@ -320,30 +353,5 @@ document.addEventListener('DOMContentLoaded', () => {
 
   initGSAPScrollAnimations();
 
-  // ===========================
-  // 3D CARD TILT (desktop only)
-  // ===========================
-  const initCardTilt = () => {
-    if (!window.matchMedia('(hover: hover) and (pointer: fine)').matches) return;
-    if (prefersReducedMotion) return;
-
-    const cards = document.querySelectorAll('.lem-card');
-    if (cards.length === 0) return;
-
-    cards.forEach(card => {
-      card.addEventListener('mousemove', (e) => {
-        const rect = card.getBoundingClientRect();
-        const x = (e.clientX - rect.left) / rect.width - 0.5;
-        const y = (e.clientY - rect.top) / rect.height - 0.5;
-        card.style.transform = `perspective(800px) rotateY(${x * 8}deg) rotateX(${-y * 8}deg)`;
-      });
-
-      card.addEventListener('mouseleave', () => {
-        card.style.transform = '';
-      });
-    });
-  };
-
-  initCardTilt();
 
 });

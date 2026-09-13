@@ -24,7 +24,7 @@
 .page-header h1 {
   font-family: var(--font-heading);
   font-size: 3rem;
-  font-weight: 700;
+  font-weight: 500;
   background: var(--accent-gradient);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
@@ -56,8 +56,12 @@
 .lem-card h4 {
   font-family: var(--font-heading);
   font-size: 1rem;
-  font-weight: 600;
-  color: var(--accent-saffron);
+  font-weight: 500;
+  color: var(--accent-blue);
+  background: var(--accent-secondary);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
   margin-bottom: 0.5rem;
   text-transform: lowercase;
 }
@@ -65,10 +69,14 @@
 .lem-card .info-label {
   font-family: var(--font-mono);
   font-size: 0.75rem;
-  color: var(--text-faint);
+  color: var(--text-secondary);
   letter-spacing: 0.5px;
   margin-top: 1rem;
   margin-bottom: 0.25rem;
+}
+
+.lem-card p {
+  color: var(--text-secondary);
 }
 
 .lem-card ul {

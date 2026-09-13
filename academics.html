@@ -18,19 +18,19 @@
     <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500&amp;family=Plus+Jakarta+Sans:ital,wght@0,400;0,600;0,700;1,400;1,600&amp;family=Syne:wght@700&amp;family=Instrument+Serif:ital@0;1&amp;family=Source+Serif+4:wght@600&amp;display=swap" rel="stylesheet">
 
     <!-- Styles -->
-    <link rel="stylesheet" href="shared.css?v=20260412"/>
-    <link rel="stylesheet" href="academics.css?v=20260412"/>
+    <link rel="stylesheet" href="shared.css?v=20260913"/>
+    <link rel="stylesheet" href="academics.css?v=20260913"/>
 
     <!-- GSAP + ScrollTrigger -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
 
     <!-- Scripts -->
-    <script src="shared.js?v=20260412" defer></script>
-    <script src="academics.js?v=20260412" defer></script>
+    <script src="shared.js?v=20260913" defer></script>
+    <script src="academics.js?v=20260913" defer></script>
 
     <!-- Manifest -->
     <link rel="manifest" href="favicon_io/site.webmanifest">
@@ -55,11 +55,6 @@
         </svg>
     </div>
 
-    <!-- Margin annotations -->
-    <div class="lem-margin-note" style="top: 25vh;" aria-hidden="true">&#x2200;&#x03B5; > 0, &#x2203;&#x03B4; > 0</div>
-    <div class="lem-margin-note" style="top: 60vh;" aria-hidden="true">dim(V) = rank(T) + null(T)</div>
-    <div class="lem-margin-note" style="top: 110vh;" aria-hidden="true">e<sup>i&#x03C0;</sup> + 1 = 0</div>
-    <div class="lem-margin-note" style="top: 170vh;" aria-hidden="true">&#x03C7;(G) &#x2264; &#x0394;(G) + 1</div>
 
     <!-- Top Navigation Bar -->
     <nav class="top-nav">
@@ -69,11 +64,11 @@
             <li><a href="index.html">home</a></li>
             <li><a href="work.html">work</a></li>
             <li><a href="academics.html" class="active-section">academics</a></li>
-            <li><a href="blog/blog.html">blog</a></li>
+            <!-- <li><a href="blog/blog.html">blog</a></li> -->
             <li class="nav-divider"></li>
             <li><a href="assets/Ishaan_Goel_Resume.pdf" target="_blank" class="external-link">resume</a></li>
-            <li><a href="https://pypi.org/project/mathcode/" target="_blank" class="external-link">mathcode</a></li>
-            <li><a href="https://iit-course-graphs.streamlit.app/" target="_blank" class="external-link">iit course planner</a></li>
+            <!-- <li><a href="https://pypi.org/project/mathcode/" target="_blank" class="external-link">mathcode</a></li> -->
+            <!-- <li><a href="https://iit-course-graphs.streamlit.app/" target="_blank" class="external-link">iit course planner</a></li> -->
             <li><a href="links.html" class="external-link">external links</a></li>
         </ul>
 
@@ -102,20 +97,19 @@
     <!-- Page Header -->
     <header class="page-header">
         <h1>academics</h1>
-        <div class="lem-def">thm 3.0 &mdash; courses &cup; skills &cup; education</div>
+        <div class="lem-def">thm 3.0: education &cap; courses &cap; skills</div>
     </header>
 
     <!-- EDUCATION -->
     <section id="education" class="education">
         <div class="lem-section-head">
             <h2>education</h2>
-            <div class="lem-def">def. 3.1 &mdash; the <em>formal</em> training of the mind</div>
+            <div class="lem-def">remark 3.1: the <em>formal</em> training of the mind</div>
         </div>
 
         <div class="education-container lem-cards">
 
             <div class="lem-card">
-                <div class="lem-card-idx">i.</div>
                 <h3>education</h3>
                 <h4>Illinois Institute of Technology</h4>
                 <div class="info-content">
@@ -127,19 +121,18 @@
                     </ul>
                     <p class="info-label">minor:</p>
                     <ul>
-                        <li>Finance</li>
+                        <li>Computer Science</li>
                     </ul>
                     <p class="info-label">specializations:</p>
                     <ul>
                         <li>Discrete Applied Math</li>
-                        <li>Mathematical Finance</li>
                         <li>Stochastics</li>
+                        <li>Mathematical Finance</li>
                     </ul>
                 </div>
             </div>
 
             <div class="lem-card">
-                <div class="lem-card-idx">ii.</div>
                 <h3>computer skills</h3>
                 <div class="info-content">
                     <h4>programming languages</h4>
@@ -154,18 +147,17 @@
             </div>
 
             <div class="lem-card">
-                <div class="lem-card-idx">iii.</div>
                 <h3>favorite classes</h3>
                 <ul class="fav-list">
                     <li>Stochastic Processes</li>
-                    <li>AI Language Understanding</li>
-                    <li>Abstract Algebra</li>
-                    <li>Modern Methods in Discrete Applied Math</li>
-                    <li>ODEs and Dynamical Systems</li>
-                    <li>Stochastic PDEs</li>
-                    <li>Data Mining</li>
-                    <li>Real Analysis</li>
                     <li>Information Retrieval</li>
+                    <li>Modern Methods in Discrete Math</li>
+                    <li>Abstract Algebra</li>
+                    <li>Data Mining</li>
+                    <li>Stochastic PDEs</li>
+                    <li>AI Language Understanding</li>
+                    <li>ODEs and Dynamical Systems</li>
+                    <li>Real Analysis</li>
                     <li>Data Preparation and Analysis</li>
                     <li>Mathematical Modeling</li>
                 </ul>
@@ -178,7 +170,7 @@
     <section id="courses" class="courses">
         <div class="lem-section-head">
             <h2>courses</h2>
-            <div class="lem-def">thm 3.1 &mdash; courses &isin; {applied math, ai, finance, &hellip;}</div>
+            <div class="lem-def">thm 3.1: courses &isin; {applied math, ai, data science, computer science, &hellip;}</div>
         </div>
 
         <div class="courses-grid">
@@ -188,22 +180,23 @@
                 <ul>
                     <li>Modern Methods in Discrete Applied Mathematics</li>
                     <li>Stochastic Partial Differential Equations</li>
-                    <li>Graph Theory</li>
                     <li>Monte Carlo Methods in Finance</li>
                     <li>Stochastic Processes</li>
+                    <li>Graph Theory</li>
                     <li>Linear Optimization</li>
-                    <li>Computational Math</li>
-                    <li>Abstract Algebra</li>
+                    <li>Dynamical Systems</li>
                     <li>Real Analysis</li>
-                    <li>Combinatorics</li>
                     <li>Probability</li>
-                    <li>Discrete Mathematics</li>
-                    <li>ODEs and Dynamical Systems</li>
+                    <li>Abstract Algebra</li>
+                    <li>Combinatorics</li>
                     <li>Mathematical Modeling</li>
+                    <li>Computational Mathematics</li>
                     <li>Elementary Linear Algebra</li>
+                    <li>Discrete Mathematics</li>
                     <li>Multivariate and Vector Calculus</li>
                     <li>Intro to Data Science</li>
-                    <li>Functional Analysis (Audit)</li>
+                    <li>Applied Analysis I (Audit)</li>
+                    <li>Stochastic Analysis (Audit)</li>
                     <li>Complex Analysis (Audit)</li>
                     <li>Computational Algebraic Geometry (Audit)</li>
                 </ul>
@@ -212,49 +205,45 @@
             <div class="lem-card course-card">
                 <h3>artificial intelligence</h3>
                 <ul>
-                    <li>AI Language Understanding</li>
-                    <li>Information Retrieval</li>
+                    <li>Artificial Intelligence</li>
                     <li>Machine Learning</li>
                     <li>Deep Learning</li>
-                    <li>Data Mining</li>
                     <li>Data Preparation and Analysis</li>
-                    <li>Artificial Intelligence</li>
-                    <li>Functional Programming (Haskell)</li>
+                    <li>Data Mining</li>
+                    <li>Natural Language Processing</li>
+                    <li>Information Retrieval</li>
+                    <li>Big Data Technologies</li>
                     <li>Algorithms</li>
                     <li>Data Structures</li>
                     <li>Database Organization</li>
+                    <li>Functional Programming</li>
                     <li>Game Theory (Audit)</li>
                 </ul>
             </div>
 
             <div class="lem-card course-card">
-                <h3>finance</h3>
+                <h3>fall 2026 + spring 2027</h3>
                 <ul>
-                    <li>Economics of Capital Investments</li>
-                    <li>Principles of Economics</li>
+                    <li>Social Graph Analysis & Graph Learning</li>
+                    <li>Agentic AI for Campus Innovation</li>
+                    <li>Statistics</li>
+                    <li>Data Ethics and Responsible AI</li>
                 </ul>
             </div>
 
             <div class="lem-card course-card">
                 <h3>other</h3>
                 <ul>
-                    <li>Deep Technology Commercialization</li>
-                    <li>AI, Philosophy and Ethics</li>
-                    <li>Language Theory in NLP</li>
-                    <li>Science and Technology Studies</li>
-                </ul>
-            </div>
-
-            <div class="lem-card course-card">
-                <h3>spring 2026</h3>
-                <ul>
-                    <li>Big Data Technologies</li>
-                    <li>Advanced Artificial Intelligence</li>
                     <li>Financial Derivatives</li>
                     <li>Quantum Computing</li>
-                    <li>The Human Voice</li>
+                    <li>AI, Philosophy and Ethics</li>
                     <li>Politics of Science and Technology</li>
-                    <li>Stochastic Analysis (Audit)</li>
+                    <li>Science and Technology Studies</li>
+                    <li>Deep Technology Commercialization</li>
+                    <li>Language Theory in NLP</li>
+                    <li>The Human Voice</li>
+                    <li>Economics of Capital Investments</li>
+                    <li>Principles of Economics</li>
                 </ul>
             </div>
 
@@ -265,7 +254,7 @@
     <section id="skills" class="skills">
         <div class="lem-section-head">
             <h2>skills</h2>
-            <div class="lem-def">prop. 3.1 &mdash; the tools in the <em>toolkit</em></div>
+            <div class="lem-def">prop. 3.1: the tools in the <em>toolkit</em></div>
         </div>
 
         <div class="skills-container">
@@ -278,6 +267,7 @@
                     <span class="skill-tag">Graph Theory</span>
                     <span class="skill-tag">Abstract Algebra</span>
                     <span class="skill-tag">Monte Carlo Methods</span>
+                    <span class="skill-tag">Stochastic Analysis</span>
                     <span class="skill-tag">Stochastic PDEs</span>
                     <span class="skill-tag">Linear Optimization</span>
                     <span class="skill-tag">Combinatorics</span>
@@ -285,6 +275,7 @@
                     <span class="skill-tag">Mathematical Modeling</span>
                     <span class="skill-tag">Dynamical Systems</span>
                     <span class="skill-tag">Mathematical Finance</span>
+                    <span class="skill-tag">Discrete Mathematics</span>
                 </div>
             </div>
 
@@ -298,6 +289,7 @@
                     <span class="skill-tag">Data Mining</span>
                     <span class="skill-tag">Statistical Learning</span>
                     <span class="skill-tag">Computer Vision</span>
+                    <span class="skill-tag">Data Science</span>
                 </div>
             </div>
 
@@ -365,7 +357,6 @@
                     <span class="skill-tag">Generative AI</span>
                     <span class="skill-tag">Operations Research</span>
                     <span class="skill-tag">Stochastic Modeling</span>
-                    <span class="skill-tag">Discrete Mathematics</span>
                 </div>
             </div>
 
