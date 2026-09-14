@@ -569,7 +569,8 @@ button:focus-visible {
 
 .lem-tag::before {
   content: '\2202';
-  opacity: 0.35;
+  -webkit-text-fill-color: currentColor;
+  opacity: 0.8;
   margin-right: 2px;
 }
 

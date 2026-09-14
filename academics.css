@@ -98,9 +98,12 @@
   content: '\2202';
   position: absolute;
   left: -0.8rem;
-  color: var(--accent-saffron);
+  color: var(--accent-blue);
+  background: var(--accent-secondary);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
   font-size: 0.7rem;
-  opacity: 0.5;
 }
 
 /* --- Courses Section --- */
