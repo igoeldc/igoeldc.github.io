@@ -64,13 +64,6 @@
   transform: translateY(30px);
 }
 
-.hero-subtitle .accent-primary,
-.hero-subtitle .accent-secondary {
-  padding-block: 0.15em;
-  -webkit-box-decoration-break: clone;
-  box-decoration-break: clone;
-}
-
 .hero-coord {
   position: absolute;
   right: 4rem;

@@ -145,7 +145,7 @@ document.addEventListener('DOMContentLoaded', () => {
     'remark: almost everywhere is not everywhere',
     'remark: local degree constraints shape global structure',
     'remark: duality provides bounds on optimal values',
-    'remark: a stationary point need not be a minimum',
+    'remark: a stationary point need not be a minimum or maximum',
     'remark: measure zero does not mean empty',
     'remark: connected is not the same as path-connected',
     'remark: deterministic does not mean predictable',
