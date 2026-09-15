@@ -351,6 +351,20 @@ document.addEventListener('DOMContentLoaded', () => {
     }
   };
 
+  document.querySelectorAll('.timeline-dot').forEach((dot, index, dots) => {
+    dot.style.setProperty('--dot-progress', `${index / Math.max(dots.length - 1, 1) * 100}%`);
+  });
+
+  // Show timeline scrollbars only while scrolling, without changing layout.
+  document.querySelectorAll('.timeline-container, .timeline-items').forEach(scroller => {
+    let hideScrollbar;
+    scroller.addEventListener('scroll', () => {
+      scroller.classList.add('is-scrolling');
+      clearTimeout(hideScrollbar);
+      hideScrollbar = setTimeout(() => scroller.classList.remove('is-scrolling'), 800);
+    }, { passive: true });
+  });
+
   initGSAPScrollAnimations();
 
 

@@ -91,10 +91,53 @@
   gap: 2rem;
 }
 
+.timeline-container,
+.timeline-items {
+  --scrollbar-track: transparent;
+  --scrollbar-thumb: transparent;
+  scrollbar-width: thin;
+  scrollbar-color: transparent transparent;
+}
+
+.timeline-container.is-scrolling,
+.timeline-items.is-scrolling {
+  --scrollbar-track: var(--bg-tertiary);
+  --scrollbar-thumb: var(--accent-gradient);
+  scrollbar-color: var(--accent-saffron) var(--bg-tertiary);
+}
+
+@supports selector(::-webkit-scrollbar) {
+  .timeline-container,
+  .timeline-items,
+  .timeline-container.is-scrolling,
+  .timeline-items.is-scrolling {
+    scrollbar-width: auto;
+    scrollbar-color: auto;
+  }
+
+  .timeline-container::-webkit-scrollbar,
+  .timeline-items::-webkit-scrollbar {
+    height: 6px;
+  }
+
+  .timeline-container::-webkit-scrollbar-track,
+  .timeline-items::-webkit-scrollbar-track {
+    background: var(--scrollbar-track, transparent);
+    border-radius: 3px;
+  }
+
+  .timeline-container::-webkit-scrollbar-thumb,
+  .timeline-items::-webkit-scrollbar-thumb {
+    background: var(--scrollbar-thumb, transparent);
+    border-radius: 3px;
+  }
+}
+
 .timeline-line {
   position: absolute;
-  top: 61px;
+  top: 60px;
   height: 3px;
+  transform: translateY(-50%);
   background: var(--accent-gradient);
   border-radius: 2px;
   pointer-events: none;
@@ -102,7 +145,7 @@
 
 .timeline-item {
   flex: 1;
-  min-width: 200px;
+  min-width: 250px;
   position: relative;
   display: flex;
   flex-direction: column;
@@ -124,7 +167,8 @@
 .timeline-dot {
   width: 16px;
   height: 16px;
-  background: var(--accent-saffron);
+  background: var(--accent-blue);
+  background: color-mix(in srgb, var(--accent-blue), var(--accent-green) var(--dot-progress, 0%));
   border: 3px solid var(--bg-primary);
   border-radius: 50%;
   position: relative;
@@ -191,22 +235,6 @@
     overflow-x: auto;
     justify-content: flex-start;
     padding-bottom: 1rem;
-    scrollbar-width: thin;
-    scrollbar-color: var(--accent-saffron) var(--bg-tertiary);
-  }
-
-  .timeline-items::-webkit-scrollbar {
-    height: 6px;
-  }
-
-  .timeline-items::-webkit-scrollbar-track {
-    background: var(--bg-tertiary);
-    border-radius: 3px;
-  }
-
-  .timeline-items::-webkit-scrollbar-thumb {
-    background: var(--accent-gradient);
-    border-radius: 3px;
   }
 }
 
@@ -234,7 +262,7 @@
   }
 
   .timeline-item {
-    min-width: 220px;
+    min-width: 240px;
   }
 
   .timeline-date {
